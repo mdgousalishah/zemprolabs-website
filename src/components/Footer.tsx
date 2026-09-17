@@ -131,13 +131,18 @@ export const Footer: React.FC = () => {
                   <span className="font-mono">{company.phone}</span>
                 </a>
 
-                {/* Secondary Phone */}
+                {/* WhatsApp */}
                 <a
-                  href={company.phone2Href}
-                  className="flex items-center gap-2 text-white hover:text-[#FF6B00] transition-colors group"
+                  href={company.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat with Zemprolabs on WhatsApp"
+                  className="flex items-center gap-2 text-white hover:text-[#10B981] transition-colors group"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[#004AAD] shrink-0" />
-                  <span className="font-mono">{company.phone2}</span>
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#10B981]/20 flex items-center justify-center shrink-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                  </span>
+                  <span className="font-mono text-[#10B981] hover:underline">WhatsApp: {company.phone}</span>
                 </a>
 
                 {/* Office Address */}

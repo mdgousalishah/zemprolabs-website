@@ -12,42 +12,47 @@ export const HandledForYouCTA: React.FC = () => {
         <div className="max-w-3xl space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10B981]/10 border border-[#10B981]/25 text-[#10B981] text-xs font-mono">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>FULL OPERATIONAL CARE</span>
+            <span>LET'S BUILD SOMETHING GREAT</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white tracking-tight">
-            Don't Want to Manage the Technology Yourself?
+            Start a Project with Zemprolabs
           </h2>
 
           <p className="text-base sm:text-lg text-[#94A3B8] leading-relaxed">
-            Hand it over to us. Zemprolabs can manage your website, e-commerce storefront and technical infrastructure while you focus on your business. From product catalog uploads and promotional banners to database security and performance audits.
+            Whether you need a new digital build, e-commerce store care, or full-stack engineering support, our qualified team is ready.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
-              to="/contact?service=maintenance&engagement=store_management"
+              to="/contact"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_20px_rgba(255,107,0,0.3)] active:scale-95"
             >
-              <span>Talk to Us</span>
+              <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link
-              to="/managed-services"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-sm font-semibold bg-[#0B0F17] text-white hover:bg-white/5 border border-[rgba(148,163,184,0.2)] hover:border-white/40 transition-all"
+            <a
+              href="https://wa.me/917447557599"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with Zemprolabs on WhatsApp"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-sm font-semibold bg-[#10B981]/10 text-[#10B981] hover:bg-[#10B981]/20 border border-[#10B981]/30 transition-all active:scale-95"
             >
-              <span>View Maintenance Plans</span>
-            </Link>
+              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+              <span>Chat on WhatsApp</span>
+            </a>
           </div>
 
           <div className="pt-4 flex flex-wrap items-center gap-6 text-xs font-mono text-[#94A3B8] border-t border-[rgba(148,163,184,0.1)]">
-            <span className="flex items-center gap-1.5 text-[#10B981]">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Dedicated Senior Technical Lead</span>
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Headphones className="w-4 h-4 text-[#004AAD]" />
-              <span>Sub-24h Priority Response Window</span>
-            </span>
+            <a href="tel:+917447557599" className="hover:text-white transition-colors">
+              Phone: <span className="text-white">+91 744 755 7599</span>
+            </a>
+            <a href="https://wa.me/917447557599" target="_blank" rel="noopener noreferrer" className="hover:text-[#10B981] transition-colors">
+              WhatsApp: <span className="text-[#10B981]">+91 744 755 7599</span>
+            </a>
+            <a href="mailto:info@zemprolabs.com" className="hover:text-white transition-colors">
+              Email: <span className="text-white">info@zemprolabs.com</span>
+            </a>
           </div>
         </div>
       </div>

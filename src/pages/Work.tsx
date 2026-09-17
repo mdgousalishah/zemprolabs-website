@@ -10,7 +10,7 @@ export const Work: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const categories = ['All', 'E-Commerce', 'Software', 'Healthcare', 'ServiceNow'];
+  const categories = ['All', 'E-Commerce', 'Software', 'Healthcare', 'ServiceNow', 'Recruitment'];
 
   const filteredProjects =
     activeFilter === 'All'

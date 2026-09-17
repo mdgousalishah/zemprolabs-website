@@ -14,37 +14,49 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
     const video = videoRef.current;
     if (!video || !project.video) return;
 
+    video.defaultMuted = true;
     video.muted = true;
+    video.loop = true;
 
-    const playVideo = () => {
-      const promise = video.play();
-      if (promise !== undefined) {
-        promise.catch(() => {
-          // Handled if browser prevents autoplay
+    let isMounted = true;
+
+    const attemptPlay = () => {
+      if (!video || !isMounted) return;
+      video.defaultMuted = true;
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Gracefully handle browser autoplay restriction or pause interruption
         });
       }
     };
-
-    playVideo();
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            if (!isMounted) return;
             if (entry.isIntersecting) {
-              playVideo();
+              attemptPlay();
             } else {
-              video.pause();
+              if (!video.paused) {
+                video.pause();
+              }
             }
           });
         },
-        { threshold: 0.15 }
+        { threshold: 0.1, rootMargin: '100px 0px' }
       );
 
       observer.observe(video);
+
       return () => {
+        isMounted = false;
         observer.disconnect();
       };
+    } else {
+      attemptPlay();
     }
   }, [project.video]);
 
@@ -76,15 +88,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
               {/* Autoplaying looping muted video */}
               <video
                 ref={videoRef}
+                src={project.video}
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
-                poster={project.image}
+                poster={project.image || undefined}
                 className="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-105"
                 tabIndex={-1}
                 aria-hidden="true"
+                onLoadedMetadata={() => {
+                  if (videoRef.current) {
+                    videoRef.current.defaultMuted = true;
+                    videoRef.current.muted = true;
+                  }
+                }}
               >
                 <source src={project.video} type="video/mp4" />
               </video>

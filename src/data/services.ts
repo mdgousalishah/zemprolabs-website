@@ -5,107 +5,131 @@ export const services: Service[] = [
     id: 'development',
     num: '01',
     title: 'Development',
-    shortDesc: 'Digital products and engineering solutions built around your business requirements.',
-    longDesc: 'From modern responsive web applications and native mobile apps to bespoke business automation, Shopify storefronts, multi-tenant SaaS platforms, internal tools, and specialized research search engines—we engineer robust, maintainable software tailored to your workflows.',
+    shortDesc: 'Digital products, scalable applications, and engineering solutions built around your business requirements.',
+    longDesc: 'From modern responsive web applications and native mobile apps to automation workflows, e-commerce storefronts, SaaS platforms, internal tools, and specialized research engines—we engineer robust, maintainable software tailored to your operational workflows.',
     capabilities: [
-      'Web — Websites, Web applications & Web platforms',
-      'Android — Android applications & Native/cross-platform development',
-      'iOS — iOS applications & Mobile product development',
-      'Automation — Business, workflow & process automation, API integrations',
-      'E-Commerce — Shopify, Custom e-commerce, Headless commerce & Storefronts',
-      'SaaS Products — SaaS platforms, Multi-tenant systems, Dashboards & Subscriptions',
-      'Tools — Internal business tools, Custom utilities & Operational platforms',
-      'Research Engines — Search systems, Discovery engines & Custom search platforms'
+      'Web Development & Web Applications',
+      'Android Applications (Native & Cross-Platform)',
+      'iOS Applications & Mobile Product Engineering',
+      'Automation & API Integrations',
+      'E-Commerce & Custom Headless Storefronts',
+      'SaaS Products, Dashboards & Multi-Tenant Systems',
+      'Internal Business Tools & Operational Utilities',
+      'Research & Search Engines (Custom Discovery Platforms)',
+      'Cloud-Connected Applications & Scalable Backends',
+      'AI-Powered Applications & Intelligent Workflows',
+      'Data-Driven Applications & Operational Dashboards',
+      'IoT Solutions & Device Connectivity'
     ],
-    techStack: ['React & Next.js', 'TypeScript', 'Android & iOS', 'Node.js', 'Shopify', 'Firebase', 'PostgreSQL', 'REST APIs'],
-    highlight: 'Full-stack software engineering engineered with clean architecture and strict type safety.'
+    techStack: [
+      'React & Next.js',
+      'TypeScript',
+      'Android & iOS',
+      'Node.js',
+      'Python',
+      'Shopify',
+      'Firebase & Cloud',
+      'PostgreSQL',
+      'REST & GraphQL APIs',
+      'IoT & Automation'
+    ],
+    highlight: 'Full-stack software engineering with clean architecture, strict type safety, and scalable foundations.'
   },
   {
     id: 'seo-growth',
     num: '02',
     title: 'SEO & Growth',
     shortDesc: 'Intentional technical site structure, product page search visibility, and search-facing brand presence.',
-    longDesc: 'Focused exclusively on the three fundamental pillars of sustainable search visibility: technical audit remediation, e-commerce product schema optimization, and consistent digital brand alignment. No black-hat packages or unverified ranking promises.',
+    longDesc: 'Focused on sustainable search visibility and organic discovery: search-ready architecture, technical crawlability, e-commerce product schema optimization, digital visibility, brand consistency, and performance tuning. No black-hat packages or unverified promises.',
     capabilities: [
-      'Technical SEO — Site structure, Crawlability, Indexation & Audits',
-      'Core Web Vitals — Speed optimization, LCP/CLS tuning & Performance',
-      'Structured Data — Schema.org markup, Rich snippets & Dynamic sitemaps',
-      'Product SEO — Product page optimization, Metadata & Product schema',
-      'Catalog Visibility — Search visibility & E-commerce product optimization',
-      'Branding — Brand positioning & Digital brand consistency',
-      'Search Presence — Search-facing brand presence & Identity alignment'
+      'Technical SEO — Site structure, crawlability & indexation audits',
+      'Product SEO — E-commerce product discoverability & rich catalog schema',
+      'Branding — Digital brand consistency & identity alignment',
+      'Digital Visibility — Search-ready architecture & multi-page discoverability',
+      'Core Web Vitals — Speed tuning, LCP/CLS & performance optimization',
+      'Structured Data — Schema.org markup, rich snippets & dynamic sitemaps',
+      'Search Presence — Search Console monitoring & content alignment'
     ],
-    techStack: ['Technical SEO Audits', 'Core Web Vitals', 'Schema.org', 'Google Search Console', 'Product SEO', 'Brand Identity'],
-    highlight: 'Pristine technical crawlability, structured data, and search-aligned brand authority.'
+    techStack: ['Technical SEO Audits', 'Core Web Vitals', 'Schema.org', 'Google Search Console', 'Product SEO', 'Brand Identity Systems'],
+    highlight: 'Pristine technical crawlability, structured data, and search-aligned brand discoverability.'
   },
   {
     id: 'enterprise',
     num: '03',
     title: 'Enterprise',
-    shortDesc: 'Enterprise workflow automation, system modernization, and comprehensive ServiceNow platform capabilities.',
-    longDesc: 'Eliminate disconnected systems and manual bottlenecks. We deliver professional ServiceNow implementations, scoped applications, and cross-platform integrations to streamline operations, compliance, and enterprise service delivery.',
+    shortDesc: 'Enterprise workflow modernization, systems integration, process automation, and ServiceNow platform capabilities.',
+    longDesc: 'Modernize enterprise workflows, eliminate disconnected systems, and automate operational processes. We deliver ServiceNow platform solutions, scoped application engineering, cross-platform integrations, cloud infrastructure, and robust operational systems.',
     capabilities: [
-      'ITSM — IT Service Management workflows & portals',
-      'ITOM — IT Operations Management & infrastructure health',
-      'ITAM — IT Asset Management lifecycle tracking',
-      'HRSD — HR Service Delivery automation & onboarding',
+      'ServiceNow Scoped Applications & Platform Architecture',
+      'ITSM — IT Service Management workflows & user portals',
+      'ITOM — IT Operations Management & infrastructure visibility',
+      'ITAM — IT Asset Management & configuration lifecycle tracking',
+      'HRSD — HR Service Delivery automation & employee onboarding',
       'IRM — Integrated Risk Management & compliance tracking',
-      'CRM — Customer Relationship Management & system integrations'
+      'CRM & Enterprise Systems Integration',
+      'Enterprise Workflow Modernization & Process Automation',
+      'Cloud Infrastructure & Enterprise Application Development',
+      'Data & Operational Systems Integration'
     ],
-    techStack: ['ServiceNow', 'GlideScript', 'Flow Designer', 'Integration Hub', 'REST APIs', 'OAuth 2.0', 'Enterprise Portals'],
-    highlight: 'Structured enterprise workflows designed for operational resilience and compliance.'
+    techStack: ['ServiceNow', 'GlideScript', 'Flow Designer', 'Integration Hub', 'REST APIs', 'Cloud Infrastructure', 'Enterprise Security'],
+    highlight: 'Structured enterprise workflows designed for operational resilience, compliance, and systems integration.'
   },
   {
     id: 'marketing',
     num: '04',
     title: 'Marketing',
     shortDesc: 'Strategic paid advertising, social media execution, and content-led organic digital growth.',
-    longDesc: 'We manage and optimize targeted performance campaigns across Google and Meta, alongside consistent social media presence and organic digital strategies. Clear attribution tracking with zero unrealistic ROI or sales guarantees.',
+    longDesc: 'Data-guided demand generation, targeted digital campaigns, and audience growth across search and social channels. Transparent performance tracking and content-led brand visibility with zero unverified ROI guarantees.',
     capabilities: [
       'Google Ads — Paid search, shopping & performance campaigns',
-      'Meta Ads — Targeted Facebook and Instagram advertising',
-      'Social Media — Social media presence & campaign management',
-      'Organic Marketing — Content-led & organic digital growth',
-      'Attribution & Tracking — GA4 event tracking & Conversion funnels',
-      'Creative Optimization — Ad copy, visual messaging & Creative testing'
+      'Meta Ads — Targeted Facebook & Instagram advertising',
+      'Social Media — Channel management & content scheduling',
+      'Organic Marketing — Content-led growth & audience building',
+      'Demand Generation & Targeted Digital Campaigns',
+      'Audience Growth & Strategic Brand Visibility',
+      'Attribution & Tracking — GA4 event tracking & conversion funnels',
+      'Creative Optimization — Ad copy, visual messaging & split testing'
     ],
-    techStack: ['Google Ads', 'Meta Ads Manager', 'GA4 Analytics', 'Google Tag Manager', 'Content Strategy', 'Attribution'],
-    highlight: 'Disciplined performance campaigns with clear attribution and transparent reporting.'
+    techStack: ['Google Ads', 'Meta Ads Manager', 'GA4 Analytics', 'Google Tag Manager', 'Content Strategy', 'Attribution Modeling'],
+    highlight: 'Disciplined performance campaigns with clear attribution, transparent reporting, and brand growth.'
   },
   {
     id: 'research',
     num: '05',
     title: 'Research',
     shortDesc: 'Business and product intelligence, market analysis, and operational feasibility research support.',
-    longDesc: 'Actionable research and analysis support to inform critical business decisions. From market sizing and competitive positioning to financial review, cost structure assessments, and organizational restructuring analysis.',
+    longDesc: 'Actionable research and analysis support to inform critical business decisions. From market opportunity assessments and competitive positioning to financial review, cost structure assessments, technology feasibility analysis, and digital transformation planning.',
     capabilities: [
-      'Market Research — Understand market size, customers & opportunities',
-      'Product Research — Product-market requirements, customer needs & validation',
+      'Market Research — Market sizing, customer behavior & opportunity mapping',
+      'Product Research — Product-market requirements & concept validation',
       'Trends & Competition — Industry trend analysis & competitive positioning',
-      'Scaling Analysis — Growth opportunities & operational scaling reviews',
-      'Compliance Research — Business & product compliance research support',
+      'Technology Feasibility Analysis — Architecture review & technical diligence',
+      'Scaling Analysis — Operational growth reviews & bottleneck mitigation',
+      'Compliance Research — Industry standards & regulatory research support',
       'Business Analysis — Operational processes, requirements & workflow analysis',
-      'Financial & Cost Analysis — Financial performance, cost review & efficiency opportunities',
-      'Company Restructuring — Organizational & operational restructuring analysis'
+      'Financial & Cost Analysis — Cost structures & efficiency modeling',
+      'Company Restructuring — Operational reorganization analysis',
+      'Digital Transformation Planning — Long-term technology strategy'
     ],
-    techStack: ['Market Intelligence', 'Competitive Audits', 'Financial Modeling', 'Process Mapping', 'Feasibility Studies'],
-    highlight: 'Rigorous business and product intelligence supporting data-driven strategic planning.'
+    techStack: ['Market Intelligence', 'Competitive Benchmarking', 'Financial Modeling', 'Process Mapping', 'Feasibility Audits'],
+    highlight: 'Rigorous business and product intelligence supporting data-informed decisions and transformation planning.'
   },
   {
     id: 'recruitment',
     num: '06',
     title: 'Recruitment',
-    shortDesc: 'Specialized technical talent sourcing and candidate screening for international markets.',
-    longDesc: 'Recruitment support tailored exclusively for international markets seeking qualified engineering, technical, and leadership talent. We do not provide recruitment services for the Indian domestic market.',
+    shortDesc: 'Specialized talent sourcing, candidate screening, and credentialing support across technology and specialized sectors.',
+    longDesc: 'Specialized talent acquisition and placement support for organizations seeking qualified technical, engineering, and healthcare professionals. From candidate screening and credentialing to international placement and onboarding support (portfolio reference: MedusCore).',
     capabilities: [
-      'International Technical Talent Sourcing & Pipeline Development',
-      'Engineering & Specialist Candidate Technical Screening',
-      'Remote Engineering Team Structuring & Alignment',
-      'Global Hiring & Placement Support (International Markets)',
-      'Policy: Available for International Markets Only (Not India)',
-      'Recruitment Contact — Syed Roshan Zameer'
+      'International Talent Sourcing & Pipeline Development',
+      'Healthcare Recruitment & Specialized Medical Placements',
+      'Specialist Recruitment for Engineering & Technical Disciplines',
+      'Candidate Screening, Technical Assessments & Verification',
+      'Credentialing Support & Regulatory Documentation Coordination',
+      'Placement Support & Candidate Onboarding Management',
+      'Onboarding & Integration for Distributed Teams'
     ],
-    techStack: ['Global Sourcing Networks', 'Technical Skill Screening', 'Talent Evaluation', 'Remote Team Alignment'],
-    highlight: 'International technical recruitment exclusively for global markets. Not available for India.'
+    techStack: ['Global Sourcing Networks', 'Technical & Clinical Evaluation', 'Credentialing Coordination', 'Integration Frameworks'],
+    highlight: 'Specialized talent acquisition and credentialing support with international reach.'
   }
 ];

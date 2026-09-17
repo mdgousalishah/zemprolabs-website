@@ -8,7 +8,7 @@ export const agencyMetrics: TrustMetric[] = [
   {
     value: '6',
     label: 'Core Disciplines',
-    detail: 'Development, SEO & Growth, Enterprise, Marketing, Research, and International Recruitment.'
+    detail: 'Development, SEO & Growth, Enterprise, Marketing, Research, and Recruitment.'
   },
   {
     value: '1',
@@ -28,8 +28,8 @@ export const agencyMetrics: TrustMetric[] = [
 ];
 
 export const clientProjectsList = [
-  { name: 'BaeMeds', domain: 'baemeds.com', sector: 'Medical E-Commerce', region: 'USA & India' },
+  { name: 'BaeMeds India', domain: 'baemeds.in', sector: 'Medical E-Commerce', region: 'India & USA' },
   { name: 'Erus Academy', domain: 'erusacademy.in', sector: 'Digital LMS & Streaming', region: 'India' },
   { name: 'Auvia Behavioral', domain: 'auviatherapy.com', sector: 'Healthcare Intake', region: 'Austin, TX' },
-  { name: 'Talent Hunters', domain: 'talenthunters.com', sector: 'Recruitment ATS', region: 'Global' }
+  { name: 'MedusCore', domain: 'meduscore.co.uk', sector: 'Healthcare Recruitment', region: 'UK & International' }
 ];

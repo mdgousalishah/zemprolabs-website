@@ -277,10 +277,10 @@ export const ContactForm: React.FC = () => {
               </select>
             </div>
 
-            {/* Budget Range (INR) */}
+            {/* Budget Range (USD / INR) */}
             <div>
               <label htmlFor="form-budget" className="block text-xs font-mono text-[#94A3B8] uppercase tracking-wider mb-2">
-                Estimated Budget Allocation (INR) *
+                Estimated Budget Allocation (USD / INR reference) *
               </label>
               <select
                 id="form-budget"
@@ -290,11 +290,11 @@ export const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg bg-[#05070D] border border-[rgba(148,163,184,0.18)] text-white text-sm focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-colors"
               >
-                <option value="under_1lakh">Under ₹1,00,000 (Small Scopes / Audits / Fixes)</option>
-                <option value="1lakh_3lakh">₹1,00,000 – ₹3,00,000 (Standard Builds / Storefronts)</option>
-                <option value="3lakh_10lakh">₹3,00,000 – ₹10,00,000 (Custom Web Applications / Enterprise)</option>
-                <option value="10lakh_plus">₹10,00,000+ (High-Scale Systems &amp; Large Platforms)</option>
-                <option value="retainer">Monthly Retainer (₹35,000 – ₹1,45,000/month)</option>
+                <option value="under_1lakh">Under $1,200 (Under ₹1,00,000 — Small Scopes / Audits / Fixes)</option>
+                <option value="1lakh_3lakh">$1,200 – $3,500 (₹1,00,000 – ₹3,00,000 — Standard Builds / Storefronts)</option>
+                <option value="3lakh_10lakh">$3,500 – $12,000 (₹3,00,000 – ₹10,00,000 — Custom Web Applications / Enterprise)</option>
+                <option value="10lakh_plus">$12,000+ (₹10,00,000+ — High-Scale Systems &amp; Large Platforms)</option>
+                <option value="retainer">Monthly Retainer ($400 – $1,500/mo — ₹35,000 – ₹1,45,000/mo)</option>
               </select>
             </div>
           </div>

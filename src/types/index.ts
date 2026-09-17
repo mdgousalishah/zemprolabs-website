@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   client: string;
-  category: 'E-Commerce' | 'Software' | 'Healthcare' | 'ServiceNow';
+  category: 'E-Commerce' | 'Software' | 'Healthcare' | 'ServiceNow' | 'Recruitment';
   domain: string;
   overview: string;
   challenge: string;

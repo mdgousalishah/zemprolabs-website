@@ -4,6 +4,8 @@ export interface MaintenancePlan {
   tag: string;
   priceINR: number;
   displayINR: string;
+  priceUSD: number;
+  displayUSD: string;
   period: string;
   targetAudience: string;
   description: string;
@@ -16,6 +18,8 @@ export const maintenancePlans: MaintenancePlan[] = [
     id: 'essential',
     name: 'Essential Care',
     tag: 'FOR SMALL BUSINESS WEBSITES',
+    priceUSD: 400,
+    displayUSD: '$400',
     priceINR: 35000,
     displayINR: '₹35,000',
     period: '/month',
@@ -34,6 +38,8 @@ export const maintenancePlans: MaintenancePlan[] = [
     id: 'growth',
     name: 'Growth Care',
     tag: 'FOR ACTIVE BUSINESS PLATFORMS',
+    priceUSD: 800,
+    displayUSD: '$800',
     priceINR: 75000,
     displayINR: '₹75,000',
     period: '/month',
@@ -54,6 +60,8 @@ export const maintenancePlans: MaintenancePlan[] = [
     id: 'managed',
     name: 'Fully Managed Operations',
     tag: 'COMPLETE TECHNICAL & STORE CARE',
+    priceUSD: 1500,
+    displayUSD: '$1,500',
     priceINR: 145000,
     displayINR: '₹1,45,000',
     period: '/month',
@@ -131,4 +139,3 @@ export const shopifyPlanReferences: ShopifyPlanReference[] = [
     ]
   }
 ];
-

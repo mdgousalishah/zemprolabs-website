@@ -273,9 +273,15 @@ export const ManagedServices: React.FC = () => {
 
                   <h3 className="text-2xl font-bold font-display text-white mb-2">{plan.name}</h3>
 
-                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-3xl font-bold font-display text-white">{plan.displayINR}</span>
-                    <span className="text-xs font-mono text-[#94A3B8]">{plan.period}</span>
+                  <div className="mb-4">
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-3xl sm:text-4xl font-bold font-display text-white">{plan.displayUSD}</span>
+                      <span className="text-xs font-mono text-[#94A3B8]">{plan.period}</span>
+                    </div>
+                    <div className="text-xs font-mono text-[#94A3B8] mt-1.5 flex items-center gap-1.5">
+                      <span className="text-[#F8FAFC]/90">{plan.displayINR}{plan.period}</span>
+                      <span className="text-[11px] text-[#94A3B8]">— INR reference</span>
+                    </div>
                   </div>
 
                   <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-6">

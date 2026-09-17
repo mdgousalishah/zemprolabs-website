@@ -1,6 +1,6 @@
 import React from 'react';
 import { Service } from '../types';
-import { Check, ArrowRight, Sparkles, Globe, ShieldAlert, UserCheck } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ServiceCardProps {
@@ -33,7 +33,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           {service.id === 'recruitment' && (
             <span className="flex items-center gap-1 text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30">
               <Globe className="w-3 h-3" />
-              <span>INTERNATIONAL ONLY</span>
+              <span>GLOBAL &amp; HEALTHCARE</span>
             </span>
           )}
         </div>
@@ -45,22 +45,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-5">
           {service.shortDesc}
         </p>
-
-        {/* Special Mandatory Recruitment Notice */}
-        {service.id === 'recruitment' && (
-          <div className="mb-5 p-3 rounded-lg bg-[#05070D] border border-[#10B981]/30 space-y-2 text-xs">
-            <div className="flex items-start gap-2 text-[#10B981] font-mono text-[11px] leading-snug">
-              <ShieldAlert className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-              <span>
-                <strong>Market Policy:</strong> Recruitment services are available for international markets. We currently do not provide recruitment services for India.
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 text-white font-mono text-[11px] pt-1 border-t border-white/5">
-              <UserCheck className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
-              <span>Recruitment Contact — Syed Roshan Zameer</span>
-            </div>
-          </div>
-        )}
 
         {/* Capabilities List */}
         <div className="space-y-2 mb-6">

@@ -12,17 +12,15 @@ export const company = {
   positioning: 'Qualified Engineers. Trusted Technology.',
   positioningSub:
     'Zemprolabs brings together qualified engineers and technology professionals to design, build, maintain and manage digital solutions for businesses.',
-  email: 'Info@zemprolabs.com',
-  emailHref: 'mailto:Info@zemprolabs.com',
-  // Primary Phone: +91 744 755 7577
-  phone: '744 755 7577',
-  phoneHref: 'tel:+917447557577',
-  // Secondary Phone: +91 744 755 7599
-  phone2: '744 755 7599',
-  phone2Href: 'tel:+917447557599',
+  email: 'info@zemprolabs.com',
+  emailHref: 'mailto:info@zemprolabs.com',
+  // Primary Phone & WhatsApp: +91 744 755 7599
+  phone: '+91 744 755 7599',
+  phoneHref: 'tel:+917447557599',
+  whatsapp: '+91 744 755 7599',
+  whatsappHref: 'https://wa.me/917447557599',
   phones: [
-    { display: '744 755 7577', href: 'tel:+917447557577', isPrimary: true },
-    { display: '744 755 7599', href: 'tel:+917447557599', isPrimary: false }
+    { display: '+91 744 755 7599', href: 'tel:+917447557599', isPrimary: true }
   ],
   address: {
     line1: '6th Floor, Ehtesham Heights',
@@ -33,10 +31,9 @@ export const company = {
     country: 'India'
   },
   recruitment: {
-    contactName: 'Syed Roshan Zameer',
-    role: 'Recruitment Contact',
-    policy:
-      'Recruitment services are available for international markets. We currently do not provide recruitment services for India.'
+    role: 'Recruitment Practice',
+    description:
+      'International talent sourcing, healthcare recruitment, candidate screening, and credentialing support.'
   },
   // Public leadership presentation removed per HR instruction ("No leaders")
   leadership: [] as Leader[]

@@ -59,10 +59,10 @@ export const Contact: React.FC = () => {
                   </a>
                 </div>
 
-                {/* Phone Numbers */}
+                {/* Phone & WhatsApp */}
                 <div>
-                  <span className="block text-xs font-mono text-[#94A3B8] mb-1">Direct Phone Lines</span>
-                  <div className="space-y-1.5">
+                  <span className="block text-xs font-mono text-[#94A3B8] mb-1">Direct Phone &amp; WhatsApp</span>
+                  <div className="space-y-2">
                     <a
                       href={company.phoneHref}
                       className="flex items-center gap-2 text-sm sm:text-base font-mono text-white hover:text-[#FF6B00] transition-colors group"
@@ -71,11 +71,14 @@ export const Contact: React.FC = () => {
                       <span>{company.phone}</span>
                     </a>
                     <a
-                      href={company.phone2Href}
-                      className="flex items-center gap-2 text-sm sm:text-base font-mono text-white hover:text-[#004AAD] transition-colors group"
+                      href={company.whatsappHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Chat with Zemprolabs on WhatsApp"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#10B981]/10 border border-[#10B981]/25 text-xs sm:text-sm font-mono text-[#10B981] hover:bg-[#10B981]/20 transition-all"
                     >
-                      <Phone className="w-4 h-4 text-[#004AAD] shrink-0" />
-                      <span>{company.phone2}</span>
+                      <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+                      <span>Chat on WhatsApp ({company.phone})</span>
                     </a>
                   </div>
                 </div>

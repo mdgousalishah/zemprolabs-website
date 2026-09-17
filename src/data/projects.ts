@@ -4,26 +4,26 @@ export const projects: Project[] = [
   {
     id: 'baemeds',
     title: 'BaeMeds Multinational DME',
-    client: 'BaeMeds USA & India',
+    client: 'BaeMeds India & USA',
     category: 'E-Commerce',
-    domain: 'baemeds.com',
-    overview: 'Multi-national e-commerce platform for a Durable Medical Equipment business operating across the United States and India. Required complex regulatory compliance, prescription routing, and multi-currency checkout.',
-    challenge: 'The client needed a unified platform that could handle distinct regional inventories, medical compliance standards, and payment gateways for two entirely different geographic markets without maintaining disjointed codebases.',
-    approach: 'We architected a high-performance headless e-commerce system with a unified backend source of truth, geolocation routing, and regional checkout pipelines.',
+    domain: 'baemeds.in / baemeds.com',
+    overview: 'Multi-national e-commerce platform for a Durable Medical Equipment business operating across India and the United States. Required regulatory compliance, prescription intake, and multi-currency checkout.',
+    challenge: 'The client needed a unified digital system supporting both its India-facing operations (baemeds.in) and international storefront (baemeds.com) with distinct regional inventories, medical compliance workflows, and localized payment gateways.',
+    approach: 'We architected a high-performance headless e-commerce system with unified catalog management, geolocation routing, prescription document intake, and regional checkout pipelines.',
     built: [
       'Custom Headless Storefront',
       'Dual-Region Admin & Inventory Sync',
-      'Automated Multi-Currency Routing (USD / INR)',
+      'Automated Multi-Currency Routing (INR / USD)',
       'Prescription Intake & Compliance Pipeline'
     ],
-    tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe API', 'Tailwind CSS'],
-    link: 'https://baemeds.com',
+    tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe API', 'Razorpay', 'Tailwind CSS'],
+    link: 'https://www.baemeds.in/',
     color: '#FF6B00',
     video: '/videos/work/baemeds.mp4',
     metrics: [
-      { label: 'Markets Served', value: 'USA & India' },
+      { label: 'Markets Served', value: 'India & USA' },
       { label: 'Architecture', value: 'Headless Next.js' },
-      { label: 'Inventory Sync', value: 'Real-time' }
+      { label: 'India Storefront', value: 'baemeds.in' }
     ]
   },
   {
@@ -77,27 +77,28 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 'talent-hunters',
-    title: 'Talent Hunters Consultancy ATS',
-    client: 'Talent Hunters International',
-    category: 'Software',
-    domain: 'talenthunters.com',
-    overview: 'Corporate job board and applicant tracking system (ATS) engineered for an international executive search and recruitment consultancy.',
-    challenge: 'Recruiters were overwhelmed with unindexed resumes and slow multi-regional applicant communication, causing high candidate drop-off.',
-    approach: 'Built a search-indexed candidate repository with instant filtering, automated resume parsing, and role stage progression.',
+    id: 'meduscore',
+    title: 'MedusCore Healthcare Recruitment',
+    client: 'MedusCore UK',
+    category: 'Recruitment',
+    domain: 'meduscore.co.uk',
+    overview: 'UK-based medical recruitment consultancy connecting healthcare organizations with qualified medical professionals across international markets.',
+    challenge: 'Connecting international healthcare organizations and hospital networks with vetted medical professionals while managing multi-jurisdiction credentialing, licensing verification, and specialized medical placements.',
+    approach: 'Engineered a modern digital recruitment platform and candidate intake portal optimized for international healthcare recruitment, credentialing support, and specialized candidate inquiries.',
     built: [
-      'Global Job Board & Candidate Portal',
-      'Recruiter Dashboard & Pipeline Kanban',
-      'Full-Text Resume Search Index',
-      'Automated Interview Notification Engine'
+      'Healthcare Recruitment Web Portal',
+      'Candidate Screening & Intake Workflows',
+      'Specialty Recruitment Information Architecture',
+      'International Placement Inquiry Pipeline'
     ],
-    tech: ['Next.js', 'Elasticsearch', 'PostgreSQL', 'Node.js'],
-    link: 'https://talenthunters.com',
-    color: '#6366F1',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Cloud Infrastructure', 'REST APIs'],
+    link: 'https://meduscore.co.uk/',
+    color: '#0EA5E9',
+    video: '/videos/work/meduscore.mp4',
     metrics: [
-      { label: 'Search Engine', value: 'Elasticsearch' },
-      { label: 'Pipeline Type', value: 'Interactive Kanban' },
-      { label: 'Candidate Portal', value: 'Mobile-Optimized' }
+      { label: 'Focus', value: 'Healthcare Recruitment' },
+      { label: 'Headquarters', value: 'United Kingdom' },
+      { label: 'Deployment', value: 'LIVE' }
     ]
   },
   {

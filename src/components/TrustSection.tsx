@@ -11,14 +11,22 @@ export const TrustSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/20 text-[#FF6B00] text-xs font-mono mb-4">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>ACCOUNTABLE DIGITAL PARTNERSHIP</span>
+            <span>ONE TECHNOLOGY PARTNER FROM BUILD TO GROWTH</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-display text-white mb-4">
-            One team. Zero agency finger-pointing.
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-display text-white mb-3">
+            Engineered for your business. Built for scale.
           </h2>
-          <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed">
-            Traditional agencies hand off code and disappear. We consolidate your e-commerce, custom software, enterprise integrations, and ongoing maintenance under a single point of engineering accountability.
+          <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed max-w-2xl mx-auto">
+            Qualified engineers delivering custom digital solutions, e-commerce, and cloud infrastructure with long-term technical support.
           </p>
+          <div className="pt-3">
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#FF6B00] hover:underline"
+            >
+              <span>About Zemprolabs &rarr;</span>
+            </Link>
+          </div>
         </div>
 
         {/* 4 Core Pillars Grid */}

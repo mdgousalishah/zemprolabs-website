@@ -1,55 +1,17 @@
 import React, { useState } from 'react';
 import { Calculator, Check, ArrowRight, Info, Server, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { pricingConfig, PlatformDevOption, AddonOption } from '../data/pricing';
-
-interface EngagementOption {
-  id: string;
-  name: string;
-  monthlyServiceCostINR: number;
-  displayCost: string;
-  description: string;
-}
-
-const engagementOptions: EngagementOption[] = [
-  {
-    id: 'one_time',
-    name: 'One-Time Build (No Retainer)',
-    monthlyServiceCostINR: 0,
-    displayCost: '₹0',
-    description: 'Complete codebase delivery, standard warranty, and documentation handoff.'
-  },
-  {
-    id: 'maintenance',
-    name: 'Essential Care Maintenance',
-    monthlyServiceCostINR: 35000,
-    displayCost: '₹35,000/month',
-    description: 'Security patches, uptime verification, broken-link scans, and health reports.'
-  },
-  {
-    id: 'growth_care',
-    name: 'Growth Care Maintenance',
-    monthlyServiceCostINR: 75000,
-    displayCost: '₹75,000/month',
-    description: 'Priority SLA, speed tuning, continuous technical SEO, and UI tweaks.'
-  },
-  {
-    id: 'full_managed',
-    name: 'Fully Managed Operations',
-    monthlyServiceCostINR: 145000,
-    displayCost: '₹1,45,000/month',
-    description: 'Hands-on store management, catalog staging, promotional setups, and cloud ops.'
-  }
-];
+import { pricingConfig, PlatformDevOption, AddonOption, EngagementDevOption } from '../data/pricing';
 
 export const ScopeEstimator: React.FC = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<PlatformDevOption>(
     pricingConfig.platformOptions[2] // default Shopify
   );
-  const [selectedEngagement, setSelectedEngagement] = useState<EngagementOption>(
-    engagementOptions[1] // default Essential Care
+  const [selectedEngagement, setSelectedEngagement] = useState<EngagementDevOption>(
+    pricingConfig.engagementOptions[1] // default Essential Care
   );
   const projectBaseINR = pricingConfig.estimatorBaseBuildINR; // ₹2,50,000
+  const projectBaseUSD = pricingConfig.estimatorBaseBuildUSD; // $2,600
 
   // Add-ons
   const [activeAddons, setActiveAddons] = useState<string[]>(['seo', 'design']);
@@ -65,11 +27,19 @@ export const ScopeEstimator: React.FC = () => {
     .filter((a: AddonOption) => activeAddons.includes(a.id))
     .reduce((sum: number, a: AddonOption) => sum + a.costINR, 0);
 
-  const estimatedDevCostINR = projectBaseINR + selectedPlatform.surchargeINR + addonsTotalINR;
-  const estimatedMonthlyServiceINR = selectedEngagement.monthlyServiceCostINR;
+  const addonsTotalUSD = pricingConfig.addonOptions
+    .filter((a: AddonOption) => activeAddons.includes(a.id))
+    .reduce((sum: number, a: AddonOption) => sum + a.costUSD, 0);
 
-  // Indian currency formatter
+  const estimatedDevCostINR = projectBaseINR + selectedPlatform.surchargeINR + addonsTotalINR;
+  const estimatedDevCostUSD = projectBaseUSD + selectedPlatform.surchargeUSD + addonsTotalUSD;
+
+  const estimatedMonthlyServiceINR = selectedEngagement.monthlyServiceCostINR;
+  const estimatedMonthlyServiceUSD = selectedEngagement.monthlyServiceCostUSD;
+
+  // Currency formatters
   const formatINR = (val: number) => '₹' + val.toLocaleString('en-IN');
+  const formatUSD = (val: number) => '$' + val.toLocaleString('en-US');
 
   return (
     <div className="rounded-2xl bg-[#0B0F17] border border-[rgba(148,163,184,0.18)] p-6 sm:p-10 shadow-2xl space-y-8">
@@ -84,12 +54,12 @@ export const ScopeEstimator: React.FC = () => {
             Build, Platform &amp; Maintenance Cost Estimator
           </h3>
           <p className="text-sm text-[#94A3B8] mt-1">
-            Configure your development scope, third-party platform layer, and ongoing management model in INR.
+            Configure your development scope, platform layer, and ongoing management model with transparent USD pricing and INR reference equivalents.
           </p>
         </div>
         <div className="px-3 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/20 text-[#10B981] text-xs font-mono shrink-0 flex items-center gap-1.5 w-fit">
           <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
-          <span>ESTIMATOR (INR)</span>
+          <span>ESTIMATOR (USD / INR)</span>
         </div>
       </div>
 
@@ -115,9 +85,10 @@ export const ScopeEstimator: React.FC = () => {
                   }`}
                 >
                   <span className="font-medium">{plat.name}</span>
-                  {plat.surchargeINR > 0 && (
-                    <span className="text-[11px] font-mono text-[#FF6B00] shrink-0 ml-2">
-                      {plat.displaySurcharge}
+                  {plat.surchargeUSD > 0 && (
+                    <span className="text-right shrink-0 ml-2">
+                      <span className="text-xs font-mono font-semibold text-[#FF6B00] block">{plat.displaySurchargeUSD}</span>
+                      <span className="text-[10px] font-mono text-[#94A3B8] block">{plat.displaySurcharge} (INR ref)</span>
                     </span>
                   )}
                 </button>
@@ -132,7 +103,7 @@ export const ScopeEstimator: React.FC = () => {
               <span>2. Engagement &amp; Ongoing Operational Support</span>
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {engagementOptions.map((eng) => (
+              {pricingConfig.engagementOptions.map((eng: EngagementDevOption) => (
                 <button
                   key={eng.id}
                   type="button"
@@ -144,7 +115,14 @@ export const ScopeEstimator: React.FC = () => {
                   }`}
                 >
                   <div className="font-bold text-sm mb-1">{eng.name}</div>
-                  <div className="text-[11px] text-[#FF6B00] font-mono mb-1">{eng.displayCost}</div>
+                  <div className="text-xs text-white font-mono font-bold mb-0.5">
+                    {eng.displayCostUSD}
+                  </div>
+                  {eng.monthlyServiceCostINR > 0 && (
+                    <div className="text-[10px] text-[#94A3B8] font-mono mb-1">
+                      {eng.displayCost} (INR reference)
+                    </div>
+                  )}
                   <div className="text-[11px] opacity-90">{eng.description}</div>
                 </button>
               ))}
@@ -181,8 +159,9 @@ export const ScopeEstimator: React.FC = () => {
                       </div>
                       <span>{addon.name}</span>
                     </div>
-                    <span className="font-mono text-[11px] text-[#94A3B8] shrink-0 ml-1">
-                      {addon.displayCost}
+                    <span className="font-mono text-right shrink-0 ml-1">
+                      <span className="text-xs text-white block">{addon.displayCostUSD}</span>
+                      <span className="text-[10px] text-[#94A3B8] block">{addon.displayCost} (INR ref)</span>
                     </span>
                   </div>
                 );
@@ -203,11 +182,18 @@ export const ScopeEstimator: React.FC = () => {
               <div className="text-[11px] font-mono text-[#94A3B8] uppercase mb-0.5">
                 1. ESTIMATED PROFESSIONAL DEVELOPMENT FEE
               </div>
-              <div className="text-2xl font-bold font-display text-[#FF6B00]">
-                {formatINR(estimatedDevCostINR)}
+              <div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl sm:text-3xl font-bold font-display text-white">
+                    {formatUSD(estimatedDevCostUSD)}
+                  </span>
+                </div>
+                <div className="text-xs font-mono text-[#94A3B8] mt-1">
+                  {formatINR(estimatedDevCostINR)} — INR reference
+                </div>
               </div>
-              <div className="text-[11px] text-[#94A3B8] mt-0.5">
-                Estimated one-time Zemprolabs milestone fee for architecture, development &amp; deployment.
+              <div className="text-[11px] text-[#94A3B8] mt-1.5">
+                Estimated one-time milestone fee for architecture, development &amp; deployment.
               </div>
             </div>
 
@@ -216,13 +202,22 @@ export const ScopeEstimator: React.FC = () => {
               <div className="text-[11px] font-mono text-[#94A3B8] uppercase mb-0.5">
                 2. ESTIMATED MONTHLY ZEMPROLABS SERVICE
               </div>
-              <div className="text-2xl font-bold font-display text-[#10B981]">
-                {formatINR(estimatedMonthlyServiceINR)}
+              <div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl sm:text-3xl font-bold font-display text-[#10B981]">
+                    {formatUSD(estimatedMonthlyServiceUSD)}
+                    {estimatedMonthlyServiceUSD > 0 && (
+                      <span className="text-xs font-normal text-white">/month</span>
+                    )}
+                  </span>
+                </div>
                 {estimatedMonthlyServiceINR > 0 && (
-                  <span className="text-xs font-normal text-white">/month</span>
+                  <div className="text-xs font-mono text-[#94A3B8] mt-1">
+                    {formatINR(estimatedMonthlyServiceINR)}/month — INR reference
+                  </div>
                 )}
               </div>
-              <div className="text-[11px] text-[#94A3B8] mt-0.5">
+              <div className="text-[11px] text-[#94A3B8] mt-1.5">
                 {selectedEngagement.id === 'one_time'
                   ? 'No recurring fee (Codebase delivered to client)'
                   : `${selectedEngagement.name} support retainer.`}
