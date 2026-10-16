@@ -481,7 +481,7 @@ export const Work: React.FC = () => {
                         </div>
                       )}
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-black/75 text-white backdrop-blur-md">
+                        <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/75 text-white backdrop-blur-md">
                           {project.category}
                         </span>
                       </div>

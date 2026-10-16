@@ -232,7 +232,7 @@ export const Services: React.FC = () => {
                           >
                             {svc.title}
                           </h3>
-                          <span className="text-[11px] px-2 py-0.5 rounded bg-stone-100 text-stone-600 font-medium shrink-0">
+                          <span className="text-[11px] px-2 py-0.5 rounded-full bg-stone-100 text-stone-600 font-medium shrink-0">
                             {svc.badge}
                           </span>
                         </div>

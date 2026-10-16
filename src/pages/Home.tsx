@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { ProductionDemonstrationsSection } from '../components/ProductionDemonstrationsSection';
-import { ProjectModal } from '../components/ProjectModal';
 import { projects } from '../data/projects';
 import { company } from '../data/company';
-import { Project } from '../types';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -153,7 +151,6 @@ const faqItems = [
 ];
 
 export const Home: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const { scrollTo } = useLenis();
 
@@ -422,7 +419,7 @@ export const Home: React.FC = () => {
                         <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/15 border border-[#FF6B00]/30 flex items-center justify-center text-[#FF6B00]">
                           <Workflow className="w-4 h-4" />
                         </div>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FF6B00]/20 text-[#FF6B00] border border-[#FF6B00]/30 font-semibold">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FF6B00]/20 text-[#FF6B00] border border-[#FF6B00]/30 font-semibold">
                           ENTERPRISE
                         </span>
                       </div>
@@ -943,9 +940,6 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Project Detail Modal */}
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </div>
   );
 };
