@@ -807,10 +807,10 @@ export const ProjectEstimation: React.FC = () => {
 
                   <div>
                     <h3 className="text-lg font-bold font-display text-white">
-                      Scope brief submitted
+                      Your Project Brief Is Ready
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed max-w-lg mx-auto">
-                      Thank you, <strong className="text-white">{name || 'there'}</strong>. Our engineering partner has received your configuration for a <strong className="text-white">{selectedPlatformObj.name}</strong>. We will review your architecture requirements and reply within 24 hours.
+                      Thank you, <strong className="text-white">{name || 'there'}</strong>. Your project brief for <strong className="text-white">{selectedPlatformObj.name}</strong> is ready. Choose WhatsApp or Email below to send it to our team. Your request is not submitted until you send the message.
                     </p>
                   </div>
 

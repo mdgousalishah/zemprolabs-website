@@ -173,7 +173,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
   return (
     <section
       id="selected-work"
-      className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-textured-light text-stone-900 border-b border-stone-300/80"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-stone-900 border-b border-stone-300/80"
     >
       <div className="max-w-7xl mx-auto space-y-8 sm:space-y-10">
         {/* ========================================================================= */}
@@ -332,11 +332,20 @@ export const ProductionDemonstrationsSection: React.FC = () => {
               return (
                 <div
                   key={demo.id}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setActiveIndex(idx)}
-                  className={`cursor-pointer rounded-xl p-4 sm:p-4.5 border transition-all text-left relative flex flex-col justify-between ${
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      setActiveIndex(idx);
+                    }
+                  }}
+                  aria-pressed={isActive}
+                  className={`w-full cursor-pointer rounded-xl p-4 sm:p-4.5 border transition-all text-left relative flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 ${
                     isActive
-                      ? 'bg-[#FAF9F5] border-stone-400/90 shadow-sm ring-1 ring-[#FF6B00]/30'
-                      : 'bg-white/50 border-stone-300/50 hover:bg-white hover:border-stone-400 text-stone-600'
+                      ? 'bg-white border-[#FF6B00]/60 shadow-[0_8px_30px_rgba(20,20,20,0.07)] ring-1 ring-[#FF6B00]/15'
+                      : 'bg-white/45 border-stone-300/70 hover:bg-white hover:border-stone-400 hover:shadow-sm text-stone-600'
                   }`}
                 >
                   {/* Row Header */}

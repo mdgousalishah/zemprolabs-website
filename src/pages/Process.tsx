@@ -139,7 +139,7 @@ export const Process: React.FC = () => {
           <img
             src="/images/hero-building-facade.jpg"
             alt="Modern architectural glass headquarters"
-            className="w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter brightness-90"
+            className="w-full h-full object-cover object-center opacity-30 sm:opacity-40 brightness-75 scale-[1.03]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/80 to-[#090A0D]/55" />
         </div>

@@ -165,13 +165,13 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (DARK with Real Architectural Glass Facade)               */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center bg-[#090A0D] text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative min-h-[88svh] lg:min-h-screen flex items-center justify-center bg-[#090A0D] text-white pt-28 pb-16 sm:pb-20 px-5 sm:px-8 lg:px-12 overflow-hidden">
         {/* Full-bleed Real Architectural Glass Facade Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/hero-building-facade.jpg"
             alt="Modern architectural glass headquarters"
-            className="w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter brightness-90"
+            className="w-full h-full object-cover object-center opacity-30 sm:opacity-40 brightness-75 scale-[1.03]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/75 to-[#090A0D]/50" />
         </div>
@@ -194,7 +194,7 @@ export const Home: React.FC = () => {
           {/* Confident Headline with 3D Perspective Line Reveal */}
           <div className="space-y-4">
             <PerspectiveLineReveal duration={1.1} delay={0.05}>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-display tracking-tight text-white leading-[1.05]">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold font-display tracking-[-0.045em] text-white leading-[0.98]">
                 We Build.{' '}
                 <span className="text-[#FF6B00]">You Grow.</span>
               </h1>
@@ -314,7 +314,7 @@ export const Home: React.FC = () => {
           </ScrollReveal>
 
           {/* Balanced Split: Left Studio Photo & Ethos (5 cols) + Right 2x2 Practices (7 cols) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-stretch">
             {/* Left: The Studio Photo & Engineering Ethos with Cinematic Curtain Reveal */}
             <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
               <CinematicCurtainReveal direction="up" duration={1.1} className="rounded-2xl border border-white/10 aspect-[4/3] sm:aspect-[16/11] relative group shadow-lg">
