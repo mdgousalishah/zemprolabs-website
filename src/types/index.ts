@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   client: string;
-  category: 'E-Commerce' | 'Software' | 'Healthcare' | 'ServiceNow' | 'Recruitment';
+  category: 'E-Commerce' | 'Software' | 'Healthcare' | 'ServiceNow' | 'Recruitment' | 'EdTech';
   domain: string;
   overview: string;
   challenge: string;
@@ -10,10 +10,12 @@ export interface Project {
   built: string[];
   tech: string[];
   link?: string;
+  githubUrl?: string;
   color: string;
   video?: string;
   image?: string;
   metrics?: { label: string; value: string }[];
+  pipeline?: string[];
 }
 
 export interface Service {
@@ -32,6 +34,6 @@ export interface ContactFormData {
   email: string;
   company: string;
   service: string;
-  budget: string;
+  budget?: string;
   message: string;
 }

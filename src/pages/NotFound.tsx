@@ -1,44 +1,60 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BrandLogo } from '../components/BrandLogo';
-import { ArrowLeft, Home } from 'lucide-react';
+import { Home, ArrowRight, ArrowLeft } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 export const NotFound: React.FC = () => {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center px-4 py-24 text-center">
+    <div className="w-full bg-[#090A0D] min-h-[80vh] flex items-center justify-center px-4 py-32 text-center">
       <SEO
-        title="404 — Page Not Found"
-        description="The requested page could not be located on the Zemprolabs digital platform."
+        title="404 — Page Not Found | Zemprolabs"
+        description="The requested page could not be located on the Zemprolabs engineering platform."
       />
 
-      <div className="max-w-md mx-auto space-y-6">
-        <div>
+      <div className="max-w-lg mx-auto space-y-8">
+        <div className="flex justify-center">
           <BrandLogo variant="full" size="lg" />
         </div>
 
-        <div className="space-y-2 pt-4">
-          <span className="text-xs font-mono text-[#FF6B00] tracking-wider uppercase">
-            // ERROR 404: RESOURCE NOT FOUND
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-bold font-display text-white">
-            Page Does Not Exist
+        <div className="space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-mono">
+            <span>// ERROR 404: RESOURCE NOT LOCATED</span>
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-bold font-display text-white">
+            Page Not Found
           </h1>
-          <p className="text-sm text-[#94A3B8] leading-relaxed">
-            The route or resource you are looking for has been relocated, renamed, or is unavailable in our current production deployment.
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-md mx-auto">
+            The route or resource you are looking for has been relocated, restructured, or is unavailable in our current production deployment.
           </p>
         </div>
 
-        <div className="pt-4 flex justify-center gap-4">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_20px_rgba(255,107,0,0.3)]"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all font-mono"
           >
             <Home className="w-4 h-4" />
             <span>Return to Homepage</span>
           </Link>
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all font-mono"
+          >
+            <span>View Client Work</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="pt-4 border-t border-white/10 text-xs font-mono text-slate-400">
+          Need immediate support? Contact our engineering desk at{' '}
+          <a href="mailto:info@zemprolabs.com" className="text-[#FF6B00] hover:underline">
+            info@zemprolabs.com
+          </a>
         </div>
       </div>
     </div>
   );
 };
+
+export default NotFound;

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Project } from '../types';
-import { X, ExternalLink, Check, Layers, Cpu, Globe } from 'lucide-react';
+import { X, ExternalLink, Check, Layers, Cpu, Globe, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -9,12 +11,30 @@ interface ProjectModalProps {
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
-  // Close on Escape
+  // Close on Escape key, and keep keyboard focus inside the dialog while it's open
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+        return;
+      }
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, a[href], [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     if (project) {
@@ -27,11 +47,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
     };
   }, [project, onClose]);
 
+  // Move focus into the dialog when it opens, and restore it on close.
+  useEffect(() => {
+    if (project) {
+      previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+      closeButtonRef.current?.focus();
+    } else if (previouslyFocusedRef.current) {
+      previouslyFocusedRef.current.focus();
+      previouslyFocusedRef.current = null;
+    }
+  }, [project]);
+
   if (!project) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-md transition-opacity duration-300"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -41,26 +72,37 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0B0F17] border border-[rgba(148,163,184,0.2)] shadow-2xl flex flex-col my-auto animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#070D18] border border-white/[0.15] shadow-2xl flex flex-col my-auto animate-in fade-in zoom-in-95 duration-200"
       >
+        {/* Top Accent Line */}
+        <div
+          className="h-1 w-full shrink-0"
+          style={{ backgroundColor: project.color }}
+        />
+
         {/* Modal Header Bar */}
-        <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-[#0B0F17]/95 backdrop-blur-md border-b border-[rgba(148,163,184,0.12)]">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#070D18]/95 backdrop-blur-md border-b border-white/[0.08]">
           <div className="flex items-center gap-3">
             <span
-              className="px-2.5 py-0.5 rounded text-xs font-mono font-semibold"
-              style={{ backgroundColor: `${project.color}20`, color: project.color }}
+              className="px-2.5 py-0.5 rounded text-xs font-mono font-bold border"
+              style={{
+                backgroundColor: `${project.color}15`,
+                color: project.color,
+                borderColor: `${project.color}35`
+              }}
             >
               {project.category}
             </span>
-            <span className="text-xs font-mono text-[#94A3B8] hidden sm:inline">
+            <span className="text-xs font-mono text-slate-400">
               // {project.client}
             </span>
           </div>
 
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -68,93 +110,139 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-8">
-          {/* Top Title & Domain */}
-          <div>
-            <h2 id="modal-project-title" className="text-2xl sm:text-3xl font-bold font-display text-white mb-2">
-              {project.title}
-            </h2>
-            <div className="flex items-center gap-2 text-sm font-mono text-[#94A3B8]">
-              <Globe className="w-4 h-4 text-[#FF6B00]" />
-              <span>{project.domain}</span>
+        <div className="p-6 sm:p-8 space-y-7">
+          {/* Header Title & Verified Domain Link */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 id="modal-project-title" className="text-2xl sm:text-3xl font-bold font-display text-white">
+                {project.title}
+              </h2>
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-mono text-slate-400 mt-1">
+                <Globe className="w-4 h-4 text-[#FF6B00]" />
+                <span>{project.domain}</span>
+              </div>
             </div>
+
+            {project.link ? (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_15px_rgba(255,107,0,0.3)] shrink-0 self-start sm:self-auto"
+              >
+                <span>Visit Live Platform</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            ) : (
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 shrink-0 self-start sm:self-auto">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Confidential Engagement</span>
+              </div>
+            )}
           </div>
 
-          {/* Verified Metrics Strip (if present) */}
+          {/* Media Preview Player (Video or Image) */}
+          {(project.video || project.image) && (
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#02050B] relative aspect-video shadow-inner">
+              {project.video ? (
+                <video
+                  src={project.video}
+                  autoPlay
+                  muted
+                  loop
+                  controls
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+          )}
+
+          {/* Quick Metrics Strip */}
           {project.metrics && project.metrics.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-xl bg-[#05070D] border border-[rgba(148,163,184,0.1)]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-[#040810] border border-white/[0.08]">
               {project.metrics.map((m, idx) => (
-                <div key={idx} className="p-2.5">
-                  <div className="text-xs font-mono text-[#94A3B8] uppercase tracking-wider mb-1">
+                <div key={idx} className="p-2">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">
                     {m.label}
                   </div>
-                  <div className="text-base font-bold font-display text-white">{m.value}</div>
+                  <div className="text-sm sm:text-base font-bold font-display text-white">
+                    {m.value}
+                  </div>
                 </div>
               ))}
             </div>
           )}
 
-          {/* Grid Layout: Challenge, Solution & Details */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Col (Spans 2 cols) */}
-            <div className="lg:col-span-2 space-y-6">
+          {/* 2-Column Split: The Story vs Deliverables */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            {/* Left Col: The Story (7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
               <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#FF6B00] mb-2">
-                  // Executive Overview
+                <h4 className="text-xs font-mono uppercase tracking-wider text-[#FF6B00] mb-1.5 font-bold">
+                  // PROJECT OVERVIEW
                 </h4>
-                <p className="text-[#94A3B8] leading-relaxed text-sm sm:text-base">
+                <p className="text-slate-300 leading-relaxed text-sm">
                   {project.overview}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#004AAD] mb-2">
-                  // The Core Challenge
+                <h4 className="text-xs font-mono uppercase tracking-wider text-[#38BDF8] mb-1.5 font-bold">
+                  // WHAT THE CLIENT NEEDED
                 </h4>
-                <p className="text-[#94A3B8] leading-relaxed text-sm sm:text-base">
+                <p className="text-slate-300 leading-relaxed text-sm">
                   {project.challenge}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#10B981] mb-2">
-                  // Our Architectural Approach
+                <h4 className="text-xs font-mono uppercase tracking-wider text-[#10B981] mb-1.5 font-bold">
+                  // HOW WE BUILT &amp; SOLVED IT
                 </h4>
-                <p className="text-[#94A3B8] leading-relaxed text-sm sm:text-base">
+                <p className="text-slate-300 leading-relaxed text-sm">
                   {project.approach}
                 </p>
               </div>
             </div>
 
-            {/* Right Sidebar: What We Built & Tech Stack */}
-            <div className="space-y-6">
-              {/* Deliverables */}
-              <div className="p-5 rounded-xl bg-[#05070D] border border-[rgba(148,163,184,0.12)]">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white mb-3">
-                  <Layers className="w-4 h-4 text-[#FF6B00]" />
-                  <span>Deliverables Built</span>
+            {/* Right Col: Deliverables & Tech Stack (5 cols) */}
+            <div className="lg:col-span-5 space-y-5">
+              
+              {/* Deliverables Checklist */}
+              <div className="p-5 rounded-2xl bg-[#040810] border border-white/[0.08] space-y-3">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white font-bold">
+                  <ShieldCheck className="w-4 h-4 text-[#10B981]" />
+                  <span>What We Built &amp; Handed Over</span>
                 </div>
-                <ul className="space-y-2.5 text-xs sm:text-sm text-[#94A3B8]">
+                <ul className="space-y-2 text-xs text-slate-300">
                   {project.built.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Technologies */}
-              <div className="p-5 rounded-xl bg-[#05070D] border border-[rgba(148,163,184,0.12)]">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white mb-3">
-                  <Cpu className="w-4 h-4 text-[#004AAD]" />
-                  <span>Tech Stack</span>
+              {/* Tech Stack */}
+              <div className="p-5 rounded-2xl bg-[#040810] border border-white/[0.08] space-y-3">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white font-bold">
+                  <Cpu className="w-4 h-4 text-[#38BDF8]" />
+                  <span>Technologies Used</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((t, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-mono px-2.5 py-1 rounded bg-[#111827] text-white border border-[rgba(148,163,184,0.15)]"
+                      className="text-[11px] font-mono px-2.5 py-1 rounded bg-white/[0.04] text-slate-300 border border-white/10"
                     >
                       {t}
                     </span>
@@ -162,22 +250,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 </div>
               </div>
 
-              {/* Live Project CTA */}
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_20px_rgba(255,107,0,0.3)]"
+              {/* Talk to Us CTA */}
+              <div className="pt-2">
+                <Link
+                  to={`/contact?service=${encodeURIComponent(project.title)}`}
+                  onClick={onClose}
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-mono font-bold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all"
                 >
-                  <span>Visit Production Site</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              )}
+                  <span>Discuss A Similar Project &rarr;</span>
+                </Link>
+              </div>
+
             </div>
+
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

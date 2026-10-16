@@ -14,13 +14,18 @@ export const company = {
     'Zemprolabs brings together qualified engineers and technology professionals to design, build, maintain and manage digital solutions for businesses.',
   email: 'info@zemprolabs.com',
   emailHref: 'mailto:info@zemprolabs.com',
-  // Primary Phone & WhatsApp: +91 744 755 7599
-  phone: '+91 744 755 7599',
-  phoneHref: 'tel:+917447557599',
-  whatsapp: '+91 744 755 7599',
-  whatsappHref: 'https://wa.me/917447557599',
+  // Primary Phone & WhatsApp: +91 744 755 7577
+  phone: '+91 744 755 7577',
+  phoneHref: 'tel:+917447557577',
+  phoneSecondary: '+91 744 755 7599',
+  phoneSecondaryHref: 'tel:+917447557599',
+  whatsapp: '+91 744 755 7577',
+  whatsappHref: 'https://wa.me/917447557577',
+  whatsappSecondary: '+91 744 755 7599',
+  whatsappSecondaryHref: 'https://wa.me/917447557599',
   phones: [
-    { display: '+91 744 755 7599', href: 'tel:+917447557599', isPrimary: true }
+    { display: '+91 744 755 7577', href: 'tel:+917447557577', whatsappHref: 'https://wa.me/917447557577', label: 'Primary', isPrimary: true },
+    { display: '+91 744 755 7599', href: 'tel:+917447557599', whatsappHref: 'https://wa.me/917447557599', label: 'Secondary', isPrimary: false }
   ],
   address: {
     line1: '6th Floor, Ehtesham Heights',

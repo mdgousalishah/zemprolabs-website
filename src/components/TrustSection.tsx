@@ -70,28 +70,31 @@ export const TrustSection: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
             {clientProjectsList.map((client, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-lg bg-[#05070D] border border-[rgba(148,163,184,0.08)] flex flex-col justify-between"
+                className="p-3.5 sm:p-4 rounded-xl bg-[#05070D] border border-[rgba(148,163,184,0.1)] hover:border-[rgba(255,107,0,0.3)] transition-colors flex flex-col justify-between group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-white text-sm font-display">{client.name}</span>
-                    <span className="flex items-center gap-1 text-[10px] font-mono text-[#10B981]">
-                      <CheckCircle2 className="w-3 h-3" />
+                  <div className="flex items-start justify-between gap-1 mb-1.5">
+                    <span className="font-bold text-white text-sm font-display group-hover:text-[#FF6B00] transition-colors leading-tight">
+                      {client.name}
+                    </span>
+                    <span className="flex items-center gap-1 text-[9px] font-mono text-[#10B981] bg-[#10B981]/10 px-1.5 py-0.5 rounded shrink-0">
+                      <CheckCircle2 className="w-2.5 h-2.5" />
                       <span>LIVE</span>
                     </span>
                   </div>
-                  <div className="text-xs text-[#94A3B8] mb-1">{client.sector}</div>
+                  <div className="text-[11px] text-[#94A3B8] line-clamp-1 mb-1">
+                    {client.sector}
+                  </div>
                 </div>
-                <div className="flex items-center justify-between pt-3 border-t border-[rgba(148,163,184,0.06)] text-[11px] font-mono text-[#94A3B8]">
-                  <span className="flex items-center gap-1">
-                    <Globe className="w-3 h-3 text-[#FF6B00]" />
-                    <span>{client.domain}</span>
+                <div className="flex items-center justify-between pt-2.5 mt-2 border-t border-[rgba(148,163,184,0.08)] text-[10px] font-mono text-[#94A3B8]">
+                  <span className="truncate pr-1 text-[#FF6B00]/90">
+                    {client.badge || client.region}
                   </span>
-                  <span>{client.region}</span>
+                  <span className="shrink-0 text-white/70">{client.region}</span>
                 </div>
               </div>
             ))}

@@ -20,6 +20,15 @@ export const homeServices: HomeService[] = [
   },
   {
     num: '02',
+    id: 'business-dev',
+    title: 'Business Development',
+    desc: 'Accelerate commercial growth with strategic B2B market entry, partner pipelines, client acquisition and cross-border expansion.',
+    highlights: ['B2B Sales Pipelines', 'Market Entry', 'Enterprise Partnerships', 'GTM Strategy'],
+    cta: 'Explore Business Dev',
+    link: '/services'
+  },
+  {
+    num: '03',
     id: 'seo-growth',
     title: 'SEO & Growth',
     desc: 'Build a stronger digital presence with technical SEO, product visibility and consistent branding.',
@@ -28,7 +37,7 @@ export const homeServices: HomeService[] = [
     link: '/services'
   },
   {
-    num: '03',
+    num: '04',
     id: 'enterprise',
     title: 'Enterprise',
     desc: 'Modernize enterprise workflows, systems and operations with scalable technology solutions.',
@@ -37,7 +46,7 @@ export const homeServices: HomeService[] = [
     link: '/services'
   },
   {
-    num: '04',
+    num: '05',
     id: 'marketing',
     title: 'Marketing',
     desc: 'Create measurable digital visibility through paid campaigns, social media and organic marketing.',
@@ -46,7 +55,7 @@ export const homeServices: HomeService[] = [
     link: '/services'
   },
   {
-    num: '05',
+    num: '06',
     id: 'research',
     title: 'Research',
     desc: 'Turn market, product and business intelligence into clearer decisions and scalable opportunities.',
@@ -55,7 +64,7 @@ export const homeServices: HomeService[] = [
     link: '/services'
   },
   {
-    num: '06',
+    num: '07',
     id: 'recruitment',
     title: 'Recruitment',
     desc: 'Connect organizations with specialized talent through structured recruitment and international placement support.',

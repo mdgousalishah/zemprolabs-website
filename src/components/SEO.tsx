@@ -14,8 +14,9 @@ export const SEO: React.FC<SEOProps> = ({
   image = '/brand/zemprolabs-logo.png'
 }) => {
   useEffect(() => {
-    // 1. Update Title
-    const fullTitle = `${title} | Zemprolabs — Technology, Commerce & Beyond`;
+    // 1. Update Title: strictly formatted as [Page Title] | Zemprolabs
+    const cleanTitle = title.replace(/\s*\|\s*Zemprolabs.*$/i, '').trim();
+    const fullTitle = `${cleanTitle} | Zemprolabs`;
     document.title = fullTitle;
 
     // 2. Helper to set or update meta tags

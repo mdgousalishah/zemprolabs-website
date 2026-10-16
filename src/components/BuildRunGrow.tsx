@@ -1,101 +1,125 @@
-import React from 'react';
-import { Hammer, Server, TrendingUp, ArrowRight, ShieldCheck, Zap, RefreshCw } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
 export const BuildRunGrow: React.FC = () => {
-  const pillars = [
+  const [activeHover, setActiveHover] = useState<number | null>(null);
+
+  const phases = [
     {
-      step: '01',
-      action: 'BUILD',
-      copy: 'Design and develop your digital product.',
-      color: '#FF6B00',
-      icon: Hammer
+      num: '01',
+      phase: 'PHASE 01 //',
+      title: 'BUILD',
+      description: 'Design and develop your digital product.',
+      accent: '#FF7700',
     },
     {
-      step: '02',
-      action: 'RUN',
-      copy: 'Keep your platform secure, stable and maintained.',
-      color: '#004AAD',
-      icon: Server
+      num: '02',
+      phase: 'PHASE 02 //',
+      title: 'RUN',
+      description: 'Keep your platform secure, stable and maintained.',
+      accent: '#38BDF8',
     },
     {
-      step: '03',
-      action: 'SCALE',
-      copy: 'Improve, automate and grow as your business evolves.',
-      color: '#10B981',
-      icon: TrendingUp
-    }
+      num: '03',
+      phase: 'PHASE 03 //',
+      title: 'SCALE',
+      description: 'Improve, automate and grow as your business evolves.',
+      accent: '#10B981',
+    },
   ];
 
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-[rgba(148,163,184,0.12)] bg-[#0B0F17]/60 relative overflow-hidden">
-      {/* Ambient background blur */}
-      <div className="ambient-glow -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#FF6B00]/10"></div>
+    <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/[0.07] bg-[#07080A] relative select-none overflow-hidden">
+      {/* Subtle brand ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-24 bg-gradient-to-r from-[#FF7700]/[0.04] via-transparent to-[#10B981]/[0.03] blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-mono">
-            <RefreshCw className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '6s' }} />
-            <span>BUILD &bull; RUN &bull; SCALE</span>
-          </div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Continuous Horizontal Laser Pipeline Rail */}
+        <div className="relative">
+          {/* Background Track (desktop) */}
+          <div className="hidden md:block absolute top-[18px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-[rgba(148,163,184,0.14)] to-transparent z-0" />
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-display tracking-tight text-white">
-            Built to Perform — Managed to Last.
-          </h2>
+          {/* Active Laser Shimmer on Hover */}
+          <div
+            className="hidden md:block absolute top-[18px] left-0 right-0 h-[1px] transition-all duration-500 z-0 pointer-events-none"
+            style={{
+              background:
+                activeHover !== null
+                  ? `radial-gradient(ellipse 400px 2px at ${
+                      activeHover === 0 ? '16%' : activeHover === 1 ? '50%' : '84%'
+                    } 50%, ${phases[activeHover].accent}, transparent)`
+                  : 'transparent',
+            }}
+          />
 
-          <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed">
-            From architecture to operations, we support your digital product across every stage of its lifecycle.
-          </p>
-        </div>
+          {/* 3 Connected Pipeline Nodes & Content */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative z-10">
+            {phases.map((item, idx) => {
+              const isHovered = activeHover === idx;
+              return (
+                <div
+                  key={idx}
+                  onMouseEnter={() => setActiveHover(idx)}
+                  onMouseLeave={() => setActiveHover(null)}
+                  className="group relative cursor-default"
+                >
+                  {/* Top Node / Pulsing Beacon Header */}
+                  <div className="flex items-center gap-3 mb-3">
+                    {/* Glowing Node Dot */}
+                    <div className="relative flex items-center justify-center w-9 h-9">
+                      <div
+                        className="absolute inset-0 rounded-full blur-sm transition-opacity duration-300"
+                        style={{
+                          backgroundColor: item.accent,
+                          opacity: isHovered ? 0.5 : 0.15,
+                        }}
+                      />
+                      <div
+                        className="w-3.5 h-3.5 rounded-full border transition-all duration-300 flex items-center justify-center bg-[#05070D]"
+                        style={{
+                          borderColor: item.accent,
+                          boxShadow: isHovered ? `0 0 12px ${item.accent}` : 'none',
+                        }}
+                      >
+                        <div
+                          className="w-1.5 h-1.5 rounded-full transition-transform duration-300"
+                          style={{
+                            backgroundColor: item.accent,
+                            transform: isHovered ? 'scale(1.2)' : 'scale(1)',
+                          }}
+                        />
+                      </div>
+                    </div>
 
-        {/* 3 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {pillars.map((pillar, idx) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={idx}
-                className="relative rounded-xl bg-[#0B0F17] border border-[rgba(148,163,184,0.15)] hover:border-[rgba(148,163,184,0.3)] transition-all duration-300 p-6 flex flex-col justify-between group shadow-lg hover:-translate-y-1"
-              >
-                <div>
-                  {/* Top Bar */}
-                  <div className="flex items-center justify-between mb-5">
+                    {/* Phase Mono Tag */}
                     <span
-                      className="px-3 py-1 rounded-md text-xs font-mono font-bold tracking-wider"
-                      style={{ backgroundColor: `${pillar.color}20`, color: pillar.color }}
+                      className="text-xs font-mono font-bold tracking-widest uppercase"
+                      style={{ color: item.accent }}
                     >
-                      {pillar.action}
+                      {item.phase}
                     </span>
-                    <span className="text-xs font-mono text-[#94A3B8]">PHASE {pillar.step} //</span>
                   </div>
 
-                  <div className="w-11 h-11 rounded-lg bg-[#05070D] border border-[rgba(148,163,184,0.12)] flex items-center justify-center mb-4 text-white group-hover:scale-105 transition-transform">
-                    <Icon className="w-5 h-5" style={{ color: pillar.color }} />
-                  </div>
-
-                  <h3 className="text-xl font-bold font-display text-white mb-2">
-                    {pillar.action}
+                  {/* High-Contrast Bold Wordmark */}
+                  <h3 className="text-3xl sm:text-4xl font-black font-display tracking-tight text-white mb-2 transition-transform duration-300 group-hover:translate-x-1">
+                    {item.title}
                   </h3>
 
-                  <p className="text-sm text-[#94A3B8] leading-relaxed">
-                    {pillar.copy}
+                  {/* Clean Description Underneath */}
+                  <p className="text-sm text-[#94A3B8] group-hover:text-[#F8FAFC] transition-colors duration-200 leading-relaxed max-w-sm">
+                    {item.description}
                   </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
 
-        {/* Action Link to Process */}
-        <div className="text-center mt-10">
-          <Link
-            to="/process"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-xs sm:text-sm font-mono font-semibold text-white bg-[#0B0F17] border border-[rgba(148,163,184,0.2)] hover:border-[#FF6B00] hover:text-[#FF6B00] transition-all"
-          >
-            <span>See How We Work</span>
-            <ArrowRight className="w-4 h-4 text-[#FF6B00]" />
-          </Link>
+                  {/* Subtle Accent Bottom Rail Glow */}
+                  <div
+                    className="mt-5 h-[1px] w-12 transition-all duration-500 group-hover:w-full"
+                    style={{
+                      background: `linear-gradient(90deg, ${item.accent}, transparent)`,
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

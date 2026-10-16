@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
+import { Magnetic } from './motion';
 
 export const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -47,15 +48,22 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
-    { name: 'Managed Services', path: '/managed-services' },
     { name: 'Work', path: '/work' },
     { name: 'Process', path: '/process' },
-    { name: 'Pricing', path: '/pricing' },
+    { name: 'Project Estimation', path: '/project-estimation' },
     { name: 'About', path: '/about' },
   ];
 
   const isActive = (path: string) => {
     if (path === '/' && location.pathname === '/') return true;
+    if (
+      path === '/project-estimation' &&
+      (location.pathname.startsWith('/project-estimation') ||
+        location.pathname.startsWith('/estimation') ||
+        location.pathname.startsWith('/pricing'))
+    ) {
+      return true;
+    }
     if (path !== '/' && location.pathname.startsWith(path)) return true;
     return false;
   };
@@ -65,7 +73,7 @@ export const Navbar: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 min-h-[72px] sm:min-h-[80px] flex items-center ${
           scrolled
-            ? 'bg-[#05070D]/95 backdrop-blur-md border-b border-[rgba(148,163,184,0.12)] py-2.5 shadow-2xl'
+            ? 'bg-[#090A0D]/90 backdrop-blur-md border-b border-white/10 py-2.5 shadow-md'
             : 'bg-transparent py-4'
         }`}
       >
@@ -85,8 +93,8 @@ export const Navbar: React.FC = () => {
                   to={link.path}
                   className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 ${
                     active
-                      ? 'text-white bg-white/5 border border-[rgba(255,107,0,0.3)] shadow-[0_0_12px_rgba(255,107,0,0.15)]'
-                      : 'text-[#94A3B8] hover:text-white hover:bg-white/[0.03]'
+                      ? 'text-white bg-white/10 border border-white/15'
+                      : 'text-slate-300 hover:text-white hover:bg-white/[0.04]'
                   }`}
                 >
                   {link.name}
@@ -97,13 +105,15 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Right CTA */}
           <div className="hidden lg:flex items-center gap-4 shrink-0">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-1.5 px-4.5 py-2.5 rounded-lg text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all duration-200 shadow-[0_0_20px_rgba(255,107,0,0.3)] hover:shadow-[0_0_25px_rgba(255,107,0,0.5)] active:scale-95"
-            >
-              <span>Start a Project</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            <Magnetic strength={10}>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-1.5 px-4.5 py-2.5 rounded-lg text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all duration-200 hover:scale-[1.03] active:scale-95 shadow-[0_0_20px_rgba(255,107,0,0.25)]"
+              >
+                <span>Start a Project</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </Magnetic>
           </div>
 
           {/* Mobile Menu Toggle Button */}
@@ -130,7 +140,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Navigation Drawer */}
       <div
-        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-xs bg-[#0B0F17] border-l border-[rgba(148,163,184,0.15)] p-6 flex flex-col justify-between transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-xs bg-[#090A0D] border-l border-white/10 p-6 flex flex-col justify-between transform transition-transform duration-300 ease-in-out lg:hidden ${
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         role="dialog"

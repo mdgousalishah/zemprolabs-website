@@ -187,7 +187,7 @@ export const Terminal: React.FC = () => {
         {activeTab === 'STATUS' && (
           <div className="space-y-3 pt-2">
             <div className="flex items-center gap-2 text-[#10B981] font-semibold text-sm">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-ping"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span>
               <span>ALL PRODUCTION INFRASTRUCTURE HEALTHY</span>
             </div>
             <div className="p-3 rounded-lg bg-[#05070D] border border-[rgba(148,163,184,0.12)] space-y-1.5 text-xs">

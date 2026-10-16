@@ -1,189 +1,250 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, ArrowUpRight, ShieldCheck, Terminal } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { company } from '../data/company';
+import { PolicyModal, PolicyType } from './PolicyModal';
 
 export const Footer: React.FC = () => {
+  const [policyModalOpen, setPolicyModalOpen] = useState(false);
+  const [selectedPolicy, setSelectedPolicy] = useState<PolicyType>('privacy');
+
+  const openPolicy = (policy: PolicyType) => {
+    setSelectedPolicy(policy);
+    setPolicyModalOpen(true);
+  };
+
   return (
-    <footer className="border-t border-[rgba(148,163,184,0.12)] bg-[#05070D] text-[#94A3B8] pt-16 pb-12 mt-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
-          {/* Col 1: Brand & Positioning (Spans 2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
-            <div>
-              <BrandLogo variant="full" size="lg" />
-            </div>
-            <p className="text-[#94A3B8] text-sm leading-relaxed max-w-sm pt-1 font-sans">
-              <span className="text-white font-medium block mb-1">{company.positioning}</span>
-              {company.positioningSub}
-            </p>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/20 px-3 py-1.5 rounded-full w-fit">
-              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
-              <span>SYSTEMS OPERATIONAL &bull; 2026</span>
-            </div>
-          </div>
+    <>
+      <footer className="border-t border-white/10 bg-[#090A0D] text-slate-400 pt-14 pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Main Balanced Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 border-b border-white/10">
+            
+            {/* Col 1: Brand & Contact (4 cols) */}
+            <div className="lg:col-span-4 space-y-4">
+              <BrandLogo variant="full" size="md" />
+              
+              <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
+                {company.positioningSub}
+              </p>
 
-          {/* Col 2: Six Core Services */}
-          <div>
-            <h4 className="text-white text-xs font-mono tracking-wider uppercase mb-4 text-[#F8FAFC]">
-              // Core Capabilities
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link to="/services" className="hover:text-white transition-colors">
-                  01 — Development
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-white transition-colors">
-                  02 — SEO &amp; Growth
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-white transition-colors">
-                  03 — Enterprise
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-white transition-colors">
-                  04 — Marketing
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-white transition-colors">
-                  05 — Research
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-white transition-colors">
-                  06 — Recruitment
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Managed Operations */}
-          <div>
-            <h4 className="text-white text-xs font-mono tracking-wider uppercase mb-4 text-[#F8FAFC]">
-              // Run &amp; Manage
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link to="/managed-services" className="hover:text-white transition-colors">
-                  Website Maintenance
-                </Link>
-              </li>
-              <li>
-                <Link to="/managed-services" className="hover:text-white transition-colors">
-                  E-Commerce Operations
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing#maintenance-plans" className="hover:text-white transition-colors">
-                  Monthly Retainer Plans
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing" className="hover:text-white transition-colors">
-                  Scope &amp; Cost Estimator
-                </Link>
-              </li>
-              <li>
-                <Link to="/work" className="hover:text-white transition-colors">
-                  Project Portfolio
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Contact & Office */}
-          <div>
-            <h4 className="text-white text-xs font-mono tracking-wider uppercase mb-4 text-[#F8FAFC]">
-              // Contact &amp; Office
-            </h4>
-            <div className="space-y-3 text-sm">
-              <div>
-                <span className="block text-white font-semibold text-xs uppercase tracking-wider font-mono">
-                  {company.name}
-                </span>
-                <span className="text-[11px] text-[#94A3B8] font-mono block">
-                  {company.positioning}
-                </span>
-              </div>
-
-              <div className="space-y-2 pt-1 text-xs">
-                {/* Email */}
+              <div className="space-y-2 pt-1 text-xs sm:text-sm">
                 <a
                   href={company.emailHref}
-                  className="flex items-center gap-2 text-white hover:text-[#FF6B00] transition-colors group"
+                  className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
                 >
-                  <Mail className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
-                  <span className="font-mono break-all">{company.email}</span>
+                  <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                  <span>{company.email}</span>
                 </a>
 
-                {/* Primary Phone */}
-                <a
-                  href={company.phoneHref}
-                  className="flex items-center gap-2 text-white hover:text-[#FF6B00] transition-colors group"
-                >
-                  <Phone className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
-                  <span className="font-mono">{company.phone}</span>
-                </a>
-
-                {/* WhatsApp */}
                 <a
                   href={company.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Chat with Zemprolabs on WhatsApp"
-                  className="flex items-center gap-2 text-white hover:text-[#10B981] transition-colors group"
+                  className="flex items-center gap-2 text-slate-300 hover:text-emerald-400 transition-colors"
                 >
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#10B981]/20 flex items-center justify-center shrink-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                  </span>
-                  <span className="font-mono text-[#10B981] hover:underline">WhatsApp: {company.phone}</span>
+                  <Phone className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                  <span>{company.phone} <span className="text-slate-500 text-xs">(Primary &amp; WhatsApp)</span></span>
                 </a>
 
-                {/* Office Address */}
-                <div className="flex items-start gap-2 text-[#94A3B8] pt-1">
-                  <MapPin className="w-3.5 h-3.5 text-[#004AAD] shrink-0 mt-0.5" />
-                  <span className="leading-relaxed text-[11px]">
-                    {company.address.full}
+                <div className="flex items-start gap-2 text-slate-400 pt-0.5">
+                  <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
+                  <span className="text-xs leading-snug">
+                    Hyderabad, India — Worldwide Delivery
                   </span>
                 </div>
               </div>
+            </div>
 
-              <div className="pt-2">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-1 text-xs font-mono text-[#FF6B00] hover:underline"
-                >
-                  <span>Submit Project Scope</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
+            {/* Col 2: Services (2 cols) */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-sm font-semibold text-slate-200">
+                Services
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm">
+                <li>
+                  <Link to="/services" className="text-slate-400 hover:text-white transition-colors block">
+                    Web Apps &amp; SaaS
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-slate-400 hover:text-white transition-colors block">
+                    Shopify &amp; E-Commerce
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-slate-400 hover:text-white transition-colors block">
+                    Enterprise ServiceNow
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-slate-400 hover:text-white transition-colors block">
+                    Business Development
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-slate-400 hover:text-white transition-colors block">
+                    Cloud &amp; DevOps
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-slate-400 hover:text-white transition-colors block">
+                    Speed &amp; SEO
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 3: Company (2 cols) - with Careers */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-sm font-semibold text-slate-200">
+                Company
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm">
+                <li>
+                  <Link to="/about" className="text-slate-400 hover:text-white transition-colors block">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/careers" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                    <span>Careers</span>
+                    <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
+                      Hiring
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/work" className="text-slate-400 hover:text-white transition-colors block">
+                    Work &amp; Case Studies
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/process" className="text-slate-400 hover:text-white transition-colors block">
+                    Engineering Process
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-slate-400 hover:text-white transition-colors block">
+                    Contact &amp; Inquiries
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 4: Estimation & Scoping (2 cols) */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-sm font-semibold text-slate-200">
+                Estimation
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm">
+                <li>
+                  <Link to="/project-estimation" className="text-slate-400 hover:text-white transition-colors block">
+                    Scope Calculator
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/project-estimation" className="text-slate-400 hover:text-white transition-colors block">
+                    Cost Estimator
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-slate-400 hover:text-white transition-colors block">
+                    Technology Stack
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-slate-400 hover:text-white transition-colors block">
+                    Submit Architecture Brief
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 5: Governance & Policies (2 cols) */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-sm font-semibold text-slate-200">
+                Governance
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm">
+                <li>
+                  <button
+                    onClick={() => openPolicy('nda')}
+                    className="text-left text-slate-400 hover:text-white transition-colors block cursor-pointer"
+                  >
+                    Bilateral NDA &amp; IP
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => openPolicy('sla')}
+                    className="text-left text-slate-400 hover:text-white transition-colors block cursor-pointer"
+                  >
+                    SLA &amp; Response Times
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => openPolicy('security')}
+                    className="text-left text-slate-400 hover:text-white transition-colors block cursor-pointer"
+                  >
+                    Security Standards
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => openPolicy('privacy')}
+                    className="text-left text-slate-400 hover:text-white transition-colors block cursor-pointer"
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => openPolicy('terms')}
+                    className="text-left text-slate-400 hover:text-white transition-colors block cursor-pointer"
+                  >
+                    Terms of Service
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => openPolicy('refund')}
+                    className="text-left text-slate-400 hover:text-white transition-colors block cursor-pointer"
+                  >
+                    Refund Policy
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Clean Bottom Row */}
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div>
+              &copy; {new Date().getFullYear()} {company.name}. All rights reserved.
+            </div>
+            <div className="flex items-center gap-2 text-slate-400">
+              <span>6th Floor, Ehtesham Heights, Hyderabad</span>
+              <span className="text-slate-700">/</span>
+              <span>Engineering Studio</span>
             </div>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-[rgba(148,163,184,0.1)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#94A3B8]">
-          <div>
-            &copy; {new Date().getFullYear()} {company.name}. All rights reserved. {company.positioning}
-          </div>
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#FF6B00]" />
-              <span>100% Client Code Ownership</span>
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Terminal className="w-4 h-4 text-[#004AAD]" />
-              <span>Zero Disjointed Vendors</span>
-            </span>
-          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      {/* Global Interactive Policy Modal */}
+      <PolicyModal
+        isOpen={policyModalOpen}
+        onClose={() => setPolicyModalOpen(false)}
+        initialPolicy={selectedPolicy}
+      />
+    </>
   );
 };
+
+
