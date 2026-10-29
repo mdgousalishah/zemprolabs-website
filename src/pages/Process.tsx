@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SEO } from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { company } from '../data/company';
@@ -28,8 +30,13 @@ import {
   CinematicCurtainReveal,
   SpatialCardCascade,
   LaserConnectPipeline,
+  useLenis,
 } from '../components/motion';
 import { GsapScrollTilt } from '../components/gsap';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const COMPARISON_ROWS = [
   {
@@ -113,15 +120,88 @@ export const Process: React.FC = () => {
   const [selectedServiceId, setSelectedServiceId] = useState<string>(serviceProcesses[0].id);
   const [activeStage, setActiveStage] = useState<number>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const { scrollTo } = useLenis();
+  const stageCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const stageProgressRef = useRef<HTMLDivElement | null>(null);
+  const stageNavRef = useRef<HTMLDivElement | null>(null);
+  const stageListRef = useRef<HTMLDivElement | null>(null);
 
   const currentService =
     serviceProcesses.find((p) => p.id === selectedServiceId) || serviceProcesses[0];
-  const currentStage = currentService.stages[activeStage] || currentService.stages[0];
 
   const handleSelectService = (id: string) => {
     setSelectedServiceId(id);
     setActiveStage(0);
+    // If we're scrolled past the stage list, bring it back into view so the newly selected
+    // service's stage 1 isn't rendered somewhere off-screen above the current scroll position.
+    if (stageNavRef.current) {
+      const targetY = stageNavRef.current.getBoundingClientRect().top + window.scrollY - 120;
+      if (window.scrollY > targetY) {
+        scrollTo(Math.max(0, targetY), { duration: 1 });
+      }
+    }
   };
+
+  // Scroll-spy: highlight whichever stage card is crossing the viewport center, and fill a
+  // progress rail alongside the nav as the user scrolls through them. The nav itself is kept
+  // in view with a GSAP pin (position:fixed, computed on scroll) rather than CSS
+  // position:sticky -- a shared ancestor here sets overflow-x:hidden, and per spec that
+  // disables position:sticky for descendants on every axis, not just horizontally, so native
+  // sticky can't be used. Depends on selectedServiceId so triggers are rebuilt with fresh
+  // measurements whenever the stage content underneath changes.
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      stageCardRefs.current.forEach((el, idx) => {
+        if (!el) return;
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top center',
+          end: 'bottom center',
+          onToggle: (self) => {
+            if (self.isActive) setActiveStage(idx);
+          }
+        });
+      });
+
+      const firstCard = stageCardRefs.current[0];
+      const lastCard = stageCardRefs.current[stageCardRefs.current.length - 1];
+      if (firstCard && lastCard) {
+        ScrollTrigger.create({
+          trigger: firstCard,
+          start: 'top center',
+          endTrigger: lastCard,
+          end: 'bottom center',
+          scrub: true,
+          onUpdate: (self) => {
+            if (stageProgressRef.current) {
+              stageProgressRef.current.style.transform = `scaleY(${self.progress})`;
+            }
+          }
+        });
+      }
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 1024px)': () => {
+          const nav = stageNavRef.current;
+          const list = stageListRef.current;
+          if (!nav || !list) return;
+          const st = ScrollTrigger.create({
+            trigger: list,
+            start: 'top top+=112',
+            end: () => `+=${Math.max(0, list.offsetHeight - nav.offsetHeight)}`,
+            pin: nav,
+            pinSpacing: false
+          });
+          return () => st.kill();
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, [selectedServiceId]);
 
   return (
     <div className="w-full bg-[#2C3E50] text-white">
@@ -341,19 +421,35 @@ export const Process: React.FC = () => {
 
           {/* Interactive Phase Selector & Deep-Dive Dossier */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            {/* Left Column: Phase Selector List (5 cols) */}
-            <div className="lg:col-span-5 space-y-3">
+            {/* Left Column: Phase Selector List (5 cols), pinned + scroll-spy highlighted while
+                the full stage stack on the right scrolls past. */}
+            <div ref={stageNavRef} className="lg:col-span-5 space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#34495E] block px-1">
                 Select a stage to inspect
               </span>
-              <div className="space-y-3">
+              <div className="relative space-y-3 lg:pl-4">
+                {/* Progress rail: fills as you scroll through the stage cards on the right */}
+                <div className="hidden lg:block absolute left-0 top-1 bottom-1 w-[3px] rounded-full bg-[#2C3E50]/10 overflow-hidden">
+                  <div
+                    ref={stageProgressRef}
+                    className="w-full h-full bg-[#2C3E50] rounded-full origin-top"
+                    style={{ transform: 'scaleY(0)' }}
+                  />
+                </div>
                 {currentService.stages.map((step, idx) => {
                   const isSelected = activeStage === idx;
                   return (
                     <button
                       key={step.number}
                       type="button"
-                      onClick={() => setActiveStage(idx)}
+                      onClick={() => {
+                        setActiveStage(idx);
+                        const card = stageCardRefs.current[idx];
+                        if (card) {
+                          const targetY = card.getBoundingClientRect().top + window.scrollY - 120;
+                          scrollTo(Math.max(0, targetY), { duration: 1.1 });
+                        }
+                      }}
                       className={`w-full text-left p-5 rounded-2xl border transition-all ${
                         isSelected
                           ? 'bg-white border-[#2C3E50]/12 shadow-md ring-2 ring-[#2C3E50]/30'
@@ -386,101 +482,112 @@ export const Process: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Detailed Phase Specification (7 cols) */}
-            <GsapScrollTilt tiltX={6} className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#2C3E50]/12 shadow-xl space-y-8">
-                {/* Stage Visual Preview with Cinematic Shutter Reveal */}
-                {currentService.image && (
-                  <CinematicCurtainReveal key={`${currentService.id}-${activeStage}`} direction="up" duration={1.1} className="rounded-xl overflow-hidden aspect-[16/8] sm:aspect-[16/7] relative border border-[#2C3E50]/20 shadow-inner group">
-                    <img
-                      src={currentService.image}
-                      alt={currentService.serviceName}
-                      className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
-                      <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/10">
-                        Stage {currentStage.number} &bull; {currentStage.title}
-                      </span>
-                      <span className="text-[11px] font-mono text-[#ECF0F1] flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-[#ECF0F1]/30">
-                        <Clock className="w-3.5 h-3.5 text-[#ECF0F1]" />
-                        {currentStage.timeline}
-                      </span>
-                    </div>
-                  </CinematicCurtainReveal>
-                )}
+            {/* Right Column: every stage's full spec card, stacked -- scrolling through them
+                drives the pinned nav's highlight and progress rail on the left (7 cols). */}
+            <div ref={stageListRef} className="lg:col-span-7 space-y-10 sm:space-y-12">
+              {currentService.stages.map((stage, idx) => (
+                <div
+                  key={`${currentService.id}-${stage.number}`}
+                  ref={(el) => { stageCardRefs.current[idx] = el; }}
+                  className="scroll-mt-28"
+                >
+                  <GsapScrollTilt tiltX={6}>
+                    <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#2C3E50]/12 shadow-xl space-y-8">
+                      {/* Stage Visual Preview with Cinematic Shutter Reveal */}
+                      {currentService.image && (
+                        <CinematicCurtainReveal key={`${currentService.id}-${stage.number}-img`} direction="up" duration={1.1} className="rounded-xl overflow-hidden aspect-[16/8] sm:aspect-[16/7] relative border border-[#2C3E50]/20 shadow-inner group">
+                          <img
+                            src={currentService.image}
+                            alt={currentService.serviceName}
+                            className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                            <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/10">
+                              Stage {stage.number} &bull; {stage.title}
+                            </span>
+                            <span className="text-[11px] font-mono text-[#ECF0F1] flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-[#ECF0F1]/30">
+                              <Clock className="w-3.5 h-3.5 text-[#ECF0F1]" />
+                              {stage.timeline}
+                            </span>
+                          </div>
+                        </CinematicCurtainReveal>
+                      )}
 
-                {/* Header */}
-                <div className="space-y-3 border-b border-[#2C3E50]/12 pb-6">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#2C3E50]/10 text-[#2C3E50]">
-                      Stage {currentStage.number} &bull; {currentStage.timeline}
-                    </span>
-                    <span className="text-xs text-[#34495E] font-medium">
-                      {currentService.serviceName}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#2C3E50]">
-                    {currentStage.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[#34495E] leading-relaxed font-normal">
-                    {currentStage.subtitle}
-                  </p>
-                </div>
-
-                {/* What Happens */}
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
-                    What happens during this phase
-                  </h4>
-                  <p className="text-sm text-[#34495E] leading-relaxed bg-[#BDC3C7] p-4 rounded-xl border border-[#2C3E50]/15">
-                    {currentStage.description}
-                  </p>
-                </div>
-
-                {/* What You Receive */}
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
-                    What you receive
-                  </h4>
-                  <p className="text-sm text-[#2C3E50] leading-relaxed font-medium bg-emerald-50/60 p-4 rounded-xl border border-emerald-200/60">
-                    {currentStage.clientReceives}
-                  </p>
-                </div>
-
-                {/* Deliverables Checklist */}
-                <div className="space-y-3 pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
-                    Key deliverables &amp; milestones
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {currentStage.deliverables.map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="p-3 rounded-lg bg-[#BDC3C7] text-[#2C3E50] text-xs sm:text-sm border border-[#2C3E50]/15 flex items-start gap-2.5"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-[#2C3E50] shrink-0 mt-0.5" />
-                        <span className="leading-snug">{item}</span>
+                      {/* Header */}
+                      <div className="space-y-3 border-b border-[#2C3E50]/12 pb-6">
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#2C3E50]/10 text-[#2C3E50]">
+                            Stage {stage.number} &bull; {stage.timeline}
+                          </span>
+                          <span className="text-xs text-[#34495E] font-medium">
+                            {currentService.serviceName}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#2C3E50]">
+                          {stage.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-[#34495E] leading-relaxed font-normal">
+                          {stage.subtitle}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Contextual Action */}
-                <div className="pt-6 border-t border-[#2C3E50]/12 flex flex-wrap items-center justify-between gap-4">
-                  <span className="text-xs text-[#34495E] font-mono">
-                    Direct collaboration with {currentService.leadContact}
-                  </span>
-                  <Link
-                    to={`/contact?service=${encodeURIComponent(currentService.serviceName)}`}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all"
-                  >
-                    <span>Inquire About {currentService.badge}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                      {/* What Happens */}
+                      <div className="space-y-2">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
+                          What happens during this phase
+                        </h4>
+                        <p className="text-sm text-[#34495E] leading-relaxed bg-[#BDC3C7] p-4 rounded-xl border border-[#2C3E50]/15">
+                          {stage.description}
+                        </p>
+                      </div>
+
+                      {/* What You Receive */}
+                      <div className="space-y-2">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
+                          What you receive
+                        </h4>
+                        <p className="text-sm text-[#2C3E50] leading-relaxed font-medium bg-emerald-50/60 p-4 rounded-xl border border-emerald-200/60">
+                          {stage.clientReceives}
+                        </p>
+                      </div>
+
+                      {/* Deliverables Checklist */}
+                      <div className="space-y-3 pt-2">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
+                          Key deliverables &amp; milestones
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                          {stage.deliverables.map((item, delIdx) => (
+                            <div
+                              key={delIdx}
+                              className="p-3 rounded-lg bg-[#BDC3C7] text-[#2C3E50] text-xs sm:text-sm border border-[#2C3E50]/15 flex items-start gap-2.5"
+                            >
+                              <CheckCircle2 className="w-4 h-4 text-[#2C3E50] shrink-0 mt-0.5" />
+                              <span className="leading-snug">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Contextual Action */}
+                      <div className="pt-6 border-t border-[#2C3E50]/12 flex flex-wrap items-center justify-between gap-4">
+                        <span className="text-xs text-[#34495E] font-mono">
+                          Direct collaboration with {currentService.leadContact}
+                        </span>
+                        <Link
+                          to={`/contact?service=${encodeURIComponent(currentService.serviceName)}`}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all"
+                        >
+                          <span>Inquire About {currentService.badge}</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </GsapScrollTilt>
                 </div>
-              </div>
-            </GsapScrollTilt>
+              ))}
+            </div>
           </div>
         </div>
       </section>

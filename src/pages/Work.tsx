@@ -25,12 +25,28 @@ import {
 } from '../components/motion';
 import { GsapScrollTilt } from '../components/gsap';
 
+const AUTO_ADVANCE_MS = 6000;
+
 export const Work: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [featuredIndex, setFeaturedIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isShowcaseHovering, setIsShowcaseHovering] = useState<boolean>(false);
   const featuredVideoRef = useRef<HTMLVideoElement | null>(null);
+  const prefersReducedMotionRef = useRef<boolean>(false);
+  const shownCount = Math.min(4, projects.length);
+
+  useEffect(() => {
+    prefersReducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
+
+  // Auto-rotate the featured platform like a stories rail: each segment above the player
+  // fills over AUTO_ADVANCE_MS, then advances to the next one. Hovering the showcase (or a
+  // reduced-motion preference) pauses it -- clicking a card always still works immediately.
+  const advanceFeatured = () => {
+    setFeaturedIndex((prev) => (prev + 1) % shownCount);
+  };
 
   const filterTabs = [
     { id: 'all', label: 'All Projects', count: projects.length },
@@ -200,10 +216,57 @@ export const Work: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Stories-style auto-advance progress rail -- plays through the 4 featured
+              platforms on its own, pauses on hover, and still jumps instantly on click. */}
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            {projects.slice(0, shownCount).map((project, idx) => {
+              const status = idx < featuredIndex ? 'done' : idx === featuredIndex ? 'active' : 'pending';
+              return (
+                <button
+                  key={project.id}
+                  type="button"
+                  onClick={() => setFeaturedIndex(idx)}
+                  aria-label={`Show ${project.title}`}
+                  className="relative h-[3px] flex-1 rounded-full bg-[#2C3E50]/15 overflow-hidden"
+                >
+                  {status === 'done' && (
+                    <span className="absolute inset-y-0 left-0 w-full rounded-full bg-[#2C3E50]" />
+                  )}
+                  {status === 'active' && (
+                    <span
+                      className="absolute inset-y-0 left-0 rounded-full bg-[#2C3E50]"
+                      onAnimationEnd={advanceFeatured}
+                      style={
+                        prefersReducedMotionRef.current
+                          ? { width: '35%' }
+                          : {
+                              width: '0%',
+                              animationName: 'segmentFill',
+                              animationDuration: `${AUTO_ADVANCE_MS}ms`,
+                              animationTimingFunction: 'linear',
+                              animationFillMode: 'forwards',
+                              animationPlayState: isShowcaseHovering ? 'paused' : 'running'
+                            }
+                      }
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
+            onMouseEnter={() => setIsShowcaseHovering(true)}
+            onMouseLeave={() => setIsShowcaseHovering(false)}
+          >
             {/* Left: High-Resolution Live Video Player (7 cols) */}
             <GsapScrollTilt tiltX={6} className="lg:col-span-7 flex flex-col">
-              <div className="bg-[#2C3E50] rounded-2xl overflow-hidden border border-[#34495E] shadow-xl flex-1 flex flex-col justify-between group">
+              <div
+                key={featuredProject.id}
+                className="bg-[#2C3E50] rounded-2xl overflow-hidden border border-[#34495E] shadow-xl flex-1 flex flex-col justify-between group"
+                style={prefersReducedMotionRef.current ? undefined : { animation: 'fadeInPanel 420ms ease-out' }}
+              >
                 {/* Header bar */}
                 <div className="h-10 bg-[#34495E] border-b border-white/10 px-4 flex items-center justify-between text-xs text-slate-300">
                   <div className="flex items-center gap-2">

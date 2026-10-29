@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { GuideChatbot } from './components/GuideChatbot';
 import { SmoothScroll, AmbientMeshGlow, useLenis } from './components/motion';
 
 // Code-split route components for optimal production bundle performance
@@ -78,6 +79,9 @@ export default function App() {
           <div className="relative z-10">
             <Footer />
           </div>
+
+          {/* Site-wide guided chat assistant */}
+          <GuideChatbot />
         </div>
         </SmoothScroll>
       </BrowserRouter>
