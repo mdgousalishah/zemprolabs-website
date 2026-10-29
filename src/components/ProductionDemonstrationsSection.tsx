@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { ServiceNowPolarisDashboard } from './ServiceNowPolarisDashboard';
 import { ScrollReveal } from './motion';
-import { GsapScrollTilt } from './gsap';
+import { GsapScrollTilt, GsapScrollBook } from './gsap';
 
 interface ProjectDemo {
   id: string;
@@ -199,8 +199,13 @@ export const ProductionDemonstrationsSection: React.FC = () => {
         </ScrollReveal>
 
         {/* Master-Detail Interactive Screening Console (Single Viewport Height) */}
-        <ScrollReveal preset="fade-up" delay={0.15} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          
+        <ScrollReveal preset="fade-up" delay={0.15}>
+        <GsapScrollBook
+          count={DEMOS.length}
+          onIndexChange={setActiveIndex}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
+        >
+
           {/* Left Column: High-Resolution Live Video Canvas (7 cols) */}
           <GsapScrollTilt tiltX={8} className="lg:col-span-7 flex flex-col">
             <div className="bg-[#2C3E50] rounded-2xl overflow-hidden border border-[#34495E] shadow-xl flex-1 flex flex-col justify-between group">
@@ -223,50 +228,81 @@ export const ProductionDemonstrationsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Viewport: Video or Interactive Polaris Dashboard */}
-              <div className="relative aspect-[16/10] bg-black overflow-hidden flex items-center justify-center">
-                {isServiceNow ? (
-                  <div className="w-full h-full">
-                    <ServiceNowPolarisDashboard
-                      displayedValue={snValue}
-                      isGrowing={snGrowing}
-                      reachedPeak={snPeak}
-                      isProcessing={false}
-                      showFinale={false}
-                      onTriggerRemediation={handleTriggerRemediation}
-                    />
-                  </div>
-                ) : (
-                  <>
-                    <video
-                      key={activeDemo.id}
-                      ref={videoRef}
-                      src={activeDemo.video}
-                      autoPlay
-                      loop
-                      muted={isMuted}
-                      playsInline
-                      poster={activeDemo.fallbackImage}
-                      onClick={togglePlay}
-                      className="w-full h-full object-cover object-top cursor-pointer"
-                    />
+              {/* Viewport: Stack of "pages" that flip like a book as activeIndex advances
+                  (scroll-driven via GsapScrollBook above, or click-driven from the ledger below) */}
+              <div className="relative aspect-[16/10] bg-black overflow-hidden" style={{ perspective: '2200px' }}>
+                {DEMOS.map((demo, idx) => {
+                  const pageIsServiceNow = demo.id.startsWith('servicenow');
+                  const isActivePage = idx === activeIndex;
+                  const zIndex = isActivePage ? 50 : idx < activeIndex ? 0 : 40 - idx;
 
-                    {/* Pause Overlay */}
-                    {!isPlaying && (
-                      <button
-                        type="button"
-                        onClick={togglePlay}
-                        className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-black/80 border border-white/20 text-white flex items-center justify-center backdrop-blur-md"
-                        aria-label="Play video"
-                      >
-                        <Play className="w-5 h-5 fill-white translate-x-0.5" />
-                      </button>
-                    )}
-                  </>
-                )}
+                  return (
+                    <div
+                      key={demo.id}
+                      className="absolute inset-0"
+                      style={{
+                        transformStyle: 'preserve-3d',
+                        transformOrigin: 'left center',
+                        backfaceVisibility: 'hidden',
+                        transform: idx < activeIndex ? 'rotateY(-150deg)' : 'rotateY(0deg)',
+                        zIndex,
+                        boxShadow: 'inset -10px 0 16px -10px rgba(0,0,0,0.45)',
+                        transition: 'transform 0.9s cubic-bezier(0.65, 0.05, 0.36, 1)',
+                        willChange: 'transform',
+                        pointerEvents: isActivePage ? 'auto' : 'none'
+                      }}
+                    >
+                      {pageIsServiceNow ? (
+                        isActivePage ? (
+                          <div className="w-full h-full">
+                            <ServiceNowPolarisDashboard
+                              displayedValue={snValue}
+                              isGrowing={snGrowing}
+                              reachedPeak={snPeak}
+                              isProcessing={false}
+                              showFinale={false}
+                              onTriggerRemediation={handleTriggerRemediation}
+                            />
+                          </div>
+                        ) : (
+                          <img src={demo.fallbackImage} alt="" className="w-full h-full object-cover object-top" />
+                        )
+                      ) : isActivePage ? (
+                        <>
+                          <video
+                            key={demo.id}
+                            ref={videoRef}
+                            src={demo.video}
+                            autoPlay
+                            loop
+                            muted={isMuted}
+                            playsInline
+                            poster={demo.fallbackImage}
+                            onClick={togglePlay}
+                            className="w-full h-full object-cover object-top cursor-pointer"
+                          />
 
-                {/* Bottom Tactile Hover Controls */}
-                <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                          {/* Pause Overlay */}
+                          {!isPlaying && (
+                            <button
+                              type="button"
+                              onClick={togglePlay}
+                              className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-black/80 border border-white/20 text-white flex items-center justify-center backdrop-blur-md"
+                              aria-label="Play video"
+                            >
+                              <Play className="w-5 h-5 fill-white translate-x-0.5" />
+                            </button>
+                          )}
+                        </>
+                      ) : (
+                        <img src={demo.fallbackImage} alt="" className="w-full h-full object-cover object-top" />
+                      )}
+                    </div>
+                  );
+                })}
+
+                {/* Bottom Tactile Hover Controls (always for the active page, above the stack) */}
+                <div className="absolute bottom-2.5 left-3 right-3 z-[60] flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
                   <div className="flex items-center gap-2 pointer-events-auto">
                     {isServiceNow ? (
                       <button
@@ -403,6 +439,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
             })}
           </div>
 
+        </GsapScrollBook>
         </ScrollReveal>
       </div>
     </section>
