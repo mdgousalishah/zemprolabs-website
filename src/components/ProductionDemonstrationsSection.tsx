@@ -12,7 +12,9 @@ import {
 } from 'lucide-react';
 import { ServiceNowPolarisDashboard } from './ServiceNowPolarisDashboard';
 import { ScrollReveal } from './motion';
-import { GsapScrollTilt, GsapScrollBook } from './gsap';
+import { GsapScrollTilt } from './gsap';
+
+const AUTO_ADVANCE_MS = 6000;
 
 interface ProjectDemo {
   id: string;
@@ -104,7 +106,23 @@ export const ProductionDemonstrationsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isShowcaseHovering, setIsShowcaseHovering] = useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const prefersReducedMotionRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    prefersReducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
+
+  // Auto-rotate through the demos like a stories rail -- each segment above the console
+  // fills over AUTO_ADVANCE_MS, then advances to the next page. Hovering the showcase (or a
+  // reduced-motion preference) pauses it; clicking a row in the ledger always still works
+  // immediately. This replaced an earlier scroll-pinned version (GsapScrollBook) that forced
+  // the page to scroll ~4 extra viewport-heights to get through this one section -- it felt
+  // stuck/unresponsive since normal scrolling barely moved the page while pinned.
+  const advanceDemo = () => {
+    setActiveIndex((prev) => (prev + 1) % DEMOS.length);
+  };
 
   // Interactive ServiceNow preview simulation state
   const [snValue, setSnValue] = useState<number>(720);
@@ -200,10 +218,49 @@ export const ProductionDemonstrationsSection: React.FC = () => {
 
         {/* Master-Detail Interactive Screening Console (Single Viewport Height) */}
         <ScrollReveal preset="fade-up" delay={0.15}>
-        <GsapScrollBook
-          count={DEMOS.length}
-          onIndexChange={setActiveIndex}
+        {/* Stories-style auto-advance progress rail -- plays through the demos on its own,
+            pauses on hover, and still jumps instantly on click (see the ledger below). */}
+        <div className="flex items-center gap-1.5 mb-5 sm:mb-6" aria-hidden="true">
+          {DEMOS.map((demo, idx) => {
+            const status = idx < activeIndex ? 'done' : idx === activeIndex ? 'active' : 'pending';
+            return (
+              <button
+                key={demo.id}
+                type="button"
+                onClick={() => setActiveIndex(idx)}
+                aria-label={`Show ${demo.title}`}
+                className="relative h-[3px] flex-1 rounded-full bg-[#2C3E50]/15 overflow-hidden"
+              >
+                {status === 'done' && (
+                  <span className="absolute inset-y-0 left-0 w-full rounded-full bg-[#2C3E50]" />
+                )}
+                {status === 'active' && (
+                  <span
+                    className="absolute inset-y-0 left-0 rounded-full bg-[#2C3E50]"
+                    onAnimationEnd={advanceDemo}
+                    style={
+                      prefersReducedMotionRef.current
+                        ? { width: '35%' }
+                        : {
+                            width: '0%',
+                            animationName: 'segmentFill',
+                            animationDuration: `${AUTO_ADVANCE_MS}ms`,
+                            animationTimingFunction: 'linear',
+                            animationFillMode: 'forwards',
+                            animationPlayState: isShowcaseHovering ? 'paused' : 'running'
+                          }
+                    }
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
+          onMouseEnter={() => setIsShowcaseHovering(true)}
+          onMouseLeave={() => setIsShowcaseHovering(false)}
         >
 
           {/* Left Column: High-Resolution Live Video Canvas (7 cols) */}
@@ -229,7 +286,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
               </div>
 
               {/* Viewport: Stack of "pages" that flip like a book as activeIndex advances
-                  (scroll-driven via GsapScrollBook above, or click-driven from the ledger below) */}
+                  (auto-advance timer above, or click-driven from the ledger below) */}
               <div className="relative aspect-[16/10] bg-black overflow-hidden" style={{ perspective: '2200px' }}>
                 {DEMOS.map((demo, idx) => {
                   const pageIsServiceNow = demo.id.startsWith('servicenow');
@@ -439,7 +496,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
             })}
           </div>
 
-        </GsapScrollBook>
+        </div>
         </ScrollReveal>
       </div>
     </section>
