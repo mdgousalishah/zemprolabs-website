@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -29,15 +31,83 @@ import {
   PerspectiveLineReveal,
   CinematicCurtainReveal,
   SpatialCardCascade,
+  useLenis,
 } from '../components/motion';
 import { GsapScrollTilt } from '../components/gsap';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const Services: React.FC = () => {
   const [selectedPracticeId, setSelectedPracticeId] = useState<string>(serviceOfferings[0].id);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const { scrollTo } = useLenis();
+  const practiceCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const practiceRailRef = useRef<HTMLDivElement | null>(null);
+  const practiceProgressRef = useRef<HTMLDivElement | null>(null);
+  const practiceNavRef = useRef<HTMLDivElement | null>(null);
+  const practiceListRef = useRef<HTMLDivElement | null>(null);
 
-  const selectedPractice =
-    serviceOfferings.find((svc) => svc.id === selectedPracticeId) || serviceOfferings[0];
+  // Scroll-spy: highlight whichever practice card is crossing the viewport center, and fill
+  // a progress rail alongside the nav as the user scrolls through them. The nav itself is kept
+  // in view with a GSAP pin (position:fixed, computed on scroll) rather than CSS position:sticky
+  // -- a shared ancestor here sets overflow-x:hidden, and per spec that disables position:sticky
+  // for descendants on every axis, not just horizontally, so native sticky can't be used.
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      practiceCardRefs.current.forEach((el, idx) => {
+        if (!el) return;
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top center',
+          end: 'bottom center',
+          onToggle: (self) => {
+            if (self.isActive) setSelectedPracticeId(serviceOfferings[idx].id);
+          }
+        });
+      });
+
+      const rail = practiceRailRef.current;
+      const firstCard = practiceCardRefs.current[0];
+      const lastCard = practiceCardRefs.current[practiceCardRefs.current.length - 1];
+      if (rail && firstCard && lastCard) {
+        ScrollTrigger.create({
+          trigger: firstCard,
+          start: 'top center',
+          endTrigger: lastCard,
+          end: 'bottom center',
+          scrub: true,
+          onUpdate: (self) => {
+            if (practiceProgressRef.current) {
+              practiceProgressRef.current.style.transform = `scaleY(${self.progress})`;
+            }
+          }
+        });
+      }
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 1024px)': () => {
+          const nav = practiceNavRef.current;
+          const list = practiceListRef.current;
+          if (!nav || !list) return;
+          const st = ScrollTrigger.create({
+            trigger: list,
+            start: 'top top+=112',
+            end: () => `+=${Math.max(0, list.offsetHeight - nav.offsetHeight)}`,
+            pin: nav,
+            pinSpacing: false
+          });
+          return () => st.kill();
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const standards = [
     {
@@ -197,20 +267,37 @@ export const Services: React.FC = () => {
 
           {/* Interactive Discipline Selector & Deep Dive Showcase */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            {/* Left Nav Column: List of Disciplines (5 cols) */}
-            <div className="lg:col-span-5 space-y-3">
+            {/* Left Nav Column: list of disciplines, scroll-spy highlighted and kept in
+                view with a GSAP pin for as long as the (much taller) stacked cards on the
+                right are scrolling past (5 cols). */}
+            <div ref={practiceNavRef} className="lg:col-span-5 space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#7F8C8D] block px-1">
                 Select a practice to inspect
               </span>
-              <div className="space-y-2">
-                {serviceOfferings.map((svc) => {
+              <div className="relative space-y-2 lg:pl-4">
+                {/* Progress rail: fills as you scroll through the practice cards on the right */}
+                <div className="hidden lg:block absolute left-0 top-1 bottom-1 w-[3px] rounded-full bg-[#2C3E50]/10 overflow-hidden" ref={practiceRailRef}>
+                  <div
+                    ref={practiceProgressRef}
+                    className="w-full h-full bg-[#2C3E50] rounded-full origin-top"
+                    style={{ transform: 'scaleY(0)' }}
+                  />
+                </div>
+                {serviceOfferings.map((svc, idx) => {
                   const isSelected = svc.id === selectedPracticeId;
                   const Icon = svc.icon;
                   return (
                     <button
                       key={svc.id}
                       type="button"
-                      onClick={() => setSelectedPracticeId(svc.id)}
+                      onClick={() => {
+                        setSelectedPracticeId(svc.id);
+                        const card = practiceCardRefs.current[idx];
+                        if (card) {
+                          const targetY = card.getBoundingClientRect().top + window.scrollY - 120;
+                          scrollTo(Math.max(0, targetY), { duration: 1.1 });
+                        }
+                      }}
                       className={`w-full text-left p-4 rounded-xl transition-all flex items-start gap-3.5 border ${
                         isSelected
                           ? 'bg-white shadow-md border-[#2C3E50]/20 ring-2 ring-[#2C3E50]/20'
@@ -245,103 +332,114 @@ export const Services: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Display Column: Practice Specification Card (7 cols) */}
-            <GsapScrollTilt tiltX={6} className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#2C3E50]/20 shadow-xl space-y-8">
-                {/* Practice Visual Preview with Cinematic Curtain Reveal */}
-                {selectedPractice.image && (
-                  <CinematicCurtainReveal key={selectedPractice.id} direction="up" duration={1.1} className="rounded-xl overflow-hidden aspect-[16/8] sm:aspect-[16/7] relative border border-[#2C3E50]/25 shadow-inner group">
-                    <img
-                      src={selectedPractice.image}
-                      alt={selectedPractice.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
-                      <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/10">
-                        {selectedPractice.badge} Practice &bull; Production System
-                      </span>
-                      <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-emerald-500/30">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        Live in Production
-                      </span>
-                    </div>
-                  </CinematicCurtainReveal>
-                )}
+            {/* Right Display Column: every practice's full spec card, stacked -- scrolling
+                through them drives the sticky nav's highlight and progress rail on the left */}
+            <div ref={practiceListRef} className="lg:col-span-7 space-y-10 sm:space-y-12">
+              {serviceOfferings.map((svc, idx) => (
+                <div
+                  key={svc.id}
+                  ref={(el) => { practiceCardRefs.current[idx] = el; }}
+                  className="scroll-mt-28"
+                >
+                  <GsapScrollTilt tiltX={4}>
+                    <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#2C3E50]/20 shadow-xl space-y-8">
+                      {/* Practice Visual Preview with Cinematic Curtain Reveal */}
+                      {svc.image && (
+                        <CinematicCurtainReveal key={svc.id} direction="up" duration={1.1} className="rounded-xl overflow-hidden aspect-[16/8] sm:aspect-[16/7] relative border border-[#2C3E50]/25 shadow-inner group">
+                          <img
+                            src={svc.image}
+                            alt={svc.title}
+                            className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                            <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/10">
+                              {svc.badge} Practice &bull; Production System
+                            </span>
+                            <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-emerald-500/30">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                              Live in Production
+                            </span>
+                          </div>
+                        </CinematicCurtainReveal>
+                      )}
 
-                {/* Header */}
-                <div className="space-y-3 border-b border-[#2C3E50]/12 pb-6">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#2C3E50]/10 text-[#2C3E50]">
-                      {selectedPractice.badge} Practice
-                    </span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#2C3E50]">
-                    {selectedPractice.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                    {selectedPractice.description}
-                  </p>
-                </div>
-
-                {/* Best Suited For */}
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
-                    Who this is for
-                  </h4>
-                  <p className="text-sm text-slate-700 leading-relaxed bg-[#ECF0F1] p-4 rounded-xl border border-[#2C3E50]/20">
-                    {selectedPractice.audience}
-                  </p>
-                </div>
-
-                {/* Core Architectural Deliverables */}
-                <div className="space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
-                    Concrete deliverables
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {selectedPractice.deliverables.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-2.5 p-3 rounded-lg bg-[#ECF0F1] text-[#34495E] text-xs sm:text-sm border border-[#2C3E50]/15"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-[#2C3E50] shrink-0 mt-0.5" />
-                        <span className="leading-snug">{item}</span>
+                      {/* Header */}
+                      <div className="space-y-3 border-b border-[#2C3E50]/12 pb-6">
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#2C3E50]/10 text-[#2C3E50]">
+                            {svc.badge} Practice
+                          </span>
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#2C3E50]">
+                          {svc.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                          {svc.description}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Technology Stack & Action */}
-                <div className="pt-6 border-t border-[#2C3E50]/12 flex flex-wrap items-center justify-between gap-4">
-                  <div className="space-y-1.5">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
-                      Production Stack
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {selectedPractice.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="text-xs px-2.5 py-1 rounded bg-[#BDC3C7] text-[#34495E] font-medium"
-                        >
-                          {t}
-                        </span>
-                      ))}
+                      {/* Best Suited For */}
+                      <div className="space-y-2">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
+                          Who this is for
+                        </h4>
+                        <p className="text-sm text-slate-700 leading-relaxed bg-[#ECF0F1] p-4 rounded-xl border border-[#2C3E50]/20">
+                          {svc.audience}
+                        </p>
+                      </div>
+
+                      {/* Core Architectural Deliverables */}
+                      <div className="space-y-3">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
+                          Concrete deliverables
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                          {svc.deliverables.map((item) => (
+                            <div
+                              key={item}
+                              className="flex items-start gap-2.5 p-3 rounded-lg bg-[#ECF0F1] text-[#34495E] text-xs sm:text-sm border border-[#2C3E50]/15"
+                            >
+                              <CheckCircle2 className="w-4 h-4 text-[#2C3E50] shrink-0 mt-0.5" />
+                              <span className="leading-snug">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Technology Stack & Action */}
+                      <div className="pt-6 border-t border-[#2C3E50]/12 flex flex-wrap items-center justify-between gap-4">
+                        <div className="space-y-1.5">
+                          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+                            Production Stack
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {svc.tech.map((t) => (
+                              <span
+                                key={t}
+                                className="text-xs px-2.5 py-1 rounded bg-[#BDC3C7] text-[#34495E] font-medium"
+                              >
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                          <Link
+                            to="/contact"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all"
+                          >
+                            <span>Inquire About {svc.badge}</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all"
-                    >
-                      <span>Inquire About {selectedPractice.badge}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                  </GsapScrollTilt>
                 </div>
-              </div>
-            </GsapScrollTilt>
+              ))}
+            </div>
           </div>
         </div>
       </section>
