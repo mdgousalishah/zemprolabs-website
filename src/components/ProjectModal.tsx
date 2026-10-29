@@ -72,7 +72,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#070D18] border border-white/[0.15] shadow-2xl flex flex-col my-auto animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#2C3E50] border border-white/[0.15] shadow-2xl flex flex-col my-auto animate-in fade-in zoom-in-95 duration-200"
       >
         {/* Top Accent Line */}
         <div
@@ -81,7 +81,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         />
 
         {/* Modal Header Bar */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#070D18]/95 backdrop-blur-md border-b border-white/[0.08]">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#2C3E50]/95 backdrop-blur-md border-b border-white/[0.08]">
           <div className="flex items-center gap-3">
             <span
               className="px-2.5 py-0.5 rounded text-xs font-mono font-bold border"
@@ -118,7 +118,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 {project.title}
               </h2>
               <div className="flex items-center gap-2 text-xs sm:text-sm font-mono text-slate-400 mt-1">
-                <Globe className="w-4 h-4 text-[#FF6B00]" />
+                <Globe className="w-4 h-4 text-[#ECF0F1]" />
                 <span>{project.domain}</span>
               </div>
             </div>
@@ -128,7 +128,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_15px_rgba(255,107,0,0.3)] shrink-0 self-start sm:self-auto"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-[0_0_15px_rgba(236,240,241,0.3)] shrink-0 self-start sm:self-auto"
               >
                 <span>Visit Live Platform</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -143,7 +143,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
           {/* Media Preview Player (Video or Image) */}
           {(project.video || project.image) && (
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#02050B] relative aspect-video shadow-inner">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#2C3E50] relative aspect-video shadow-inner">
               {project.video ? (
                 <video
                   src={project.video}
@@ -166,7 +166,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
           {/* Quick Metrics Strip */}
           {project.metrics && project.metrics.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-[#040810] border border-white/[0.08]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-[#2C3E50] border border-white/[0.08]">
               {project.metrics.map((m, idx) => (
                 <div key={idx} className="p-2">
                   <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">
@@ -186,7 +186,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* Left Col: The Story (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#FF6B00] mb-1.5 font-bold">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-[#ECF0F1] mb-1.5 font-bold">
                   // PROJECT OVERVIEW
                 </h4>
                 <p className="text-slate-300 leading-relaxed text-sm">
@@ -217,7 +217,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             <div className="lg:col-span-5 space-y-5">
               
               {/* Deliverables Checklist */}
-              <div className="p-5 rounded-2xl bg-[#040810] border border-white/[0.08] space-y-3">
+              <div className="p-5 rounded-2xl bg-[#2C3E50] border border-white/[0.08] space-y-3">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white font-bold">
                   <ShieldCheck className="w-4 h-4 text-[#10B981]" />
                   <span>What We Built &amp; Handed Over</span>
@@ -233,7 +233,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               </div>
 
               {/* Tech Stack */}
-              <div className="p-5 rounded-2xl bg-[#040810] border border-white/[0.08] space-y-3">
+              <div className="p-5 rounded-2xl bg-[#2C3E50] border border-white/[0.08] space-y-3">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white font-bold">
                   <Cpu className="w-4 h-4 text-[#38BDF8]" />
                   <span>Technologies Used</span>

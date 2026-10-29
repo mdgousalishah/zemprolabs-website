@@ -59,10 +59,10 @@ export const CinematicCurtainReveal: React.FC<CinematicCurtainRevealProps> = ({
           delay,
           ease: [0.19, 1, 0.22, 1], // Luxury expo ease-out
         }}
-        className="pointer-events-none absolute inset-0 bg-[#090A0D] z-20 flex items-end justify-center"
+        className="pointer-events-none absolute inset-0 bg-[#2C3E50] z-20 flex items-end justify-center"
       >
         {/* Luminous Shimmer Leading Blade Edge */}
-        <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#FF6B00] to-transparent shadow-[0_0_20px_#FF6B00]" />
+        <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#ECF0F1] to-transparent shadow-[0_0_20px_#ECF0F1]" />
       </motion.div>
     </div>
   );

@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { ServiceNowPolarisDashboard } from './ServiceNowPolarisDashboard';
 import { ScrollReveal } from './motion';
+import { GsapScrollTilt } from './gsap';
 
 interface ProjectDemo {
   id: string;
@@ -173,24 +174,24 @@ export const ProductionDemonstrationsSection: React.FC = () => {
   return (
     <section
       id="selected-work"
-      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-stone-900 border-b border-stone-300/80"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#2C3E50] border-b border-[#2C3E50]/15"
     >
       <div className="max-w-7xl mx-auto space-y-8 sm:space-y-10">
         {/* ========================================================================= */}
         {/* Compact Header */}
-        <ScrollReveal preset="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-stone-300/80">
+        <ScrollReveal preset="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-[#2C3E50]/15">
           <div>
-            <div className="text-xs font-mono text-[#FF6B00] uppercase tracking-wider font-semibold">
+            <div className="text-xs font-mono text-[#2C3E50] uppercase tracking-wider font-semibold">
               // PRODUCTION PLATFORMS • LIVE DEMONSTRATIONS
             </div>
-            <h2 className="text-2xl sm:text-4xl font-bold font-display tracking-tight text-stone-900 mt-1">
+            <h2 className="text-2xl sm:text-4xl font-bold font-display tracking-tight text-[#2C3E50] mt-1">
               Engineered for real commercial impact.
             </h2>
           </div>
 
           <Link
             to="/work"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-stone-900 hover:text-[#FF6B00] transition-colors shrink-0 pb-1"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#2C3E50] hover:text-[#34495E] transition-colors shrink-0 pb-1"
           >
             <span>View All 12+ Case Studies</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -201,14 +202,14 @@ export const ProductionDemonstrationsSection: React.FC = () => {
         <ScrollReveal preset="fade-up" delay={0.15} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
           {/* Left Column: High-Resolution Live Video Canvas (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col">
-            <div className="bg-[#090A0D] rounded-2xl overflow-hidden border border-stone-800 shadow-xl flex-1 flex flex-col justify-between group">
+          <GsapScrollTilt tiltX={8} className="lg:col-span-7 flex flex-col">
+            <div className="bg-[#2C3E50] rounded-2xl overflow-hidden border border-[#34495E] shadow-xl flex-1 flex flex-col justify-between group">
               {/* Minimal Browser Header */}
-              <div className="h-9 bg-[#0E1015] border-b border-white/10 px-4 flex items-center justify-between select-none">
+              <div className="h-9 bg-[#34495E] border-b border-white/10 px-4 flex items-center justify-between select-none">
                 <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-stone-700" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-stone-700" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-stone-700" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#7F8C8D]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#7F8C8D]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#7F8C8D]" />
                   <div className="ml-2 flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-black/40 border border-white/5 text-[11px] font-mono text-slate-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                     <span>https://{activeDemo.domain}</span>
@@ -292,7 +293,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
                           className="p-1.5 rounded-md bg-black/80 text-white backdrop-blur-md hover:bg-black transition-colors"
                           aria-label={isMuted ? 'Unmute' : 'Mute'}
                         >
-                          {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-[#FF6B00]" />}
+                          {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-[#ECF0F1]" />}
                         </button>
                       </>
                     )}
@@ -308,7 +309,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
                       href={activeDemo.domainUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="pointer-events-auto inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-black/80 text-[11px] font-mono text-slate-300 backdrop-blur-md hover:text-[#FF6B00] transition-colors"
+                      className="pointer-events-auto inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-black/80 text-[11px] font-mono text-slate-300 backdrop-blur-md hover:text-[#BDC3C7] transition-colors"
                     >
                       <span>Visit Live Site</span>
                       <ExternalLink className="w-3 h-3" />
@@ -318,12 +319,12 @@ export const ProductionDemonstrationsSection: React.FC = () => {
               </div>
 
               {/* Bottom Caption Bar */}
-              <div className="px-4 py-2 bg-[#0E1015] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <div className="px-4 py-2 bg-[#34495E] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
                 <span className="truncate">{activeDemo.category}</span>
-                <span className="text-[#FF6B00] shrink-0 font-semibold">{activeDemo.metrics[0].value} {activeDemo.metrics[0].label}</span>
+                <span className="text-[#ECF0F1] shrink-0 font-semibold">{activeDemo.metrics[0].value} {activeDemo.metrics[0].label}</span>
               </div>
             </div>
-          </div>
+          </GsapScrollTilt>
 
           {/* Right Column: Interactive Systems Ledger (5 cols) */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-2.5">
@@ -342,25 +343,25 @@ export const ProductionDemonstrationsSection: React.FC = () => {
                     }
                   }}
                   aria-pressed={isActive}
-                  className={`w-full cursor-pointer rounded-xl p-4 sm:p-4.5 border transition-all text-left relative flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 ${
+                  className={`w-full cursor-pointer rounded-xl p-4 sm:p-4.5 border transition-all text-left relative flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2C3E50] focus-visible:ring-offset-2 ${
                     isActive
-                      ? 'bg-white border-[#FF6B00]/60 shadow-[0_8px_30px_rgba(20,20,20,0.07)] ring-1 ring-[#FF6B00]/15'
-                      : 'bg-white/45 border-stone-300/70 hover:bg-white hover:border-stone-400 hover:shadow-sm text-stone-600'
+                      ? 'bg-white border-[#2C3E50]/60 shadow-[0_8px_30px_rgba(20,20,20,0.07)] ring-1 ring-[#2C3E50]/15'
+                      : 'bg-white/45 border-[#2C3E50]/15 hover:bg-white hover:border-[#2C3E50]/30 hover:shadow-sm text-[#34495E]'
                   }`}
                 >
                   {/* Row Header */}
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
-                      <span className={`text-xs font-mono font-bold ${isActive ? 'text-[#FF6B00]' : 'text-stone-400'}`}>
+                      <span className={`text-xs font-mono font-bold ${isActive ? 'text-[#2C3E50]' : 'text-[#7F8C8D]'}`}>
                         {demo.number}
                       </span>
-                      <h3 className={`font-bold font-display text-base sm:text-lg ${isActive ? 'text-stone-900' : 'text-stone-800'}`}>
+                      <h3 className={`font-bold font-display text-base sm:text-lg ${isActive ? 'text-[#2C3E50]' : 'text-[#34495E]'}`}>
                         {demo.title}
                       </h3>
                     </div>
 
                     <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${
-                      isActive ? 'bg-stone-900 text-white font-semibold' : 'bg-stone-200/80 text-stone-600'
+                      isActive ? 'bg-[#2C3E50] text-white font-semibold' : 'bg-[#BDC3C7] text-[#34495E]'
                     }`}>
                       {demo.metrics[0].value}
                     </span>
@@ -368,15 +369,15 @@ export const ProductionDemonstrationsSection: React.FC = () => {
 
                   {/* Active Expansion Details */}
                   {isActive ? (
-                    <div className="mt-2.5 space-y-3 pt-2.5 border-t border-stone-200/80">
-                      <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                    <div className="mt-2.5 space-y-3 pt-2.5 border-t border-[#2C3E50]/12">
+                      <p className="text-xs sm:text-sm text-[#34495E] leading-relaxed">
                         {demo.summary}
                       </p>
 
                       <div className="flex items-center justify-between gap-4 pt-1">
                         <div className="flex flex-wrap gap-1.5">
                           {demo.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} className="text-[10px] px-2 py-0.5 rounded bg-stone-200/80 text-stone-700 font-mono">
+                            <span key={tag} className="text-[10px] px-2 py-0.5 rounded bg-[#BDC3C7] text-[#34495E] font-mono">
                               {tag}
                             </span>
                           ))}
@@ -385,7 +386,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
                         <Link
                           to={`/work/${demo.id}`}
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 text-xs font-mono font-bold text-stone-900 hover:text-[#FF6B00] transition-colors shrink-0"
+                          className="inline-flex items-center gap-1 text-xs font-mono font-bold text-[#2C3E50] hover:text-[#34495E] transition-colors shrink-0"
                         >
                           <span>Case Study</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -393,7 +394,7 @@ export const ProductionDemonstrationsSection: React.FC = () => {
                       </div>
                     </div>
                   ) : (
-                    <p className="text-xs text-stone-500 font-mono truncate mt-1">
+                    <p className="text-xs text-[#7F8C8D] font-mono truncate mt-1">
                       {demo.category} &bull; {demo.client}
                     </p>
                   )}

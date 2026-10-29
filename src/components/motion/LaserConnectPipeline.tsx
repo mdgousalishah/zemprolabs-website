@@ -11,7 +11,7 @@ export const LaserConnectPipeline: React.FC<LaserConnectPipelineProps> = ({
   return (
     <div className={`relative w-full h-1 my-4 hidden md:block overflow-hidden ${className}`}>
       {/* Background Track Rail */}
-      <div className="absolute inset-0 bg-stone-300/60 rounded-full" />
+      <div className="absolute inset-0 bg-[#2C3E50]/15 rounded-full" />
 
       {/* Animated Glowing Laser Stroke */}
       <motion.div
@@ -24,7 +24,7 @@ export const LaserConnectPipeline: React.FC<LaserConnectPipelineProps> = ({
           delay: 0.2,
         }}
         style={{ originX: 0 }}
-        className="absolute inset-0 bg-gradient-to-r from-[#FF6B00] via-[#FFA048] to-[#00F0FF] rounded-full shadow-[0_0_12px_rgba(255,107,0,0.8)]"
+        className="absolute inset-0 bg-gradient-to-r from-[#2C3E50] via-[#34495E] to-[#7F8C8D] rounded-full shadow-[0_0_12px_rgba(44,62,80,0.8)]"
       />
 
       {/* Traveling Luminous Pulse */}

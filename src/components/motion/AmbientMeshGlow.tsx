@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 export const AmbientMeshGlow: React.FC = () => {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 select-none">
-      {/* Orb 1: Warm Amber / Orange (Drifting Upper Region) */}
+      {/* Orb 1: Off-White Highlight (Drifting Upper Region) */}
       <motion.div
         animate={{
           x: [0, 60, -40, 0],
@@ -17,10 +17,10 @@ export const AmbientMeshGlow: React.FC = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full bg-gradient-to-br from-[#FF6B00] via-[#FF8A00] to-transparent blur-[140px] will-change-transform"
+        className="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full bg-gradient-to-br from-[#ECF0F1] via-[#BDC3C7] to-transparent blur-[140px] will-change-transform"
       />
 
-      {/* Orb 2: Cyber Cyan / Blue (Drifting Lower Region) */}
+      {/* Orb 2: Deep Slate / Navy (Drifting Lower Region) */}
       <motion.div
         animate={{
           x: [0, -70, 50, 0],
@@ -34,10 +34,10 @@ export const AmbientMeshGlow: React.FC = () => {
           ease: 'easeInOut',
           delay: 2,
         }}
-        className="absolute top-1/2 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#00F0FF] via-[#0080FF] to-transparent blur-[160px] will-change-transform"
+        className="absolute top-1/2 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#7F8C8D] via-[#34495E] to-transparent blur-[160px] will-change-transform"
       />
 
-      {/* Orb 3: Deep Radiant Gold (Subtle Core Center Pulse) */}
+      {/* Orb 3: Light Gray (Subtle Core Center Pulse) */}
       <motion.div
         animate={{
           x: [0, 30, -30, 0],
@@ -51,7 +51,7 @@ export const AmbientMeshGlow: React.FC = () => {
           ease: 'easeInOut',
           delay: 4,
         }}
-        className="absolute bottom-10 left-1/3 w-[450px] h-[450px] rounded-full bg-[#FFA048] blur-[150px] will-change-transform"
+        className="absolute bottom-10 left-1/3 w-[450px] h-[450px] rounded-full bg-[#BDC3C7] blur-[150px] will-change-transform"
       />
     </div>
   );

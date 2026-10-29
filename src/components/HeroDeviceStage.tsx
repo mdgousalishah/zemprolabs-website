@@ -417,11 +417,11 @@ export const HeroDeviceStage: React.FC = () => {
               onClick={() => handleSelectMode(mode)}
               className={`flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 ${
                 isActive
-                  ? 'bg-gradient-to-r from-[#FF7700] to-[#FFA733] text-black font-bold shadow-[0_2px_14px_rgba(255,119,0,0.4)] scale-100'
+                  ? 'bg-gradient-to-r from-[#ECF0F1] to-[#FFA733] text-[#2C3E50] font-bold shadow-[0_2px_14px_rgba(236,240,241,0.4)] scale-100'
                   : 'text-slate-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              <Icon className={`w-3 sm:w-3.5 h-3 sm:h-3.5 ${isActive ? 'text-black stroke-[2.5]' : 'text-slate-400'}`} />
+              <Icon className={`w-3 sm:w-3.5 h-3 sm:h-3.5 ${isActive ? 'text-[#2C3E50] stroke-[2.5]' : 'text-slate-400'}`} />
               <span>{cfg.tabLabel}</span>
             </button>
           );
@@ -597,7 +597,7 @@ export const HeroDeviceStage: React.FC = () => {
 
                     {/* Gradient Stroke on the line */}
                     <linearGradient id="multiStockLineGrad" x1="0" y1="1" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#FF6B00" />
+                      <stop offset="0%" stopColor="#ECF0F1" />
                       <stop offset="40%" stopColor="#F59E0B" />
                       <stop offset="100%" stopColor="#10B981" />
                     </linearGradient>
@@ -725,7 +725,7 @@ export const HeroDeviceStage: React.FC = () => {
                       cy="0"
                       r={isGrowing || reachedPeak ? '12' : '5'}
                       fill="none"
-                      stroke={isGrowing || reachedPeak ? '#10B981' : '#94A3B8'}
+                      stroke={isGrowing || reachedPeak ? '#10B981' : '#BDC3C7'}
                       strokeWidth="1.5"
                       className={isGrowing ? 'animate-ping' : 'animate-pulse'}
                     />
@@ -733,11 +733,11 @@ export const HeroDeviceStage: React.FC = () => {
                       cx="0"
                       cy="0"
                       r={isGrowing || reachedPeak ? '6' : '3'}
-                      fill={isGrowing || reachedPeak ? '#10B981' : '#94A3B8'}
+                      fill={isGrowing || reachedPeak ? '#10B981' : '#BDC3C7'}
                     />
                     <polygon
                       points="-3,7 13,-5 7,13"
-                      fill={isGrowing || reachedPeak ? '#10B981' : '#94A3B8'}
+                      fill={isGrowing || reachedPeak ? '#10B981' : '#BDC3C7'}
                       filter="url(#multiNeon)"
                     />
                   </g>
@@ -798,7 +798,7 @@ export const HeroDeviceStage: React.FC = () => {
                 <div className="relative z-10 p-4 sm:p-6 md:p-7 rounded-2xl bg-slate-950/60 backdrop-blur-md border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] max-w-md animate-in fade-in zoom-in-95 duration-700">
                   {/* Real-time Booming Growth Indicator */}
                   <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-mono mb-2 sm:mb-3">
-                    <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#FF6B00]" />
+                    <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#ECF0F1]" />
                     <span className="font-bold text-emerald-400">
                       {currentConfig.formatValue(displayedValue)}
                     </span>
@@ -809,7 +809,7 @@ export const HeroDeviceStage: React.FC = () => {
                   {/* Statement */}
                   <h3 className="text-xl xs:text-2xl sm:text-3xl font-extrabold font-display text-white tracking-tight leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
                     With Zemprolabs,{' '}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] via-[#FFA459] to-[#38BDF8]">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ECF0F1] via-[#FFA459] to-[#38BDF8]">
                       sky is the limit.
                     </span>
                   </h3>
@@ -831,7 +831,7 @@ export const HeroDeviceStage: React.FC = () => {
 
                     <Link
                       to="/contact"
-                      className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-[#FF6B00] hover:bg-[#ff7b1a] text-black text-[11px] sm:text-xs font-mono font-bold transition-all shadow-[0_0_20px_rgba(255,107,0,0.5)] active:scale-95"
+                      className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-[#ECF0F1] hover:bg-[#BDC3C7] text-[#2C3E50] text-[11px] sm:text-xs font-mono font-bold transition-all shadow-[0_0_20px_rgba(236,240,241,0.5)] active:scale-95"
                     >
                       <span>Start Building</span>
                       <ArrowRight className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
@@ -858,11 +858,11 @@ export const HeroDeviceStage: React.FC = () => {
                 {/* Mobile Store Header */}
                 <div className="flex items-center justify-between pb-1 sm:pb-1.5 border-b border-slate-100">
                   <div className="font-display font-bold text-[10px] sm:text-xs tracking-tight text-slate-950">
-                    Titan<span className="text-[#FF6B00]">Pro</span>
+                    Titan<span className="text-[#ECF0F1]">Pro</span>
                   </div>
                   <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-medium text-slate-600">
                     <ShoppingBag className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-900" />
-                    <span className="w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-full bg-[#FF6B00] text-black text-[8px] sm:text-[9px] font-bold flex items-center justify-center">
+                    <span className="w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-full bg-[#ECF0F1] text-[#2C3E50] text-[8px] sm:text-[9px] font-bold flex items-center justify-center">
                       1
                     </span>
                   </div>
@@ -967,10 +967,10 @@ export const HeroDeviceStage: React.FC = () => {
                 {/* SaaS Mobile App Header */}
                 <div className="flex items-center justify-between pb-1 sm:pb-1.5 border-b border-slate-100">
                   <div className="flex items-center gap-1 font-display font-bold text-[10px] sm:text-xs tracking-tight text-slate-950">
-                    <div className="w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-md bg-gradient-to-br from-[#FF6B00] to-[#FFA459] flex items-center justify-center text-black font-extrabold text-[8px] sm:text-[9px]">
+                    <div className="w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-md bg-gradient-to-br from-[#ECF0F1] to-[#FFA459] flex items-center justify-center text-[#2C3E50] font-extrabold text-[8px] sm:text-[9px]">
                       Ω
                     </div>
-                    <span>Orbit<span className="text-[#FF6B00]">Cloud</span></span>
+                    <span>Orbit<span className="text-[#ECF0F1]">Cloud</span></span>
                   </div>
                   <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[7px] sm:text-[8px] font-mono font-semibold">
                     <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-emerald-500" />
@@ -1182,7 +1182,7 @@ export const HeroDeviceStage: React.FC = () => {
           <button
             type="button"
             onClick={handleResetReplay}
-            className="text-[11px] sm:text-xs font-mono text-[#FF6B00] hover:underline flex items-center gap-1 font-semibold shrink-0"
+            className="text-[11px] sm:text-xs font-mono text-[#ECF0F1] hover:underline flex items-center gap-1 font-semibold shrink-0"
           >
             <RotateCcw className="w-3 h-3" />
             <span>{currentConfig.bottomResetText}</span>

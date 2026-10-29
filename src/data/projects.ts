@@ -19,7 +19,7 @@ export const projects: Project[] = [
     ],
     tech: ['Next.js', 'Shopify Plus', 'Node.js', 'Google Ads', 'Meta Ads', 'Dropship API', 'Stripe'],
     link: 'https://baemeds.com',
-    color: '#FF6B00',
+    color: '#ECF0F1',
     video: '/videos/work/baemeds.mp4',
     metrics: [
       { label: 'Sourcing', value: 'Direct US Suppliers' },
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     ],
     tech: ['Shopify Plus', 'React', 'Google Ads', 'Technical SEO', 'UPI & Razorpay', 'Node.js'],
     link: 'https://www.baemeds.in/',
-    color: '#FF6B00',
+    color: '#ECF0F1',
     video: '/videos/work/baemeds.mp4',
     metrics: [
       { label: 'Operations', value: '100% Fully Managed by Us' },

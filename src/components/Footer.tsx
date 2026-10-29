@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="border-t border-white/10 bg-[#090A0D] text-slate-400 pt-14 pb-12">
+      <footer className="border-t border-white/10 bg-[#2C3E50] text-slate-400 pt-14 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Main Balanced Grid */}

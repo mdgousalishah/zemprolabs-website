@@ -82,7 +82,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       <Link
         to={href}
         onClick={onClick}
-        className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded-lg transition-transform hover:opacity-95"
+        className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ECF0F1] rounded-lg transition-transform hover:opacity-95"
         aria-label={altText}
       >
         {logoImage}
@@ -95,7 +95,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       <button
         type="button"
         onClick={onClick}
-        className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded-lg transition-transform hover:opacity-95 bg-transparent border-0 p-0 text-left"
+        className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ECF0F1] rounded-lg transition-transform hover:opacity-95 bg-transparent border-0 p-0 text-left"
         aria-label={altText}
       >
         {logoImage}

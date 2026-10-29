@@ -54,19 +54,19 @@ export const HomeFAQSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-[rgba(148,163,184,0.08)] bg-[#05070D] relative overflow-hidden select-none">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-[rgba(44,62,80,0.08)] bg-[#2C3E50] relative overflow-hidden select-none">
       {/* Background Engineering Blueprint Grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#34495E_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
 
       {/* Ambient Lighting */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FF6B00]/[0.02] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#ECF0F1]/[0.02] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#38BDF8]/[0.025] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-mono">
-            <Code2 className="w-3.5 h-3.5 text-[#FF6B00]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF0F1]/10 border border-[#ECF0F1]/25 text-[#ECF0F1] text-xs font-mono">
+            <Code2 className="w-3.5 h-3.5 text-[#ECF0F1]" />
             <span>FAQ // TRANSPARENT TECHNICAL DETAILS</span>
           </div>
 
@@ -74,7 +74,7 @@ export const HomeFAQSection: React.FC = () => {
             Frequently Asked Questions
           </h2>
 
-          <p className="text-sm sm:text-base text-[#94A3B8] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-[#BDC3C7] max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about our engineering standards, 100% codebase ownership, managed operational care, and delivery timelines.
           </p>
         </div>
@@ -88,8 +88,8 @@ export const HomeFAQSection: React.FC = () => {
                 key={idx}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? 'bg-[#090E1A] border-[#FF6B00]/40 shadow-[0_4px_25px_rgba(255,107,0,0.08)]'
-                    : 'bg-[#070B14]/90 border-white/[0.07] hover:border-white/[0.15] hover:bg-[#080D18]'
+                    ? 'bg-[#2C3E50] border-[#ECF0F1]/40 shadow-[0_4px_25px_rgba(236,240,241,0.08)]'
+                    : 'bg-[#2C3E50]/90 border-white/[0.07] hover:border-white/[0.15] hover:bg-[#2C3E50]'
                 }`}
               >
                 <button
@@ -101,12 +101,12 @@ export const HomeFAQSection: React.FC = () => {
                   <div className="flex items-center gap-3.5">
                     <span
                       className={`text-xs font-mono font-semibold transition-colors shrink-0 ${
-                        isOpen ? 'text-[#FF6B00]' : 'text-slate-500 group-hover:text-slate-300'
+                        isOpen ? 'text-[#ECF0F1]' : 'text-slate-500 group-hover:text-slate-300'
                       }`}
                     >
                       0{idx + 1} //
                     </span>
-                    <span className="text-base sm:text-lg font-bold font-display text-white tracking-tight group-hover:text-[#FF6B00] transition-colors">
+                    <span className="text-base sm:text-lg font-bold font-display text-white tracking-tight group-hover:text-[#ECF0F1] transition-colors">
                       {faq.question}
                     </span>
                   </div>
@@ -114,8 +114,8 @@ export const HomeFAQSection: React.FC = () => {
                   <div
                     className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border transition-all duration-300 ${
                       isOpen
-                        ? 'bg-[#FF6B00]/15 border-[#FF6B00]/40 text-[#FF6B00] rotate-180'
-                        : 'bg-white/[0.03] border-white/[0.08] text-[#94A3B8] group-hover:text-white group-hover:border-white/20'
+                        ? 'bg-[#ECF0F1]/15 border-[#ECF0F1]/40 text-[#ECF0F1] rotate-180'
+                        : 'bg-white/[0.03] border-white/[0.08] text-[#BDC3C7] group-hover:text-white group-hover:border-white/20'
                     }`}
                   >
                     <ChevronDown className="w-4 h-4" />
@@ -123,7 +123,7 @@ export const HomeFAQSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-[#94A3B8] leading-relaxed border-t border-white/[0.04]">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-[#BDC3C7] leading-relaxed border-t border-white/[0.04]">
                     <p className="pl-8 sm:pl-9">{faq.answer}</p>
                   </div>
                 )}
@@ -133,16 +133,16 @@ export const HomeFAQSection: React.FC = () => {
         </div>
 
         {/* Bottom micro-banner */}
-        <div className="mt-10 p-5 rounded-2xl bg-[#090E1A]/80 backdrop-blur-sm border border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-10 p-5 rounded-2xl bg-[#2C3E50]/80 backdrop-blur-sm border border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-2.5">
-            <Sparkles className="w-4 h-4 text-[#FF6B00] shrink-0" />
+            <Sparkles className="w-4 h-4 text-[#ECF0F1] shrink-0" />
             <span className="text-xs sm:text-sm text-slate-300">
               Have a custom or architecture-specific question?
             </span>
           </div>
           <a
             href="mailto:info@zemprolabs.com"
-            className="text-xs font-mono text-[#FF6B00] hover:underline font-semibold whitespace-nowrap"
+            className="text-xs font-mono text-[#ECF0F1] hover:underline font-semibold whitespace-nowrap"
           >
             Ask our engineering team &rarr;
           </a>

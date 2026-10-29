@@ -23,12 +23,12 @@ export const ProcessPipelineVisual: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#090A0D] border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl space-y-8">
+    <div className="w-full bg-[#2C3E50] border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl space-y-8">
       {/* Header & Service Ribbon */}
       <div className="space-y-4 pb-6 border-b border-white/10">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-[#FF6B00]" />
+            <span className="w-2 h-2 rounded-full bg-[#ECF0F1]" />
             <span>AGILE RETAINERS &bull; CONTINUOUS CI/CD PODS</span>
           </div>
           <span className="text-xs font-mono text-slate-400">
@@ -52,11 +52,11 @@ export const ProcessPipelineVisual: React.FC = () => {
                 onClick={() => handleSelectService(sp.id)}
                 className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all border text-center ${
                   isSelected
-                    ? 'bg-white text-black border-white shadow-lg ring-2 ring-[#FF6B00]/40'
+                    ? 'bg-white text-[#2C3E50] border-white shadow-lg ring-2 ring-[#ECF0F1]/40'
                     : 'bg-white/5 hover:bg-white/10 text-slate-300 border-white/10'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 shrink-0 ${isSelected ? 'text-[#FF6B00]' : 'text-slate-400'}`} />
+                <Icon className={`w-3.5 h-3.5 shrink-0 ${isSelected ? 'text-[#ECF0F1]' : 'text-slate-400'}`} />
                 <span className="truncate">{sp.shortName}</span>
               </button>
             );
@@ -68,7 +68,7 @@ export const ProcessPipelineVisual: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
           <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-            <Clock className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+            <Clock className="w-3.5 h-3.5 text-[#ECF0F1] shrink-0" />
             <span>Timeline</span>
           </div>
           <div className="text-xs sm:text-sm font-bold font-display text-white leading-snug">
@@ -78,7 +78,7 @@ export const ProcessPipelineVisual: React.FC = () => {
 
         <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
           <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-            <Activity className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+            <Activity className="w-3.5 h-3.5 text-[#ECF0F1] shrink-0" />
             <span>Cadence</span>
           </div>
           <div className="text-xs sm:text-sm font-bold font-display text-white leading-snug">
@@ -88,7 +88,7 @@ export const ProcessPipelineVisual: React.FC = () => {
 
         <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
           <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#ECF0F1] shrink-0" />
             <span>Primary Handover</span>
           </div>
           <div className="text-xs sm:text-sm font-bold font-display text-white leading-snug">
@@ -98,7 +98,7 @@ export const ProcessPipelineVisual: React.FC = () => {
 
         <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
           <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-            <UserCheck className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+            <UserCheck className="w-3.5 h-3.5 text-[#ECF0F1] shrink-0" />
             <span>Lead Contact</span>
           </div>
           <div className="text-xs sm:text-sm font-bold font-display text-white leading-snug">
@@ -118,12 +118,12 @@ export const ProcessPipelineVisual: React.FC = () => {
               onClick={() => setActiveStageIdx(idx)}
               className={`text-left p-3.5 rounded-xl transition-all border flex flex-col justify-between ${
                 isActive
-                  ? 'bg-white/10 border-white/30 ring-1 ring-[#FF6B00]'
+                  ? 'bg-white/10 border-white/30 ring-1 ring-[#ECF0F1]'
                   : 'bg-white/[0.02] border-white/5 hover:border-white/15'
               }`}
             >
               <div className="flex items-center justify-between mb-1">
-                <span className={`text-xs font-mono font-bold ${isActive ? 'text-[#FF6B00]' : 'text-slate-400'}`}>
+                <span className={`text-xs font-mono font-bold ${isActive ? 'text-[#ECF0F1]' : 'text-slate-400'}`}>
                   STAGE {stg.number}
                 </span>
                 <span className="text-[10px] font-mono text-slate-400">
@@ -143,7 +143,7 @@ export const ProcessPipelineVisual: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-[#FF6B00] font-bold">
+              <span className="text-xs font-mono text-[#ECF0F1] font-bold">
                 STAGE {currentStage.number} &bull; {currentStage.timeline}
               </span>
               <span className="text-xs text-slate-400">
@@ -181,7 +181,7 @@ export const ProcessPipelineVisual: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {currentStage.deliverables.map((d, i) => (
               <div key={i} className="flex items-start gap-2 p-2.5 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-[#FF6B00] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#ECF0F1] shrink-0 mt-0.5" />
                 <span>{d}</span>
               </div>
             ))}

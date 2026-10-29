@@ -29,6 +29,7 @@ import {
   SpatialCardCascade,
   LaserConnectPipeline,
 } from '../components/motion';
+import { GsapScrollTilt } from '../components/gsap';
 
 const COMPARISON_ROWS = [
   {
@@ -123,7 +124,7 @@ export const Process: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#090A0D] text-white">
+    <div className="w-full bg-[#2C3E50] text-white">
       <SEO
         title="Our Engineering Process & Delivery Blueprints | Zemprolabs"
         description="Explore Zemprolabs' tailored delivery processes across Web Apps, E-Commerce, ServiceNow, Business Development, Cloud, and Technical SEO with weekly staging and full IP transfer."
@@ -133,15 +134,15 @@ export const Process: React.FC = () => {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Architectural Glass Building Facade Hero)                */}
       {/* ========================================================================= */}
-      <section className="relative pt-36 sm:pt-44 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-b border-white/10 overflow-hidden">
+      <section className="relative pt-36 sm:pt-44 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-b border-white/10 overflow-hidden">
         {/* Full-bleed Architectural Glass Facade Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/hero-building-facade.jpg"
             alt="Modern architectural glass headquarters"
-            className="w-full h-full object-cover object-center opacity-30 sm:opacity-40 brightness-75 scale-[1.03]"
+            className="w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/80 to-[#090A0D]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50] via-[#2C3E50]/80 to-[#2C3E50]/55" />
         </div>
 
         {/* Ambient Floating Luminous Energy Particles */}
@@ -149,8 +150,8 @@ export const Process: React.FC = () => {
 
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
           <FloatingElement distance={4} duration={5}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(255,107,0,0.15)]">
-              <span className="w-2 h-2 rounded-full bg-[#FF6B00]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(236,240,241,0.15)]">
+              <span className="w-2 h-2 rounded-full bg-[#ECF0F1]" />
               <span className="text-xs font-mono uppercase tracking-widest text-slate-300">
                 DISCIPLINE-SPECIFIC DELIVERY &bull; PREDICTABLE EXECUTION
               </span>
@@ -161,7 +162,7 @@ export const Process: React.FC = () => {
             <PerspectiveLineReveal duration={1.3} delay={0.15}>
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold font-display tracking-tight text-white leading-[1.05]">
                 How We Deliver Across{' '}
-                <span className="text-[#FF6B00]">Every Discipline.</span>
+                <span className="text-[#ECF0F1]">Every Discipline.</span>
               </h1>
             </PerspectiveLineReveal>
 
@@ -176,7 +177,7 @@ export const Process: React.FC = () => {
             <Magnetic strength={12}>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(255,107,0,0.35)]"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(236,240,241,0.35)]"
               >
                 <span>Schedule Architecture Discovery</span>
                 <ArrowRight className="w-4 h-4" />
@@ -200,7 +201,7 @@ export const Process: React.FC = () => {
             </div>
             <div className="py-2">
               <span className="text-xs text-slate-400 block">CI/CD &amp; Testing</span>
-              <span className="text-base sm:text-lg font-bold font-display text-[#FF6B00] mt-0.5 block">Continuous Pipelines</span>
+              <span className="text-base sm:text-lg font-bold font-display text-[#ECF0F1] mt-0.5 block">Continuous Pipelines</span>
             </div>
             <div className="py-2">
               <span className="text-xs text-slate-400 block">Communication</span>
@@ -219,24 +220,24 @@ export const Process: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="delivery-lifecycle-heading"
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-slate-900 border-b border-stone-300/80"
+        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#2C3E50] border-b border-[#2C3E50]/15"
       >
         <div className="max-w-6xl mx-auto space-y-12 sm:space-y-14">
           {/* Section Header */}
           <div className="max-w-3xl space-y-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#2C3E50]">
               Tailored Delivery Lifecycles By Practice
             </span>
             <PerspectiveLineReveal duration={1.3}>
               <h2
                 id="delivery-lifecycle-heading"
-                className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-slate-900"
+                className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-[#2C3E50]"
               >
                 Different disciplines require different delivery playbooks.
               </h2>
             </PerspectiveLineReveal>
             <ScrollReveal preset="fade-up" duration={1.1} delay={0.2}>
-              <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-[#34495E] leading-relaxed font-normal">
                 A full-stack web application, an e-commerce storefront cutover, an enterprise ServiceNow implementation, and an outbound B2B expansion engine are fundamentally distinct. Rather than ending projects at launch, our preferred model is an ongoing Agile Retainer—maintaining continuous CI/CD pipelines, automated testing, and bi-weekly sprint improvements across every practice.
               </p>
             </ScrollReveal>
@@ -244,7 +245,7 @@ export const Process: React.FC = () => {
 
           {/* Service Discipline Selector Ribbon */}
           <div className="space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-600 block px-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#34495E] block px-1">
               Select a practice to inspect its delivery process:
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5">
@@ -258,11 +259,11 @@ export const Process: React.FC = () => {
                     onClick={() => handleSelectService(sp.id)}
                     className={`flex items-center justify-center gap-2 px-3 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border text-center ${
                       isSelected
-                        ? 'bg-[#090A0D] text-white border-[#090A0D] shadow-md ring-2 ring-[#FF6B00]/30'
-                        : 'bg-white/80 hover:bg-white text-slate-700 border-stone-300/80 hover:border-stone-400'
+                        ? 'bg-[#2C3E50] text-white border-[#2C3E50] shadow-md ring-2 ring-[#2C3E50]/30'
+                        : 'bg-white/80 hover:bg-white text-[#34495E] border-[#2C3E50]/15 hover:border-[#2C3E50]/35'
                     }`}
                   >
-                    <Icon className={`w-4 h-4 shrink-0 ${isSelected ? 'text-[#FF6B00]' : 'text-stone-500'}`} />
+                    <Icon className={`w-4 h-4 shrink-0 ${isSelected ? 'text-[#2C3E50]' : 'text-[#34495E]'}`} />
                     <span className="truncate">{sp.shortName}</span>
                   </button>
                 );
@@ -271,64 +272,64 @@ export const Process: React.FC = () => {
           </div>
 
           {/* Selected Service Quick Facts Banner */}
-          <div className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-300 shadow-md space-y-5">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200 pb-4">
+          <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#2C3E50]/12 shadow-md space-y-5">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2C3E50]/12 pb-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-[#FF6B00]/10 text-[#FF6B00]">
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-[#2C3E50]/10 text-[#2C3E50]">
                     {currentService.badge}
                   </span>
-                  <span className="text-xs text-stone-500 font-mono">
+                  <span className="text-xs text-[#34495E] font-mono">
                     4-Stage Structured Blueprint
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900">
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-[#2C3E50]">
                   {currentService.serviceName}
                 </h3>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#34495E] max-w-xl leading-relaxed">
                 {currentService.summary}
               </p>
             </div>
 
             {/* Service Fast Facts Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-left">
-              <div className="p-3.5 sm:p-4 rounded-xl bg-stone-50 border border-stone-200/80 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs text-stone-500">
-                  <Clock className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#BDC3C7] border border-[#2C3E50]/15 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-[#34495E]">
+                  <Clock className="w-3.5 h-3.5 text-[#2C3E50] shrink-0" />
                   <span>Timeline</span>
                 </div>
-                <div className="font-bold text-slate-900 text-xs sm:text-sm font-display leading-snug">
+                <div className="font-bold text-[#2C3E50] text-xs sm:text-sm font-display leading-snug">
                   {currentService.timelineEstimate}
                 </div>
               </div>
 
-              <div className="p-3.5 sm:p-4 rounded-xl bg-stone-50 border border-stone-200/80 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs text-stone-500">
-                  <Activity className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#BDC3C7] border border-[#2C3E50]/15 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-[#34495E]">
+                  <Activity className="w-3.5 h-3.5 text-[#2C3E50] shrink-0" />
                   <span>Cadence</span>
                 </div>
-                <div className="font-bold text-slate-900 text-xs sm:text-sm font-display leading-snug">
+                <div className="font-bold text-[#2C3E50] text-xs sm:text-sm font-display leading-snug">
                   {currentService.cadence}
                 </div>
               </div>
 
-              <div className="p-3.5 sm:p-4 rounded-xl bg-stone-50 border border-stone-200/80 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs text-stone-500">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#BDC3C7] border border-[#2C3E50]/15 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-[#34495E]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#2C3E50] shrink-0" />
                   <span>Primary Handover</span>
                 </div>
-                <div className="font-bold text-slate-900 text-xs sm:text-sm font-display leading-snug">
+                <div className="font-bold text-[#2C3E50] text-xs sm:text-sm font-display leading-snug">
                   {currentService.deliverableType}
                 </div>
               </div>
 
-              <div className="p-3.5 sm:p-4 rounded-xl bg-stone-50 border border-stone-200/80 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs text-stone-500">
-                  <UserCheck className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#BDC3C7] border border-[#2C3E50]/15 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-[#34495E]">
+                  <UserCheck className="w-3.5 h-3.5 text-[#2C3E50] shrink-0" />
                   <span>Lead Contact</span>
                 </div>
-                <div className="font-bold text-slate-900 text-xs sm:text-sm font-display leading-snug">
+                <div className="font-bold text-[#2C3E50] text-xs sm:text-sm font-display leading-snug">
                   {currentService.leadContact}
                 </div>
               </div>
@@ -342,7 +343,7 @@ export const Process: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left Column: Phase Selector List (5 cols) */}
             <div className="lg:col-span-5 space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 block px-1">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#34495E] block px-1">
                 Select a stage to inspect
               </span>
               <div className="space-y-3">
@@ -355,28 +356,28 @@ export const Process: React.FC = () => {
                       onClick={() => setActiveStage(idx)}
                       className={`w-full text-left p-5 rounded-2xl border transition-all ${
                         isSelected
-                          ? 'bg-white border-stone-400 shadow-md ring-2 ring-[#FF6B00]/30'
-                          : 'bg-white/60 hover:bg-white border-stone-300/70 hover:border-stone-400'
+                          ? 'bg-white border-[#2C3E50]/12 shadow-md ring-2 ring-[#2C3E50]/30'
+                          : 'bg-white/60 hover:bg-white border-[#2C3E50]/15 hover:border-[#2C3E50]/35'
                       }`}
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-3">
                           <span
                             className={`font-display font-extrabold text-xl ${
-                              isSelected ? 'text-[#FF6B00]' : 'text-stone-400'
+                              isSelected ? 'text-[#2C3E50]' : 'text-[#7F8C8D]'
                             }`}
                           >
                             {step.number}
                           </span>
-                          <h4 className="font-bold font-display text-base sm:text-lg text-slate-900 leading-snug">
+                          <h4 className="font-bold font-display text-base sm:text-lg text-[#2C3E50] leading-snug">
                             {step.title}
                           </h4>
                         </div>
-                        <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-stone-100 text-slate-700 font-semibold shrink-0">
+                        <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#BDC3C7] text-[#34495E] font-semibold shrink-0">
                           {step.timeline}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 line-clamp-2">
+                      <p className="text-xs sm:text-sm text-[#34495E] leading-relaxed mt-2 line-clamp-2">
                         {step.subtitle}
                       </p>
                     </button>
@@ -386,11 +387,11 @@ export const Process: React.FC = () => {
             </div>
 
             {/* Right Column: Detailed Phase Specification (7 cols) */}
-            <div className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-2xl bg-white border border-stone-300 shadow-xl space-y-8">
+            <GsapScrollTilt tiltX={6} className="lg:col-span-7">
+              <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#2C3E50]/12 shadow-xl space-y-8">
                 {/* Stage Visual Preview with Cinematic Shutter Reveal */}
                 {currentService.image && (
-                  <CinematicCurtainReveal key={`${currentService.id}-${activeStage}`} direction="up" duration={1.1} className="rounded-xl overflow-hidden aspect-[16/8] sm:aspect-[16/7] relative border border-stone-200/90 shadow-inner group">
+                  <CinematicCurtainReveal key={`${currentService.id}-${activeStage}`} direction="up" duration={1.1} className="rounded-xl overflow-hidden aspect-[16/8] sm:aspect-[16/7] relative border border-[#2C3E50]/20 shadow-inner group">
                     <img
                       src={currentService.image}
                       alt={currentService.serviceName}
@@ -401,8 +402,8 @@ export const Process: React.FC = () => {
                       <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/10">
                         Stage {currentStage.number} &bull; {currentStage.title}
                       </span>
-                      <span className="text-[11px] font-mono text-[#FF6B00] flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-[#FF6B00]/30">
-                        <Clock className="w-3.5 h-3.5 text-[#FF6B00]" />
+                      <span className="text-[11px] font-mono text-[#ECF0F1] flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-[#ECF0F1]/30">
+                        <Clock className="w-3.5 h-3.5 text-[#ECF0F1]" />
                         {currentStage.timeline}
                       </span>
                     </div>
@@ -410,55 +411,55 @@ export const Process: React.FC = () => {
                 )}
 
                 {/* Header */}
-                <div className="space-y-3 border-b border-stone-200 pb-6">
+                <div className="space-y-3 border-b border-[#2C3E50]/12 pb-6">
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#FF6B00]/10 text-[#FF6B00]">
+                    <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#2C3E50]/10 text-[#2C3E50]">
                       Stage {currentStage.number} &bull; {currentStage.timeline}
                     </span>
-                    <span className="text-xs text-stone-500 font-medium">
+                    <span className="text-xs text-[#34495E] font-medium">
                       {currentService.serviceName}
                     </span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-display text-slate-900">
+                  <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#2C3E50]">
                     {currentStage.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                  <p className="text-sm sm:text-base text-[#34495E] leading-relaxed font-normal">
                     {currentStage.subtitle}
                   </p>
                 </div>
 
                 {/* What Happens */}
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
                     What happens during this phase
                   </h4>
-                  <p className="text-sm text-slate-700 leading-relaxed bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+                  <p className="text-sm text-[#34495E] leading-relaxed bg-[#BDC3C7] p-4 rounded-xl border border-[#2C3E50]/15">
                     {currentStage.description}
                   </p>
                 </div>
 
                 {/* What You Receive */}
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
                     What you receive
                   </h4>
-                  <p className="text-sm text-slate-800 leading-relaxed font-medium bg-emerald-50/60 p-4 rounded-xl border border-emerald-200/60">
+                  <p className="text-sm text-[#2C3E50] leading-relaxed font-medium bg-emerald-50/60 p-4 rounded-xl border border-emerald-200/60">
                     {currentStage.clientReceives}
                   </p>
                 </div>
 
                 {/* Deliverables Checklist */}
                 <div className="space-y-3 pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
                     Key deliverables &amp; milestones
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {currentStage.deliverables.map((item, idx) => (
                       <div
                         key={idx}
-                        className="p-3 rounded-lg bg-stone-50 text-slate-800 text-xs sm:text-sm border border-stone-200/60 flex items-start gap-2.5"
+                        className="p-3 rounded-lg bg-[#BDC3C7] text-[#2C3E50] text-xs sm:text-sm border border-[#2C3E50]/15 flex items-start gap-2.5"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-[#FF6B00] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#2C3E50] shrink-0 mt-0.5" />
                         <span className="leading-snug">{item}</span>
                       </div>
                     ))}
@@ -466,20 +467,20 @@ export const Process: React.FC = () => {
                 </div>
 
                 {/* Contextual Action */}
-                <div className="pt-6 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4">
-                  <span className="text-xs text-stone-500 font-mono">
+                <div className="pt-6 border-t border-[#2C3E50]/12 flex flex-wrap items-center justify-between gap-4">
+                  <span className="text-xs text-[#34495E] font-mono">
                     Direct collaboration with {currentService.leadContact}
                   </span>
                   <Link
                     to={`/contact?service=${encodeURIComponent(currentService.serviceName)}`}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all"
                   >
                     <span>Inquire About {currentService.badge}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
-            </div>
+            </GsapScrollTilt>
           </div>
         </div>
       </section>
@@ -489,13 +490,13 @@ export const Process: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="agile-retainer-heading"
-        className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0D0F14] text-white border-b border-white/10"
+        className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-b border-white/10"
       >
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/20 text-[#FF6B00] text-xs font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 text-[#ECF0F1] text-xs font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ECF0F1]" />
                 <span>PREFERRED ENGAGEMENT PHILOSOPHY</span>
               </div>
               <h2
@@ -511,7 +512,7 @@ export const Process: React.FC = () => {
 
             <Link
               to="/contact?intent=retainer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shrink-0 active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shrink-0 active:scale-[0.98]"
             >
               <span>Explore An Agile Retainer</span>
               <ArrowRight className="w-4 h-4" />
@@ -524,7 +525,7 @@ export const Process: React.FC = () => {
               <AntigravityTiltCard tiltMax={5} className="h-full rounded-2xl">
                 <div className="h-full p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 hover:border-white/20 transition-all flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
+                    <div className="w-10 h-10 rounded-xl bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 flex items-center justify-center text-[#ECF0F1]">
                       <GitBranch className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-bold font-display text-white">Active CI/CD Pipelines</h3>
@@ -540,7 +541,7 @@ export const Process: React.FC = () => {
               <AntigravityTiltCard tiltMax={5} className="h-full rounded-2xl">
                 <div className="h-full p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 hover:border-white/20 transition-all flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
+                    <div className="w-10 h-10 rounded-xl bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 flex items-center justify-center text-[#ECF0F1]">
                       <RefreshCw className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-bold font-display text-white">2-Week Agile Sprints</h3>
@@ -556,7 +557,7 @@ export const Process: React.FC = () => {
               <AntigravityTiltCard tiltMax={5} className="h-full rounded-2xl">
                 <div className="h-full p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 hover:border-white/20 transition-all flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
+                    <div className="w-10 h-10 rounded-xl bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 flex items-center justify-center text-[#ECF0F1]">
                       <ShieldCheck className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-bold font-display text-white">Proactive Maintenance</h3>
@@ -572,7 +573,7 @@ export const Process: React.FC = () => {
               <AntigravityTiltCard tiltMax={5} className="h-full rounded-2xl">
                 <div className="h-full p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 hover:border-white/20 transition-all flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
+                    <div className="w-10 h-10 rounded-xl bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 flex items-center justify-center text-[#ECF0F1]">
                       <UserCheck className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-bold font-display text-white">Embedded Product Pod</h3>
@@ -595,7 +596,7 @@ export const Process: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               <div className="absolute bottom-4 left-5 right-5 space-y-1">
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#FF6B00] text-black font-bold uppercase tracking-wider">
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#ECF0F1] text-[#2C3E50] font-bold uppercase tracking-wider">
                   Hyderabad Engineering Center
                 </span>
                 <h4 className="text-base sm:text-lg font-bold font-display text-white">
@@ -644,7 +645,7 @@ export const Process: React.FC = () => {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/10 text-xs font-semibold transition-all"
               >
                 <span>Inquire About Agile Pod Retainer</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#FF6B00]" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#ECF0F1]" />
               </Link>
             </div>
           </div>
@@ -656,11 +657,11 @@ export const Process: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="comparison-heading"
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-b border-white/10"
+        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-b border-white/10"
       >
         <div className="max-w-6xl mx-auto space-y-14">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ECF0F1]">
               Why Operating Model Matters
             </span>
             <h2
@@ -679,7 +680,7 @@ export const Process: React.FC = () => {
               <thead className="bg-white/5 border-b border-white/10 text-xs font-mono uppercase tracking-wider text-slate-300">
                 <tr>
                   <th className="p-5 sm:p-6 font-semibold">Operating Dimension</th>
-                  <th className="p-5 sm:p-6 text-[#FF6B00] bg-[#FF6B00]/10 font-bold">Zemprolabs Studio</th>
+                  <th className="p-5 sm:p-6 text-[#ECF0F1] bg-[#ECF0F1]/10 font-bold">Zemprolabs Studio</th>
                   <th className="p-5 sm:p-6 text-slate-400">Traditional Agency</th>
                   <th className="p-5 sm:p-6 text-slate-400">Freelance Marketplaces</th>
                 </tr>
@@ -688,7 +689,7 @@ export const Process: React.FC = () => {
                 {COMPARISON_ROWS.map((row, idx) => (
                   <tr key={idx} className="hover:bg-white/[0.01]">
                     <td className="p-5 sm:p-6 font-semibold text-white">{row.feature}</td>
-                    <td className="p-5 sm:p-6 bg-[#FF6B00]/5 text-white font-medium">{row.zemprolabs}</td>
+                    <td className="p-5 sm:p-6 bg-[#ECF0F1]/5 text-white font-medium">{row.zemprolabs}</td>
                     <td className="p-5 sm:p-6 text-slate-400">{row.agency}</td>
                     <td className="p-5 sm:p-6 text-slate-400">{row.freelance}</td>
                   </tr>
@@ -704,11 +705,11 @@ export const Process: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="faq-heading"
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-b border-white/10"
+        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-b border-white/10"
       >
         <div className="max-w-6xl mx-auto space-y-14">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ECF0F1]">
               Frequently Asked Questions
             </span>
             <h2
@@ -737,7 +738,7 @@ export const Process: React.FC = () => {
                     </span>
                     <ChevronDown
                       className={`w-4 h-4 text-slate-400 shrink-0 transition-transform ${
-                        isOpen ? 'rotate-180 text-[#FF6B00]' : ''
+                        isOpen ? 'rotate-180 text-[#ECF0F1]' : ''
                       }`}
                     />
                   </button>
@@ -758,10 +759,10 @@ export const Process: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="process-cta-heading"
-        className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white relative overflow-hidden"
+        className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white relative overflow-hidden"
       >
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00]">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#ECF0F1]">
             Ready to Plan Your Product Roadmap?
           </span>
 
@@ -779,7 +780,7 @@ export const Process: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all active:scale-[0.98] shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all active:scale-[0.98] shadow-lg"
             >
               <span>Submit Project Brief</span>
               <ArrowRight className="w-4 h-4" />

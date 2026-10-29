@@ -18,7 +18,7 @@ export const FloatingParticles: React.FC<FloatingParticlesProps> = ({
       size: Math.random() * 2.5 + 1,
       duration: Math.random() * 10 + 12,
       delay: Math.random() * 5,
-      color: i % 3 === 0 ? '#FF6B00' : i % 3 === 1 ? '#00F0FF' : '#FFA048',
+      color: i % 3 === 0 ? '#ECF0F1' : i % 3 === 1 ? '#7F8C8D' : '#BDC3C7',
       opacity: Math.random() * 0.4 + 0.15,
     }));
   }, [count]);

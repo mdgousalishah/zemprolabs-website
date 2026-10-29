@@ -4,7 +4,7 @@ export const WorkHeroIllustration: React.FC = () => {
   return (
     <div className="relative w-full max-w-[540px] mx-auto aspect-[540/400] select-none group">
       {/* Ambient Depth Glows */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#FF6B00]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#ECF0F1]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-60 h-60 bg-[#38BDF8]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-[#10B981]/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -16,19 +16,19 @@ export const WorkHeroIllustration: React.FC = () => {
         <defs>
           {/* Gradients for Devices & Glass UI */}
           <linearGradient id="laptopBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#1E293B" />
-            <stop offset="50%" stopColor="#0F172A" />
+            <stop offset="0%" stopColor="#34495E" />
+            <stop offset="50%" stopColor="#2C3E50" />
             <stop offset="100%" stopColor="#020617" />
           </linearGradient>
 
           <linearGradient id="laptopScreenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#070D1A" />
+            <stop offset="0%" stopColor="#2C3E50" />
             <stop offset="100%" stopColor="#020409" />
           </linearGradient>
 
           <linearGradient id="phoneBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#334155" />
-            <stop offset="50%" stopColor="#1E293B" />
+            <stop offset="0%" stopColor="#34495E" />
+            <stop offset="50%" stopColor="#34495E" />
             <stop offset="100%" stopColor="#0A0F1D" />
           </linearGradient>
 
@@ -38,7 +38,7 @@ export const WorkHeroIllustration: React.FC = () => {
           </linearGradient>
 
           <linearGradient id="accentOrangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#FF6B00" />
+            <stop offset="0%" stopColor="#ECF0F1" />
             <stop offset="100%" stopColor="#FFA14A" />
           </linearGradient>
 
@@ -108,13 +108,13 @@ export const WorkHeroIllustration: React.FC = () => {
           {/* Layer 3 (Bottom) */}
           <g transform="translate(0, 40)">
             <ellipse cx="25" cy="14" rx="28" ry="12" fill="#0A1324" stroke="#38BDF8" strokeWidth="1" />
-            <path d="M -3 14 A 28 12 0 0 0 53 14 L 53 24 A 28 12 0 0 1 -3 24 Z" fill="#060C18" stroke="#38BDF8" strokeWidth="1" />
+            <path d="M -3 14 A 28 12 0 0 0 53 14 L 53 24 A 28 12 0 0 1 -3 24 Z" fill="#2C3E50" stroke="#38BDF8" strokeWidth="1" />
             <circle cx="25" cy="20" r="1.5" fill="#10B981" />
           </g>
           {/* Layer 2 (Middle) */}
           <g transform="translate(0, 20)">
             <ellipse cx="25" cy="14" rx="28" ry="12" fill="#0A1324" stroke="#38BDF8" strokeWidth="1" />
-            <path d="M -3 14 A 28 12 0 0 0 53 14 L 53 24 A 28 12 0 0 1 -3 24 Z" fill="#060C18" stroke="#38BDF8" strokeWidth="1" />
+            <path d="M -3 14 A 28 12 0 0 0 53 14 L 53 24 A 28 12 0 0 1 -3 24 Z" fill="#2C3E50" stroke="#38BDF8" strokeWidth="1" />
             <circle cx="25" cy="20" r="1.5" fill="#38BDF8" />
           </g>
           {/* Layer 1 (Top) */}
@@ -150,7 +150,7 @@ export const WorkHeroIllustration: React.FC = () => {
           />
 
           {/* Camera Notch */}
-          <circle cx="170" cy="7" r="2" fill="#334155" />
+          <circle cx="170" cy="7" r="2" fill="#34495E" />
 
           {/* Inner Display Surface */}
           <rect
@@ -173,7 +173,7 @@ export const WorkHeroIllustration: React.FC = () => {
 
           {/* URL / Branch Address Bar */}
           <rect x="62" y="19" width="160" height="14" rx="4" fill="#0D1527" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
-          <text x="70" y="29.5" fill="#94A3B8" fontSize="8" fontFamily="monospace">
+          <text x="70" y="29.5" fill="#BDC3C7" fontSize="8" fontFamily="monospace">
             app.zemprolabs.dev/live
           </text>
 
@@ -190,7 +190,7 @@ export const WorkHeroIllustration: React.FC = () => {
           {/* Left Mini Sidebar */}
           <rect x="8" y="38" width="36" height="169" fill="#040812" />
           <g transform="translate(18, 48)">
-            <rect x="0" y="0" width="16" height="12" rx="2" fill="#FF6B00" opacity="0.8" />
+            <rect x="0" y="0" width="16" height="12" rx="2" fill="#ECF0F1" opacity="0.8" />
             <rect x="0" y="18" width="16" height="12" rx="2" fill="white" opacity="0.15" />
             <rect x="0" y="36" width="16" height="12" rx="2" fill="white" opacity="0.15" />
             <rect x="0" y="54" width="16" height="12" rx="2" fill="white" opacity="0.15" />
@@ -199,17 +199,17 @@ export const WorkHeroIllustration: React.FC = () => {
           {/* Code & UI Workspace (Middle Panel) */}
           <g transform="translate(54, 46)">
             {/* Syntax lines representing high-speed application code */}
-            <rect x="0" y="0" width="80" height="6" rx="2" fill="#FF6B00" opacity="0.8" />
+            <rect x="0" y="0" width="80" height="6" rx="2" fill="#ECF0F1" opacity="0.8" />
             <rect x="90" y="0" width="40" height="6" rx="2" fill="#38BDF8" opacity="0.7" />
 
-            <rect x="12" y="12" width="60" height="5" rx="1.5" fill="#94A3B8" opacity="0.4" />
+            <rect x="12" y="12" width="60" height="5" rx="1.5" fill="#BDC3C7" opacity="0.4" />
             <rect x="78" y="12" width="50" height="5" rx="1.5" fill="#10B981" opacity="0.6" />
 
             <rect x="24" y="23" width="90" height="5" rx="1.5" fill="#F59E0B" opacity="0.5" />
-            <rect x="120" y="23" width="30" height="5" rx="1.5" fill="#94A3B8" opacity="0.3" />
+            <rect x="120" y="23" width="30" height="5" rx="1.5" fill="#BDC3C7" opacity="0.3" />
 
             {/* Clean Interactive Cursor */}
-            <rect x="156" y="22" width="2" height="7" fill="#FF6B00" />
+            <rect x="156" y="22" width="2" height="7" fill="#ECF0F1" />
 
             {/* Inset Store / App Dashboard Preview Card */}
             <g transform="translate(0, 36)">
@@ -217,8 +217,8 @@ export const WorkHeroIllustration: React.FC = () => {
               
               {/* Card Header */}
               <rect x="10" y="10" width="50" height="5" rx="2" fill="#FFF" opacity="0.7" />
-              <rect x="130" y="8" width="40" height="10" rx="3" fill="#FF6B00" opacity="0.2" />
-              <text x="150" y="15.5" fill="#FF6B00" fontSize="6.5" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
+              <rect x="130" y="8" width="40" height="10" rx="3" fill="#ECF0F1" opacity="0.2" />
+              <text x="150" y="15.5" fill="#ECF0F1" fontSize="6.5" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
                 SHOPIFY+
               </text>
 
@@ -254,7 +254,7 @@ export const WorkHeroIllustration: React.FC = () => {
           {/* Right Micro Inspector Panel on Laptop */}
           <g transform="translate(245, 46)">
             <rect x="0" y="0" width="80" height="145" rx="6" fill="#040814" stroke="rgba(255,255,255,0.06)" strokeWidth="0.8" />
-            <text x="10" y="14" fill="#94A3B8" fontSize="7" fontFamily="monospace" fontWeight="bold">
+            <text x="10" y="14" fill="#BDC3C7" fontSize="7" fontFamily="monospace" fontWeight="bold">
               // TELEMETRY
             </text>
             <rect x="10" y="22" width="60" height="4" rx="1" fill="#38BDF8" opacity="0.6" />
@@ -277,7 +277,7 @@ export const WorkHeroIllustration: React.FC = () => {
             <text x="40" y="75" fill="#FFF" fontSize="8" fontFamily="monospace" fontWeight="bold" textAnchor="middle">
               100%
             </text>
-            <text x="40" y="98" fill="#94A3B8" fontSize="6.5" fontFamily="monospace" textAnchor="middle">
+            <text x="40" y="98" fill="#BDC3C7" fontSize="6.5" fontFamily="monospace" textAnchor="middle">
               CODE OWNED
             </text>
 
@@ -290,12 +290,12 @@ export const WorkHeroIllustration: React.FC = () => {
           {/* Laptop Base / Keyboard Deck */}
           <polygon
             points="-20,215 360,215 385,230 -45,230"
-            fill="#0F172A"
+            fill="#2C3E50"
             stroke="rgba(255,255,255,0.18)"
             strokeWidth="1.5"
           />
           {/* Front Notch for Opening */}
-          <rect x="150" y="215" width="40" height="4" rx="2" fill="#334155" />
+          <rect x="150" y="215" width="40" height="4" rx="2" fill="#34495E" />
           {/* Base bottom lip reflection */}
           <line x1="-42" y1="229" x2="382" y2="229" stroke="rgba(255,255,255,0.25)" strokeWidth="0.8" />
         </g>
@@ -328,7 +328,7 @@ export const WorkHeroIllustration: React.FC = () => {
 
           {/* Dynamic Island Notch */}
           <rect x="52" y="12" width="41" height="9" rx="4.5" fill="#000" />
-          <circle cx="85" cy="16.5" r="1.5" fill="#1E293B" />
+          <circle cx="85" cy="16.5" r="1.5" fill="#34495E" />
 
           {/* Mobile App UI Elements */}
           {/* Top Bar with Profile & Cart */}
@@ -336,32 +336,32 @@ export const WorkHeroIllustration: React.FC = () => {
             <circle cx="6" cy="6" r="6" fill="#38BDF8" opacity="0.3" />
             <rect x="18" y="3" width="40" height="6" rx="2" fill="#FFF" opacity="0.8" />
             
-            <circle cx="106" cy="6" r="6" fill="#FF6B00" opacity="0.3" />
-            <circle cx="106" cy="6" r="2.5" fill="#FF6B00" />
+            <circle cx="106" cy="6" r="6" fill="#ECF0F1" opacity="0.3" />
+            <circle cx="106" cy="6" r="2.5" fill="#ECF0F1" />
           </g>
 
           {/* Mobile Banner / Video Card (Erus / BaeMeds preview) */}
           <g transform="translate(15, 48)">
-            <rect x="0" y="0" width="115" height="65" rx="10" fill="#0F172A" stroke="rgba(255,255,255,0.1)" strokeWidth="0.8" />
+            <rect x="0" y="0" width="115" height="65" rx="10" fill="#2C3E50" stroke="rgba(255,255,255,0.1)" strokeWidth="0.8" />
             
             {/* Play Button Indicator */}
-            <circle cx="57.5" cy="28" r="12" fill="#FF6B00" />
+            <circle cx="57.5" cy="28" r="12" fill="#ECF0F1" />
             <polygon points="54,23 64,28 54,33" fill="#000" />
 
             {/* Bottom mini progress bar */}
             <rect x="10" y="50" width="95" height="3" rx="1.5" fill="rgba(255,255,255,0.1)" />
-            <rect x="10" y="50" width="60" height="3" rx="1.5" fill="#FF6B00" />
+            <rect x="10" y="50" width="60" height="3" rx="1.5" fill="#ECF0F1" />
           </g>
 
           {/* Mobile Fast Action Cards */}
           <g transform="translate(15, 122)">
-            <rect x="0" y="0" width="115" height="28" rx="8" fill="#060C18" stroke="rgba(56,189,248,0.25)" strokeWidth="0.8" />
+            <rect x="0" y="0" width="115" height="28" rx="8" fill="#2C3E50" stroke="rgba(56,189,248,0.25)" strokeWidth="0.8" />
             <circle cx="16" cy="14" r="6" fill="#10B981" opacity="0.2" />
             <circle cx="16" cy="14" r="2" fill="#10B981" />
             <text x="28" y="12" fill="#FFF" fontSize="7" fontFamily="sans-serif" fontWeight="bold">
               Instant Mobile Checkout
             </text>
-            <text x="28" y="20" fill="#94A3B8" fontSize="5.5" fontFamily="monospace">
+            <text x="28" y="20" fill="#BDC3C7" fontSize="5.5" fontFamily="monospace">
               UPI &bull; Razorpay &bull; Apple Pay
             </text>
           </g>
@@ -378,7 +378,7 @@ export const WorkHeroIllustration: React.FC = () => {
           </g>
 
           {/* Bottom Home Indicator Bar */}
-          <rect x="47" y="210" width="51" height="2.5" rx="1.25" fill="#94A3B8" opacity="0.6" />
+          <rect x="47" y="210" width="51" height="2.5" rx="1.25" fill="#BDC3C7" opacity="0.6" />
         </g>
 
         {/* ======================================================== */}
@@ -392,15 +392,15 @@ export const WorkHeroIllustration: React.FC = () => {
             height="32"
             rx="16"
             fill="#060C1A"
-            stroke="rgba(255, 107, 0, 0.4)"
+            stroke="rgba(236,240,241, 0.4)"
             strokeWidth="1.2"
           />
-          <circle cx="16" cy="16" r="4.5" fill="#FF6B00" />
+          <circle cx="16" cy="16" r="4.5" fill="#ECF0F1" />
 
           <text x="32" y="16" fill="#FFF" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
             WEB &bull; MOBILE &bull; CLOUD
           </text>
-          <text x="32" y="24" fill="#94A3B8" fontSize="7" fontFamily="monospace">
+          <text x="32" y="24" fill="#BDC3C7" fontSize="7" fontFamily="monospace">
             BUILT FOR REAL CLIENTS
           </text>
         </g>
@@ -415,7 +415,7 @@ export const WorkHeroIllustration: React.FC = () => {
             width="175"
             height="44"
             rx="14"
-            fill="#060C18"
+            fill="#2C3E50"
             stroke="rgba(16, 185, 129, 0.35)"
             strokeWidth="1.2"
           />
@@ -427,7 +427,7 @@ export const WorkHeroIllustration: React.FC = () => {
           <text x="44" y="20" fill="#FFF" fontSize="9.5" fontFamily="display" fontWeight="bold">
             100% In Production
           </text>
-          <text x="44" y="32" fill="#94A3B8" fontSize="7.5" fontFamily="monospace">
+          <text x="44" y="32" fill="#BDC3C7" fontSize="7.5" fontFamily="monospace">
             Active real-world client traffic
           </text>
         </g>

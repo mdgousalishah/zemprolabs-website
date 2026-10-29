@@ -73,7 +73,7 @@ export const Navbar: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 min-h-[72px] sm:min-h-[80px] flex items-center ${
           scrolled
-            ? 'bg-[#090A0D]/90 backdrop-blur-md border-b border-white/10 py-2.5 shadow-md'
+            ? 'bg-[#2C3E50]/90 backdrop-blur-md border-b border-white/10 py-2.5 shadow-md'
             : 'bg-transparent py-4'
         }`}
       >
@@ -108,7 +108,7 @@ export const Navbar: React.FC = () => {
             <Magnetic strength={10}>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-1.5 px-4.5 py-2.5 rounded-lg text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all duration-200 hover:scale-[1.03] active:scale-95 shadow-[0_0_20px_rgba(255,107,0,0.25)]"
+                className="inline-flex items-center gap-1.5 px-4.5 py-2.5 rounded-lg text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all duration-200 hover:scale-[1.03] active:scale-95 shadow-[0_0_20px_rgba(236,240,241,0.25)]"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -120,7 +120,7 @@ export const Navbar: React.FC = () => {
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-lg text-[#94A3B8] hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+            className="lg:hidden p-2 rounded-lg text-[#94A3B8] hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#ECF0F1]"
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
           >
@@ -140,7 +140,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Navigation Drawer */}
       <div
-        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-xs bg-[#090A0D] border-l border-white/10 p-6 flex flex-col justify-between transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-xs bg-[#2C3E50] border-l border-white/10 p-6 flex flex-col justify-between transform transition-transform duration-300 ease-in-out lg:hidden ${
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         role="dialog"
@@ -169,7 +169,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setMobileOpen(false)}
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-all ${
                     active
-                      ? 'text-white bg-[#FF6B00]/10 border border-[#FF6B00]/30 font-semibold'
+                      ? 'text-white bg-[#ECF0F1]/10 border border-[#ECF0F1]/30 font-semibold'
                       : 'text-[#94A3B8] hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -184,7 +184,7 @@ export const Navbar: React.FC = () => {
           <Link
             to="/contact"
             onClick={() => setMobileOpen(false)}
-            className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_20px_rgba(255,107,0,0.3)]"
+            className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-[0_0_20px_rgba(236,240,241,0.3)]"
           >
             <span>Start a Project</span>
             <ArrowUpRight className="w-5 h-5" />

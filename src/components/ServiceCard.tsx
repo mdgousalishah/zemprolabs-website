@@ -9,7 +9,7 @@ interface ServiceCardProps {
 }
 
 const serviceMeta: Record<string, { tag: string; accentColor: string; subtitle: string }> = {
-  development: { tag: 'MOST POPULAR', accentColor: '#FF6B00', subtitle: 'Websites, Online Stores & Mobile Apps' },
+  development: { tag: 'MOST POPULAR', accentColor: '#ECF0F1', subtitle: 'Websites, Online Stores & Mobile Apps' },
   'seo-growth': { tag: 'HIGH IMPACT', accentColor: '#38BDF8', subtitle: 'Google Search Ranking & Fast Loading' },
   enterprise: { tag: 'BUSINESS AUTOMATION', accentColor: '#10B981', subtitle: 'ServiceNow & Custom Workflows' },
   marketing: { tag: 'CUSTOMER ACQUISITION', accentColor: '#F59E0B', subtitle: 'Google & Social Media Ads' },
@@ -20,16 +20,16 @@ const serviceMeta: Record<string, { tag: string; accentColor: string; subtitle: 
 export const ServiceCard: React.FC<ServiceCardProps> = ({ service, isSelected = false }) => {
   const meta = serviceMeta[service.id] || {
     tag: 'SERVICE',
-    accentColor: '#FF6B00',
+    accentColor: '#ECF0F1',
     subtitle: 'Digital Capability'
   };
 
   return (
     <div
       id={service.id}
-      className={`rounded-2xl bg-[#070D18]/95 border transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden shadow-xl ${
+      className={`rounded-2xl bg-[#2C3E50]/95 border transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden shadow-xl ${
         isSelected
-          ? 'border-[#FF6B00] shadow-[0_0_30px_rgba(255,107,0,0.18)] scale-[1.01]'
+          ? 'border-[#ECF0F1] shadow-[0_0_30px_rgba(236,240,241,0.18)] scale-[1.01]'
           : 'border-white/[0.1] hover:border-white/30 hover:shadow-[0_15px_40px_rgba(0,0,0,0.7)]'
       }`}
     >
@@ -58,7 +58,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, isSelected = 
         </div>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-bold font-display text-white mb-1 group-hover:text-[#FF6B00] transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold font-display text-white mb-1 group-hover:text-[#ECF0F1] transition-colors">
           {service.title}
         </h3>
 
@@ -70,14 +70,14 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, isSelected = 
         </div>
 
         {/* Short Descriptor */}
-        <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-5">
+        <p className="text-xs sm:text-sm text-[#BDC3C7] leading-relaxed mb-5">
           {service.shortDesc}
         </p>
 
         {/* Capabilities Checklist */}
         <div className="space-y-2 mb-6">
           <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5">
-            <Shield className="w-3 h-3 text-[#FF6B00]" />
+            <Shield className="w-3 h-3 text-[#ECF0F1]" />
             <span>What we handle for you:</span>
           </div>
 
@@ -96,7 +96,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, isSelected = 
           {service.techStack.slice(0, 6).map((tech, idx) => (
             <span
               key={idx}
-              className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#03060C] text-slate-400 border border-white/5"
+              className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#2C3E50] text-slate-400 border border-white/5"
             >
               {tech}
             </span>
@@ -105,7 +105,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, isSelected = 
 
         <Link
           to={`/contact?service=${encodeURIComponent(service.title)}`}
-          className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-[#FF6B00] group-hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-[#ECF0F1] group-hover:text-white transition-colors"
         >
           <span>TALK TO US ABOUT THIS &rarr;</span>
         </Link>

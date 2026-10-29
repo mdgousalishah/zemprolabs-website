@@ -26,7 +26,7 @@ const transitStages: TransitStage[] = [
       'Signed NDA & 100% Code Ownership guaranteed in writing'
     ],
     deliverable: 'Clear Project Scope, Timeline & Fixed Milestone Plan',
-    color: '#FF6B00'
+    color: '#ECF0F1'
   },
   {
     num: '02',
@@ -82,14 +82,14 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
   return (
     <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24 bg-[#03060E] border-t border-white/[0.08] relative overflow-hidden">
       {/* Ambient Radial Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-96 bg-[#FF6B00]/[0.02] blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-96 bg-[#ECF0F1]/[0.02] blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-mono mb-3">
-            <Workflow className="w-3.5 h-3.5 text-[#FF6B00]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ECF0F1]/10 border border-[#ECF0F1]/25 text-[#ECF0F1] text-xs font-mono mb-3">
+            <Workflow className="w-3.5 h-3.5 text-[#ECF0F1]" />
             <span>HOW WE WORK // 4 SIMPLE STEPS</span>
           </div>
 
@@ -97,7 +97,7 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
             From your first call to launch and beyond.
           </h2>
 
-          <p className="text-sm sm:text-base text-[#94A3B8] mt-2.5 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#BDC3C7] mt-2.5 leading-relaxed">
             No guesswork, no disappearing developers, and no confusing technical jargon. You always know what is being built, when it will be ready, and can test working previews every week.
           </p>
         </div>
@@ -107,7 +107,7 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
           {/* Progress Track */}
           <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-white/[0.08] -translate-y-1/2 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-[#FF6B00] via-[#06B6D4] to-[#10B981] transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-[#ECF0F1] via-[#06B6D4] to-[#10B981] transition-all duration-500 ease-out"
               style={{
                 width: `${((activeStageIndex + 1) / transitStages.length) * 100}%`
               }}
@@ -126,16 +126,16 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
                   onClick={() => setActiveStageIndex(idx)}
                   className={`text-left p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer relative group ${
                     isSelected
-                      ? 'bg-[#08101E] border-[#FF6B00] shadow-[0_0_25px_rgba(255,107,0,0.15)] scale-[1.02]'
+                      ? 'bg-[#2C3E50] border-[#ECF0F1] shadow-[0_0_25px_rgba(236,240,241,0.15)] scale-[1.02]'
                       : isCompleted
-                      ? 'bg-[#050A14] border-[#06B6D4]/40 hover:border-white/30'
-                      : 'bg-[#04070F] border-white/[0.08] hover:border-white/20 hover:bg-[#070D1A]'
+                      ? 'bg-[#2C3E50] border-[#06B6D4]/40 hover:border-white/30'
+                      : 'bg-[#04070F] border-white/[0.08] hover:border-white/20 hover:bg-[#2C3E50]'
                   }`}
                 >
                   {/* Floating Indicator above active waypoint */}
                   {isSelected && (
-                    <div className="hidden lg:flex absolute -top-8 left-1/2 -translate-x-1/2 items-center gap-1 text-[10px] font-mono text-[#FF6B00] animate-bounce">
-                      <Workflow className="w-3.5 h-3.5 fill-[#FF6B00]" />
+                    <div className="hidden lg:flex absolute -top-8 left-1/2 -translate-x-1/2 items-center gap-1 text-[10px] font-mono text-[#ECF0F1] animate-bounce">
+                      <Workflow className="w-3.5 h-3.5 fill-[#ECF0F1]" />
                       <span>ACTIVE PHASE</span>
                     </div>
                   )}
@@ -143,7 +143,7 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className="text-[11px] font-mono font-bold tracking-wider"
-                      style={{ color: isSelected ? stage.color : '#94A3B8' }}
+                      style={{ color: isSelected ? stage.color : '#BDC3C7' }}
                     >
                       {stage.station}
                     </span>
@@ -151,7 +151,7 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
                     <span
                       className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono font-bold transition-all ${
                         isSelected
-                          ? 'bg-[#FF6B00] text-black shadow-md'
+                          ? 'bg-[#ECF0F1] text-[#2C3E50] shadow-md'
                           : isCompleted
                           ? 'bg-[#06B6D4]/20 text-[#06B6D4] border border-[#06B6D4]/50'
                           : 'bg-white/5 text-slate-400 border border-white/10'
@@ -175,7 +175,7 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
         </div>
 
         {/* Selected Station Deep-Dive Cockpit Panel */}
-        <div className="p-6 sm:p-9 rounded-3xl bg-[#070D1A]/95 border border-white/[0.12] shadow-2xl relative overflow-hidden">
+        <div className="p-6 sm:p-9 rounded-3xl bg-[#2C3E50]/95 border border-white/[0.12] shadow-2xl relative overflow-hidden">
           {/* Top colored accent line */}
           <div
             className="absolute top-0 left-0 right-0 h-[3px] transition-colors duration-500"
@@ -221,7 +221,7 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
 
             {/* Right Col: Milestone Seal & Deliverable Sign-off (5 cols) */}
             <div className="lg:col-span-5">
-              <div className="p-5 sm:p-6 rounded-2xl bg-[#040810] border border-white/10 space-y-4 shadow-inner">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#2C3E50] border border-white/10 space-y-4 shadow-inner">
                 <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-xs font-mono">
                   <span className="text-slate-400">// YOUR GUARANTEE</span>
                   <span className="text-[#10B981] flex items-center gap-1 font-bold">
@@ -234,7 +234,7 @@ export const ServicesRiverTransitBlueprint: React.FC = () => {
                   <div className="text-[11px] font-mono text-slate-400 uppercase">
                     What you receive at this step:
                   </div>
-                  <div className="text-sm sm:text-base font-bold font-display text-white p-3 rounded-xl bg-white/[0.03] border border-white/10 text-[#FF6B00]">
+                  <div className="text-sm sm:text-base font-bold font-display text-white p-3 rounded-xl bg-white/[0.03] border border-white/10 text-[#ECF0F1]">
                     {activeStage.deliverable}
                   </div>
                 </div>

@@ -138,7 +138,7 @@ export const HeroLightBeamSystem: React.FC<HeroLightBeamSystemProps> = ({ childr
       const beamGrad = ctx.createRadialGradient(originX, originY, 0, targetX, targetY, dist * 1.1);
       beamGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
       beamGrad.addColorStop(0.08, 'rgba(255, 140, 0, 0.7)');
-      beamGrad.addColorStop(0.3, 'rgba(255, 107, 0, 0.25)');
+      beamGrad.addColorStop(0.3, 'rgba(236,240,241, 0.25)');
       beamGrad.addColorStop(0.7, 'rgba(6, 182, 212, 0.1)');
       beamGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
@@ -157,8 +157,8 @@ export const HeroLightBeamSystem: React.FC<HeroLightBeamSystemProps> = ({ childr
       const coreGrad = ctx.createLinearGradient(originX, originY, targetX, targetY);
       coreGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
       coreGrad.addColorStop(0.2, 'rgba(255, 180, 50, 0.8)');
-      coreGrad.addColorStop(0.7, 'rgba(255, 107, 0, 0.3)');
-      coreGrad.addColorStop(1, 'rgba(255, 107, 0, 0.05)');
+      coreGrad.addColorStop(0.7, 'rgba(236,240,241, 0.3)');
+      coreGrad.addColorStop(1, 'rgba(236,240,241, 0.05)');
 
       ctx.fillStyle = coreGrad;
       ctx.fill();
@@ -182,7 +182,7 @@ export const HeroLightBeamSystem: React.FC<HeroLightBeamSystemProps> = ({ childr
       const flareGrad = ctx.createRadialGradient(originX, originY, 0, originX, originY, 30);
       flareGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
       flareGrad.addColorStop(0.3, 'rgba(255, 140, 0, 0.9)');
-      flareGrad.addColorStop(1, 'rgba(255, 107, 0, 0)');
+      flareGrad.addColorStop(1, 'rgba(236,240,241, 0)');
 
       ctx.save();
       ctx.beginPath();
@@ -210,7 +210,7 @@ export const HeroLightBeamSystem: React.FC<HeroLightBeamSystemProps> = ({ childr
   return (
     <div ref={heroRef} className="relative w-full overflow-hidden cursor-crosshair">
       {/* Background Ambience */}
-      <div className="ambient-glow -top-32 -left-32 w-96 h-96 bg-[#FF6B00]/15"></div>
+      <div className="ambient-glow -top-32 -left-32 w-96 h-96 bg-[#ECF0F1]/15"></div>
       <div className="ambient-glow top-48 -right-32 w-96 h-96 bg-[#004AAD]/20"></div>
 
       {/* Dynamic 0-Latency Light Beam Canvas */}
@@ -274,8 +274,8 @@ export const HeroLightBeamSystem: React.FC<HeroLightBeamSystemProps> = ({ childr
               </div>
 
               {/* Secret Architect Notes Over Description */}
-              <div className="p-3 rounded-xl bg-black/90 border-2 border-[#FF6B00] shadow-[0_0_25px_rgba(255,107,0,0.5)] space-y-1 max-w-[470px]">
-                <div className="text-[10px] text-[#FF6B00] font-bold tracking-wider">
+              <div className="p-3 rounded-xl bg-black/90 border-2 border-[#ECF0F1] shadow-[0_0_25px_rgba(236,240,241,0.5)] space-y-1 max-w-[470px]">
+                <div className="text-[10px] text-[#ECF0F1] font-bold tracking-wider">
                   [ ARCHITECT DIRECTIVE // CONFIDENTIAL ]
                 </div>
                 <div className="text-xs text-white leading-relaxed font-semibold">

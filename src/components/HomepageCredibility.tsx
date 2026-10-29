@@ -8,7 +8,7 @@ export const HomepageCredibility: React.FC = () => {
       label: 'Qualified Engineering Team',
       desc: 'Hands-on software engineers dedicated to maintainable, dependable code.',
       icon: Users,
-      color: '#FF6B00'
+      color: '#ECF0F1'
     },
     {
       label: 'Custom Digital Solutions',
@@ -37,16 +37,16 @@ export const HomepageCredibility: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[rgba(148,163,184,0.12)]">
-      <div className="rounded-3xl bg-[#0B0F17] border border-[rgba(148,163,184,0.18)] p-8 sm:p-14 shadow-2xl space-y-12">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[rgba(44,62,80,0.12)]">
+      <div className="rounded-3xl bg-[#34495E] border border-[rgba(44,62,80,0.18)] p-8 sm:p-14 shadow-2xl space-y-12">
         <div className="max-w-3xl space-y-4">
-          <div className="text-xs font-mono text-[#FF6B00] uppercase tracking-wider">
+          <div className="text-xs font-mono text-[#ECF0F1] uppercase tracking-wider">
             // ENGINEERING CREDIBILITY
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white tracking-tight">
             Built by Engineers. Designed for Business.
           </h2>
-          <p className="text-base sm:text-lg text-[#94A3B8] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#BDC3C7] leading-relaxed">
             From development to ongoing management, Zemprolabs provides engineering expertise and long-term technical support for businesses building their digital future.
           </p>
         </div>
@@ -58,7 +58,7 @@ export const HomepageCredibility: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="p-5 rounded-xl bg-[#05070D] border border-[rgba(148,163,184,0.1)] hover:border-[rgba(148,163,184,0.25)] transition-all flex flex-col justify-between space-y-4"
+                className="p-5 rounded-xl bg-[#2C3E50] border border-[rgba(44,62,80,0.1)] hover:border-[rgba(44,62,80,0.25)] transition-all flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-3">
                   <div
@@ -68,18 +68,18 @@ export const HomepageCredibility: React.FC = () => {
                     <Icon className="w-4 h-4" />
                   </div>
                   <h3 className="text-sm font-bold font-display text-white">{pt.label}</h3>
-                  <p className="text-xs text-[#94A3B8] leading-relaxed">{pt.desc}</p>
+                  <p className="text-xs text-[#BDC3C7] leading-relaxed">{pt.desc}</p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[rgba(148,163,184,0.1)] text-xs font-mono text-[#94A3B8]">
+        <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[rgba(44,62,80,0.1)] text-xs font-mono text-[#BDC3C7]">
           <span>// QUALIFIED ENGINEERS &bull; TRUSTED TECHNOLOGY</span>
           <Link
             to="/about"
-            className="inline-flex items-center gap-1.5 text-white hover:text-[#FF6B00] transition-colors font-semibold"
+            className="inline-flex items-center gap-1.5 text-white hover:text-[#ECF0F1] transition-colors font-semibold"
           >
             <span>Learn More About Our Team</span>
             <ArrowRight className="w-3.5 h-3.5" />

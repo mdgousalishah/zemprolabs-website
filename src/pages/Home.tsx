@@ -38,13 +38,14 @@ import {
   FloatingParticles,
   useLenis
 } from '../components/motion';
+import { GsapScrollTilt, GsapParallax, GsapRevealScrub } from '../components/gsap';
 
 const clientBrandWordmarks = [
   {
     id: 'baemeds',
     render: () => (
       <span className="font-display font-semibold tracking-tight text-lg sm:text-xl">
-        Bae<span className="font-bold text-slate-200 group-hover:text-[#FF6B00] transition-colors">Meds</span>
+        Bae<span className="font-bold text-slate-200 group-hover:text-[#BDC3C7] transition-colors">Meds</span>
       </span>
     )
   },
@@ -85,7 +86,7 @@ const clientBrandWordmarks = [
     id: 'mohsin',
     render: () => (
       <span className="font-display font-bold tracking-widest text-base sm:text-lg uppercase">
-        MOHSIN<span className="text-[10px] font-mono tracking-widest text-slate-400 group-hover:text-[#FF6B00] ml-1 transition-colors">.SURGICALS</span>
+        MOHSIN<span className="text-[10px] font-mono tracking-widest text-slate-400 group-hover:text-[#BDC3C7] ml-1 transition-colors">.SURGICALS</span>
       </span>
     )
   },
@@ -93,7 +94,7 @@ const clientBrandWordmarks = [
     id: 'conavlytics',
     render: () => (
       <span className="font-mono font-bold tracking-tighter text-base sm:text-lg">
-        conav<span className="text-slate-300 group-hover:text-[#FF6B00] font-normal transition-colors">lytics</span>
+        conav<span className="text-slate-300 group-hover:text-[#BDC3C7] font-normal transition-colors">lytics</span>
       </span>
     )
   },
@@ -165,15 +166,21 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (DARK with Real Architectural Glass Facade)               */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center bg-[#090A0D] text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Full-bleed Real Architectural Glass Facade Background Image */}
+      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center bg-[#2C3E50] text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Full-bleed Ambient Background Video (falls back to the facade image) */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/hero-building-facade.jpg"
-            alt="Modern architectural glass headquarters"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster="/images/hero-building-facade.jpg"
             className="w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter brightness-90"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/75 to-[#090A0D]/50" />
+          >
+            <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50] via-[#2C3E50]/75 to-[#2C3E50]/50" />
         </div>
 
         {/* Ambient Floating Luminous Energy Particles */}
@@ -183,8 +190,8 @@ export const Home: React.FC = () => {
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
           {/* Studio Label with Antigravity Floating Motion */}
           <FloatingElement distance={4} duration={5}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(255,107,0,0.15)]">
-              <span className="w-2 h-2 rounded-full bg-[#FF6B00]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(236,240,241,0.15)]">
+              <span className="w-2 h-2 rounded-full bg-[#ECF0F1]" />
               <span className="text-xs font-mono uppercase tracking-widest text-slate-300">
                 Engineering &bull; Business Development &bull; Commerce &bull; Cloud &amp; SEO
               </span>
@@ -194,9 +201,9 @@ export const Home: React.FC = () => {
           {/* Confident Headline with 3D Perspective Line Reveal */}
           <div className="space-y-4">
             <PerspectiveLineReveal duration={1.1} delay={0.05}>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-display tracking-tight text-white leading-[1.05]">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold font-display tracking-[-0.045em] text-white leading-[0.98]">
                 We Build.{' '}
-                <span className="text-[#FF6B00]">You Grow.</span>
+                <span className="text-[#ECF0F1]">You Grow.</span>
               </h1>
             </PerspectiveLineReveal>
             <ScrollReveal preset="fade-up" duration={1.0} delay={0.18}>
@@ -211,7 +218,7 @@ export const Home: React.FC = () => {
             <Magnetic strength={14}>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_25px_rgba(255,107,0,0.35)]"
+                className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_25px_rgba(236,240,241,0.35)]"
               >
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4" />
@@ -235,7 +242,7 @@ export const Home: React.FC = () => {
               <div className="text-xs text-slate-400 mt-0.5">Production Deployments</div>
             </div>
             <div className="py-2">
-              <div className="text-2xl sm:text-3xl font-bold font-display text-[#FF6B00]">Enterprise</div>
+              <div className="text-2xl sm:text-3xl font-bold font-display text-[#ECF0F1]">Enterprise</div>
               <div className="text-xs text-slate-400 mt-0.5">Certified ServiceNow Practice</div>
             </div>
             <div className="py-2">
@@ -253,7 +260,7 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 2. TRUSTED CLIENTS MARQUEE (The User Loves This Section)                 */}
       {/* ========================================================================= */}
-      <section className="py-10 border-y border-white/10 bg-[#07080B] overflow-hidden relative">
+      <section className="py-10 border-y border-white/10 bg-[#2C3E50] overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
           <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-slate-400">
             TRUSTED BY FOUNDERS &amp; ENGINEERING TEAMS GLOBALLY
@@ -284,12 +291,12 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4. CORE DISCIPLINES (DARK SECTION - Balanced Studio Photo & 2x2 Practices) */}
       {/* ========================================================================= */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-t border-white/10">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto space-y-10">
           {/* Section Header with Scroll Reveal */}
           <ScrollReveal preset="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-[#FF6B00] font-semibold">
+              <div className="text-xs font-mono uppercase tracking-wider text-[#ECF0F1] font-semibold">
                 // CORE DISCIPLINES • ENGINEERING PRACTICES
               </div>
               <div className="mt-1">
@@ -306,7 +313,7 @@ export const Home: React.FC = () => {
 
             <Link
               to="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-[#FF6B00] transition-colors shrink-0 pb-1"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-[#BDC3C7] transition-colors shrink-0 pb-1"
             >
               <span>Explore All Capabilities</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -323,16 +330,16 @@ export const Home: React.FC = () => {
                   alt="Zemprolabs senior engineering team collaborating"
                   className="w-full h-full object-cover object-center filter brightness-95 group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50] via-transparent to-transparent opacity-80" />
                 <div className="absolute bottom-3 left-4 right-4 text-[11px] font-mono text-slate-300 flex items-center justify-between">
                   <span>Hyderabad Engineering Center</span>
-                  <span className="text-[#FF6B00]">Direct Access</span>
+                  <span className="text-[#ECF0F1]">Direct Access</span>
                 </div>
               </CinematicCurtainReveal>
 
               <div className="p-4.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-2 backdrop-blur-sm">
-                <div className="flex items-center gap-2 text-xs font-mono text-[#FF6B00] font-semibold">
-                  <ShieldCheck className="w-4 h-4 text-[#FF6B00]" />
+                <div className="flex items-center gap-2 text-xs font-mono text-[#ECF0F1] font-semibold">
+                  <ShieldCheck className="w-4 h-4 text-[#ECF0F1]" />
                   <span>THE ZEMPROLABS STANDARD</span>
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed">
@@ -349,7 +356,7 @@ export const Home: React.FC = () => {
                   <div className="h-full p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
+                        <div className="w-8 h-8 rounded-lg bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 flex items-center justify-center text-[#ECF0F1]">
                           <Code2 className="w-4 h-4" />
                         </div>
                         <span className="text-[11px] font-mono text-slate-400">01 // FULL-STACK</span>
@@ -382,7 +389,7 @@ export const Home: React.FC = () => {
                   <div className="h-full p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
+                        <div className="w-8 h-8 rounded-lg bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 flex items-center justify-center text-[#ECF0F1]">
                           <ShoppingBag className="w-4 h-4" />
                         </div>
                         <span className="text-[11px] font-mono text-slate-400">02 // COMMERCE</span>
@@ -412,14 +419,14 @@ export const Home: React.FC = () => {
               {/* Discipline 3: Enterprise ServiceNow (Bottom-Left 3D Pitch with BorderBeam) */}
               <SpatialCardCascade index={2}>
                 <AntigravityTiltCard tiltMax={6} className="h-full rounded-xl">
-                  <div className="relative overflow-hidden h-full p-5 rounded-xl bg-white/[0.03] border border-[#FF6B00]/30 hover:border-[#FF6B00]/50 transition-all flex flex-col justify-between space-y-3">
-                    <BorderBeam size={180} duration={7} colorFrom="#FF6B00" colorTo="#FFA048" />
+                  <div className="relative overflow-hidden h-full p-5 rounded-xl bg-white/[0.03] border border-[#ECF0F1]/30 hover:border-[#ECF0F1]/50 transition-all flex flex-col justify-between space-y-3">
+                    <BorderBeam size={180} duration={7} colorFrom="#ECF0F1" colorTo="#BDC3C7" />
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/15 border border-[#FF6B00]/30 flex items-center justify-center text-[#FF6B00]">
+                        <div className="w-8 h-8 rounded-lg bg-[#ECF0F1]/15 border border-[#ECF0F1]/30 flex items-center justify-center text-[#ECF0F1]">
                           <Workflow className="w-4 h-4" />
                         </div>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FF6B00]/20 text-[#FF6B00] border border-[#FF6B00]/30 font-semibold">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#ECF0F1]/20 text-[#ECF0F1] border border-[#ECF0F1]/30 font-semibold">
                           ENTERPRISE
                         </span>
                       </div>
@@ -451,7 +458,7 @@ export const Home: React.FC = () => {
                   <div className="h-full p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
+                        <div className="w-8 h-8 rounded-lg bg-[#ECF0F1]/10 border border-[#ECF0F1]/20 flex items-center justify-center text-[#ECF0F1]">
                           <Server className="w-4 h-4" />
                         </div>
                         <span className="text-[11px] font-mono text-slate-400">04 // CLOUD</span>
@@ -486,26 +493,26 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4A. DELIVERY LIFECYCLE — Architectural Milestone Pipeline (.AGENTS SPEC)  */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-slate-900 border-t border-stone-300/80">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#2C3E50] border-t border-[#2C3E50]/15">
         <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
           {/* Header */}
-          <ScrollReveal preset="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-stone-300/80">
+          <ScrollReveal preset="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#2C3E50]/15">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#FF6B00] font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#2C3E50] font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2C3E50]" />
                 <span>HOW WE DELIVER &bull; 3-PHASE MILESTONE SPEC</span>
               </div>
               <div className="mt-1">
                 <TextReveal
                   text="Three phases. One predictable outcome."
                   as="h2"
-                  className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-slate-900"
+                  className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-[#2C3E50]"
                 />
               </div>
             </div>
             <Link
               to="/process"
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-slate-900 hover:text-[#FF6B00] transition-colors self-start md:self-auto pb-1 group"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#2C3E50] hover:text-[#34495E] transition-colors self-start md:self-auto pb-1 group"
             >
               <span>Full Process Breakdown</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -516,82 +523,82 @@ export const Home: React.FC = () => {
           <LaserConnectPipeline className="my-6" />
 
           {/* 3-Column Sequential Milestone Pipeline */}
-          <StaggerContainer staggerDelay={0.22} className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-stone-300/80">
+          <StaggerContainer staggerDelay={0.22} className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-[#2C3E50]/15">
             {/* Phase 01 */}
             <StaggerItem className="flex flex-col justify-between space-y-6 md:pr-8 lg:pr-10">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-4xl sm:text-5xl font-black font-display text-slate-900 tracking-tight">
+                  <span className="text-4xl sm:text-5xl font-black font-display text-[#2C3E50] tracking-tight">
                     01
                   </span>
-                  <span className="text-[11px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-stone-200/80 text-stone-700">
+                  <span className="text-[11px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#BDC3C7] text-[#34495E]">
                     Days 01–03
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold font-display text-slate-900">
+                  <h3 className="text-xl font-bold font-display text-[#2C3E50]">
                     Architecture &amp; Agile Roadmap
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mt-2 font-normal">
+                  <p className="text-sm text-[#34495E] leading-relaxed mt-2 font-normal">
                     We audit your requirements, establish API and data contracts, and structure your backlog into clear 2-week agile sprints with committed milestones. You get a transparent technical blueprint before engineering begins.
                   </p>
                 </div>
               </div>
-              <div className="pt-4 border-t border-stone-200 text-xs font-mono text-stone-700 flex items-center justify-between">
-                <span className="text-stone-500">Milestone</span>
-                <span className="font-semibold text-slate-900">Agile Blueprint &rarr;</span>
+              <div className="pt-4 border-t border-[#2C3E50]/12 text-xs font-mono text-[#34495E] flex items-center justify-between">
+                <span className="text-[#7F8C8D]">Milestone</span>
+                <span className="font-semibold text-[#2C3E50]">Agile Blueprint &rarr;</span>
               </div>
             </StaggerItem>
 
             {/* Phase 02 */}
-            <StaggerItem className="flex flex-col justify-between space-y-6 md:px-8 lg:px-10 border-t md:border-t-0 pt-8 md:pt-0 border-stone-200">
+            <StaggerItem className="flex flex-col justify-between space-y-6 md:px-8 lg:px-10 border-t md:border-t-0 pt-8 md:pt-0 border-[#2C3E50]/12">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-4xl sm:text-5xl font-black font-display text-slate-900 tracking-tight">
+                  <span className="text-4xl sm:text-5xl font-black font-display text-[#2C3E50] tracking-tight">
                     02
                   </span>
-                  <span className="text-[11px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FF6B00]/10 text-[#FF6B00] border border-[#FF6B00]/25">
+                  <span className="text-[11px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#2C3E50]/10 text-[#2C3E50] border border-[#2C3E50]/25">
                     Continuous Sprints
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold font-display text-slate-900">
+                  <h3 className="text-xl font-bold font-display text-[#2C3E50]">
                     Agile Sprints &amp; Direct Access
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mt-2 font-normal">
+                  <p className="text-sm text-[#34495E] leading-relaxed mt-2 font-normal">
                     We work in rapid agile sprints with regular staging deployments and direct Slack collaboration with senior architects. We don't believe in tossing software over a fence and disappearing—we stay embedded to refine, maintain, and scale your product.
                   </p>
                 </div>
               </div>
-              <div className="pt-4 border-t border-stone-200 text-xs font-mono text-stone-700 flex items-center justify-between">
-                <span className="text-stone-500">Methodology</span>
-                <span className="font-semibold text-[#FF6B00]">Agile Collaboration &rarr;</span>
+              <div className="pt-4 border-t border-[#2C3E50]/12 text-xs font-mono text-[#34495E] flex items-center justify-between">
+                <span className="text-[#7F8C8D]">Methodology</span>
+                <span className="font-semibold text-[#2C3E50]">Agile Collaboration &rarr;</span>
               </div>
             </StaggerItem>
 
             {/* Phase 03 */}
-            <StaggerItem className="flex flex-col justify-between space-y-6 md:pl-8 lg:pl-10 border-t md:border-t-0 pt-8 md:pt-0 border-stone-200">
+            <StaggerItem className="flex flex-col justify-between space-y-6 md:pl-8 lg:pl-10 border-t md:border-t-0 pt-8 md:pt-0 border-[#2C3E50]/12">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-4xl sm:text-5xl font-black font-display text-slate-900 tracking-tight">
+                  <span className="text-4xl sm:text-5xl font-black font-display text-[#2C3E50] tracking-tight">
                     03
                   </span>
-                  <span className="text-[11px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-stone-200/80 text-stone-700">
+                  <span className="text-[11px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#BDC3C7] text-[#34495E]">
                     Zero Lock-In
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold font-display text-slate-900">
+                  <h3 className="text-xl font-bold font-display text-[#2C3E50]">
                     Ongoing Care or Clean IP Handover
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mt-2 font-normal">
+                  <p className="text-sm text-[#34495E] leading-relaxed mt-2 font-normal">
                     Our goal is a long-term engineering partnership. But if you ever decide to take things in-house or move on, you own 100% of your intellectual property—complete Git repositories, cloud credentials, documentation, and CI/CD pipelines transferred with zero friction.
                   </p>
                 </div>
               </div>
-              <div className="pt-4 border-t border-stone-200 text-xs font-mono text-stone-700 flex items-center justify-between">
-                <span className="text-stone-500">Freedom</span>
-                <span className="font-semibold text-slate-900">100% IP Transfer &check;</span>
+              <div className="pt-4 border-t border-[#2C3E50]/12 text-xs font-mono text-[#34495E] flex items-center justify-between">
+                <span className="text-[#7F8C8D]">Freedom</span>
+                <span className="font-semibold text-[#2C3E50]">100% IP Transfer &check;</span>
               </div>
             </StaggerItem>
           </StaggerContainer>
@@ -601,13 +608,13 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4B. POST-LAUNCH OPS — Bold Split Layout (DARK)                             */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-t border-white/10">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-t border-white/10">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
             {/* Left: Bold statement */}
             <div className="lg:col-span-2 flex flex-col justify-between">
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#FF6B00] font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#ECF0F1] font-semibold">
                   // POST-LAUNCH
                 </span>
                 <PerspectiveLineReveal duration={1.2}>
@@ -623,7 +630,7 @@ export const Home: React.FC = () => {
               </div>
               <Link
                 to="/managed-services"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#FF6B00] hover:text-[#ff7b1a] transition-colors mt-6"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#ECF0F1] hover:text-[#BDC3C7] transition-colors mt-6"
               >
                 <span>Explore Managed Retainers</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -657,8 +664,8 @@ export const Home: React.FC = () => {
               </StaggerItem>
 
               <StaggerItem className="py-6 flex gap-5">
-                <div className="shrink-0 w-10 h-10 rounded-full border border-[#FF6B00]/40 flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-[#FF6B00]" />
+                <div className="shrink-0 w-10 h-10 rounded-full border border-[#ECF0F1]/40 flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-[#ECF0F1]" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold font-display text-white">Performance Marketing &amp; CRO</h3>
@@ -675,39 +682,39 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4C. FOUNDER DISPATCHES — Full-Width Blockquote Strip (LIGHT TEXTURED)      */}
       {/* ========================================================================= */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-textured-light text-stone-900 border-t border-stone-300/80">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#2C3E50] border-t border-[#2C3E50]/15">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal preset="fade-up" className="flex items-center gap-2 pb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
-            <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2C3E50]" />
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[#7F8C8D] font-semibold">
               Founder Dispatches
             </span>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-stone-300/70">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-[#2C3E50]/15">
             <SpatialCardCascade index={0} className="pb-8 md:pb-0 md:pr-10 lg:pr-14">
-              <blockquote className="text-base sm:text-lg text-slate-800 leading-relaxed font-normal">
+              <blockquote className="text-base sm:text-lg text-[#34495E] leading-relaxed font-normal">
                 &ldquo;Zemprolabs helped us build BaeMeds from the ground up—from product sourcing and dual-market store architecture to our paid ad campaigns. We are still in an active ongoing retainer with them for daily maintenance, marketing, and SEO, and having direct engineering access cuts our iteration time from weeks to hours.&rdquo;
               </blockquote>
               <div className="mt-5 flex items-center justify-between">
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">Salman Abdul Mohammed</div>
-                  <div className="text-stone-500 text-[11px] font-mono">Head of Operations · BaeMeds Global</div>
+                  <div className="font-bold text-[#2C3E50] text-sm">Salman Abdul Mohammed</div>
+                  <div className="text-[#7F8C8D] text-[11px] font-mono">Head of Operations · BaeMeds Global</div>
                 </div>
-                <span className="font-mono text-xs font-semibold text-stone-600">Active Retainer Client</span>
+                <span className="font-mono text-xs font-semibold text-[#34495E]">Active Retainer Client</span>
               </div>
             </SpatialCardCascade>
 
             <SpatialCardCascade index={1} className="pt-8 md:pt-0 md:pl-10 lg:pl-14">
-              <blockquote className="text-base sm:text-lg text-slate-800 leading-relaxed font-normal">
+              <blockquote className="text-base sm:text-lg text-[#34495E] leading-relaxed font-normal">
                 &ldquo;Zemprolabs delivered deep platform expertise on our ServiceNow instance where standard dev agencies fell short. They audited our CMDB, eliminated update set collisions, and engineered automated ITSM &amp; IRM workflows that significantly reduced our incident resolution times.&rdquo;
               </blockquote>
               <div className="mt-5 flex items-center justify-between">
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">IT Director &amp; Platform Owner</div>
-                  <div className="text-stone-500 text-[11px] font-mono">Confidential Enterprise · Fortune 500</div>
+                  <div className="font-bold text-[#2C3E50] text-sm">IT Director &amp; Platform Owner</div>
+                  <div className="text-[#7F8C8D] text-[11px] font-mono">Confidential Enterprise · Fortune 500</div>
                 </div>
-                <span className="font-mono text-xs font-semibold text-stone-600">Enterprise ServiceNow</span>
+                <span className="font-mono text-xs font-semibold text-[#34495E]">Enterprise ServiceNow</span>
               </div>
             </SpatialCardCascade>
           </div>
@@ -717,10 +724,10 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 5. OPERATING COMMITMENTS — Minimal Numbered Rows (DARK)                    */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-t border-white/10">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-t border-white/10">
         <div className="max-w-6xl mx-auto space-y-10">
           <ScrollReveal preset="fade-up" className="max-w-3xl">
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#FF6B00]">
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#ECF0F1]">
               WHY FOUNDERS PARTNER WITH US
             </span>
             <div className="mt-2">
@@ -736,7 +743,7 @@ export const Home: React.FC = () => {
           <StaggerContainer staggerDelay={0.08} className="divide-y divide-white/10 border-y border-white/10">
             <StaggerItem className="py-7 sm:py-8 grid grid-cols-12 gap-4 sm:gap-6 items-baseline hover:bg-white/[0.015] transition-colors">
               <div className="col-span-2 sm:col-span-1">
-                <span className="font-mono text-sm font-bold text-[#FF6B00]">01</span>
+                <span className="font-mono text-sm font-bold text-[#ECF0F1]">01</span>
               </div>
               <div className="col-span-10 sm:col-span-3">
                 <h3 className="text-base font-bold font-display text-white">Talk Directly With the Builders</h3>
@@ -753,7 +760,7 @@ export const Home: React.FC = () => {
 
             <StaggerItem className="py-7 sm:py-8 grid grid-cols-12 gap-4 sm:gap-6 items-baseline hover:bg-white/[0.015] transition-colors">
               <div className="col-span-2 sm:col-span-1">
-                <span className="font-mono text-sm font-bold text-[#FF6B00]">02</span>
+                <span className="font-mono text-sm font-bold text-[#ECF0F1]">02</span>
               </div>
               <div className="col-span-10 sm:col-span-3">
                 <h3 className="text-base font-bold font-display text-white">You Own 100% of Everything</h3>
@@ -770,7 +777,7 @@ export const Home: React.FC = () => {
 
             <StaggerItem className="py-7 sm:py-8 grid grid-cols-12 gap-4 sm:gap-6 items-baseline hover:bg-white/[0.015] transition-colors">
               <div className="col-span-2 sm:col-span-1">
-                <span className="font-mono text-sm font-bold text-[#FF6B00]">03</span>
+                <span className="font-mono text-sm font-bold text-[#ECF0F1]">03</span>
               </div>
               <div className="col-span-10 sm:col-span-3">
                 <h3 className="text-base font-bold font-display text-white">Clean, Maintainable Code</h3>
@@ -787,7 +794,7 @@ export const Home: React.FC = () => {
 
             <StaggerItem className="py-7 sm:py-8 grid grid-cols-12 gap-4 sm:gap-6 items-baseline hover:bg-white/[0.015] transition-colors">
               <div className="col-span-2 sm:col-span-1">
-                <span className="font-mono text-sm font-bold text-[#FF6B00]">04</span>
+                <span className="font-mono text-sm font-bold text-[#ECF0F1]">04</span>
               </div>
               <div className="col-span-10 sm:col-span-3">
                 <h3 className="text-base font-bold font-display text-white">Fast Uptime &amp; Swift Response</h3>
@@ -806,7 +813,7 @@ export const Home: React.FC = () => {
           {/* Compact Handover Manifest — inline checklist */}
           <ScrollReveal preset="fade-up" className="pt-4">
             <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-4">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#FF6B00]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#ECF0F1]" />
               <span className="uppercase tracking-wider font-semibold">What you get with every project launch:</span>
             </div>
             <div className="flex flex-wrap gap-3 text-xs font-mono text-slate-300">
@@ -831,21 +838,21 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 6. FAQ (LIGHT TEXTURED)                                                   */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-textured-light text-slate-900 border-t border-stone-300/80">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#2C3E50] border-t border-[#2C3E50]/15">
         <div className="max-w-5xl mx-auto">
           <div>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-stone-300/70">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-[#2C3E50]/15">
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#FF6B00] font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#2C3E50] font-semibold">
                   // FAQ
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-slate-900 mt-1">
+                <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-[#2C3E50] mt-1">
                   Questions founders ask before signing.
                 </h2>
               </div>
             </div>
 
-            <div className="divide-y divide-stone-300/70">
+            <div className="divide-y divide-[#2C3E50]/15">
               {faqItems.map((faq, idx) => {
                 const isOpen = openFaq === idx;
                 return (
@@ -855,17 +862,17 @@ export const Home: React.FC = () => {
                       onClick={() => setOpenFaq(isOpen ? null : idx)}
                       className="w-full py-5 sm:py-6 text-left flex items-center justify-between gap-4 focus:outline-none group cursor-pointer"
                     >
-                      <span className="font-display font-medium text-base sm:text-lg text-slate-900 group-hover:text-[#FF6B00] transition-colors">
+                      <span className="font-display font-medium text-base sm:text-lg text-[#2C3E50] group-hover:text-[#34495E] transition-colors">
                         {faq.question}
                       </span>
                       <ChevronDown
-                        className={`w-5 h-5 text-[#FF6B00] shrink-0 transition-transform duration-300 ${
+                        className={`w-5 h-5 text-[#2C3E50] shrink-0 transition-transform duration-300 ${
                           isOpen ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
                     {isOpen && (
-                      <div className="pb-6 text-sm text-slate-600 leading-relaxed font-normal max-w-3xl">
+                      <div className="pb-6 text-sm text-[#34495E] leading-relaxed font-normal max-w-3xl">
                         {faq.answer}
                       </div>
                     )}
@@ -880,14 +887,14 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 7. CONTACT CTA (RICH BLACK SECTION)                                       */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-t border-white/10 relative overflow-hidden">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-t border-white/10 relative overflow-hidden">
         {/* Subtle architectural ambient glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[260px] bg-[#FF6B00]/5 blur-[120px] pointer-events-none rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[260px] bg-[#ECF0F1]/5 blur-[120px] pointer-events-none rounded-full" />
 
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
           <ScrollReveal preset="fade-up" className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#FF6B00]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#ECF0F1]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ECF0F1]" />
               <span>DIRECT ARCHITECT ACCESS &bull; 48-HOUR SCOPE</span>
             </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold font-display tracking-tight text-white leading-tight">
@@ -902,7 +909,7 @@ export const Home: React.FC = () => {
             <Magnetic strength={12}>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-lg active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-lg active:scale-[0.98]"
               >
                 <span>Submit Project Brief</span>
                 <ArrowRight className="w-4 h-4" />
@@ -921,13 +928,13 @@ export const Home: React.FC = () => {
           <div className="pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-8 text-xs sm:text-sm text-slate-400">
             <div>
               Email:{' '}
-              <a href={company.emailHref} className="text-white hover:text-[#FF6B00] underline font-mono transition-colors">
+              <a href={company.emailHref} className="text-white hover:text-[#BDC3C7] underline font-mono transition-colors">
                 {company.email}
               </a>
             </div>
             <div>
               Phone:{' '}
-              <a href={company.whatsappHref} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#FF6B00] font-mono transition-colors">
+              <a href={company.whatsappHref} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#BDC3C7] font-mono transition-colors">
                 {company.phone}
               </a>
             </div>

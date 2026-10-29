@@ -8,7 +8,7 @@ export const ServicesHarborDocks: React.FC = () => {
   return (
     <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24 bg-[#040812] border-t border-white/[0.08] relative overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-96 bg-[#FF6B00]/[0.02] blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-96 bg-[#ECF0F1]/[0.02] blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -24,7 +24,7 @@ export const ServicesHarborDocks: React.FC = () => {
               Custom Shopify Stores &amp; Reliable Cloud Backends.
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#94A3B8] mt-2">
+            <p className="text-xs sm:text-sm text-[#BDC3C7] mt-2">
               Two areas where businesses often need deep technical care: high-performing online stores and backends that never slow down.
             </p>
           </div>
@@ -35,7 +35,7 @@ export const ServicesHarborDocks: React.FC = () => {
               onClick={() => setActiveDock('shopify')}
               className={`px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-2 ${
                 activeDock === 'shopify'
-                  ? 'bg-[#10B981] text-black shadow-md'
+                  ? 'bg-[#10B981] text-[#2C3E50] shadow-md'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -47,7 +47,7 @@ export const ServicesHarborDocks: React.FC = () => {
               onClick={() => setActiveDock('cloud')}
               className={`px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-2 ${
                 activeDock === 'cloud'
-                  ? 'bg-[#38BDF8] text-black shadow-md'
+                  ? 'bg-[#38BDF8] text-[#2C3E50] shadow-md'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -72,7 +72,7 @@ export const ServicesHarborDocks: React.FC = () => {
                 Fast, beautiful online stores tailored to your brand.
               </h3>
 
-              <p className="text-sm text-[#94A3B8] leading-relaxed">
+              <p className="text-sm text-[#BDC3C7] leading-relaxed">
                 We don’t just tweak off-the-shelf templates. We build custom Shopify stores that load in the blink of an eye, make buying effortless on mobile phones, and handle big festival sales rushes without a hiccup.
               </p>
 
@@ -99,7 +99,7 @@ export const ServicesHarborDocks: React.FC = () => {
               <div className="pt-3 flex flex-wrap gap-4">
                 <Link
                   to="/contact?service=Websites%20%26%20E-Commerce"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#10B981] text-black hover:bg-[#0ea572] transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] font-mono font-bold"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#10B981] text-[#2C3E50] hover:bg-[#0ea572] transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] font-mono font-bold"
                 >
                   <span>Discuss an Online Store</span>
                   <ArrowRight className="w-4 h-4" />
@@ -107,7 +107,7 @@ export const ServicesHarborDocks: React.FC = () => {
 
                 <Link
                   to="/project-estimation"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#08101E] text-white hover:bg-white/10 border border-white/15 transition-colors font-mono"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#2C3E50] text-white hover:bg-white/10 border border-white/15 transition-colors font-mono"
                 >
                   <span>Request Project Estimate</span>
                 </Link>
@@ -116,14 +116,14 @@ export const ServicesHarborDocks: React.FC = () => {
 
             {/* Right Architecture Telemetry Diagram (6 cols) */}
             <div className="lg:col-span-6">
-              <div className="p-6 sm:p-7 rounded-3xl bg-[#070E1A] border border-white/[0.12] shadow-2xl space-y-4 font-mono text-xs">
+              <div className="p-6 sm:p-7 rounded-3xl bg-[#2C3E50] border border-white/[0.12] shadow-2xl space-y-4 font-mono text-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
                   <span className="text-slate-400">// REAL CLIENT SETUP</span>
                   <span className="text-[#10B981] font-bold">CASE STUDY: BAEMEDS (INDIA &amp; USA)</span>
                 </div>
 
                 {/* Step 1: Storefront Layer */}
-                <div className="p-4 rounded-xl bg-[#040810] border border-[#10B981]/30 space-y-1">
+                <div className="p-4 rounded-xl bg-[#2C3E50] border border-[#10B981]/30 space-y-1">
                   <div className="flex items-center justify-between text-white font-bold text-xs">
                     <span className="flex items-center gap-2">
                       <Globe className="w-3.5 h-3.5 text-[#10B981]" />
@@ -140,7 +140,7 @@ export const ServicesHarborDocks: React.FC = () => {
                 <div className="text-center text-slate-600 select-none text-xs">&darr; &darr; &darr;</div>
 
                 {/* Step 2: Regional Checkout & Payment Routing */}
-                <div className="p-4 rounded-xl bg-[#040810] border border-[#38BDF8]/30 space-y-1">
+                <div className="p-4 rounded-xl bg-[#2C3E50] border border-[#38BDF8]/30 space-y-1">
                   <div className="flex items-center justify-between text-white font-bold text-xs">
                     <span className="flex items-center gap-2">
                       <Lock className="w-3.5 h-3.5 text-[#38BDF8]" />
@@ -157,13 +157,13 @@ export const ServicesHarborDocks: React.FC = () => {
                 <div className="text-center text-slate-600 select-none text-xs">&darr; &darr; &darr;</div>
 
                 {/* Step 3: Ground-Up to Ongoing Retainer */}
-                <div className="p-4 rounded-xl bg-[#040810] border border-[#FF6B00]/30 space-y-1">
+                <div className="p-4 rounded-xl bg-[#2C3E50] border border-[#ECF0F1]/30 space-y-1">
                   <div className="flex items-center justify-between text-white font-bold text-xs">
                     <span className="flex items-center gap-2">
-                      <Zap className="w-3.5 h-3.5 text-[#FF6B00]" />
+                      <Zap className="w-3.5 h-3.5 text-[#ECF0F1]" />
                       <span>03. GROUND-UP TO ACTIVE RETAINER</span>
                     </span>
-                    <span className="text-[10px] text-[#FF6B00]">ACTIVE RETAINER</span>
+                    <span className="text-[10px] text-[#ECF0F1]">ACTIVE RETAINER</span>
                   </div>
                   <p className="text-[11px] text-slate-400">
                     From product sourcing and paid ads to an ongoing agile retainer for continuous store maintenance, marketing campaigns, and technical SEO.
@@ -190,7 +190,7 @@ export const ServicesHarborDocks: React.FC = () => {
                 Solid backends and databases that keep your apps running 24/7.
               </h3>
 
-              <p className="text-sm text-[#94A3B8] leading-relaxed">
+              <p className="text-sm text-[#BDC3C7] leading-relaxed">
                 We build dependable backends for web and mobile applications. Whether using Google Cloud Firebase, AWS, Node.js, or PostgreSQL databases, we ensure customer data is safe, your app never crashes under heavy usage, and you own 100% of your accounts.
               </p>
 
@@ -217,7 +217,7 @@ export const ServicesHarborDocks: React.FC = () => {
               <div className="pt-3 flex flex-wrap gap-4">
                 <Link
                   to="/contact?service=Custom%20Software%20%2F%20Apps"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#38BDF8] text-black hover:bg-[#0284c7] transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] font-mono font-bold"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#38BDF8] text-[#2C3E50] hover:bg-[#0284c7] transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] font-mono font-bold"
                 >
                   <span>Talk About a Custom Backend</span>
                   <ArrowRight className="w-4 h-4" />
@@ -225,7 +225,7 @@ export const ServicesHarborDocks: React.FC = () => {
 
                 <Link
                   to="/process"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#08101E] text-white hover:bg-white/10 border border-white/15 transition-colors font-mono"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-[#2C3E50] text-white hover:bg-white/10 border border-white/15 transition-colors font-mono"
                 >
                   <span>How We Build Software</span>
                 </Link>
@@ -234,7 +234,7 @@ export const ServicesHarborDocks: React.FC = () => {
 
             {/* Right Telemetry Spec (6 cols) */}
             <div className="lg:col-span-6">
-              <div className="p-6 sm:p-7 rounded-3xl bg-[#070E1A] border border-white/[0.12] shadow-2xl space-y-4 font-mono text-xs">
+              <div className="p-6 sm:p-7 rounded-3xl bg-[#2C3E50] border border-white/[0.12] shadow-2xl space-y-4 font-mono text-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
                   <span className="text-slate-400">// HOW WE PROTECT YOUR APP</span>
                   <span className="text-[#38BDF8] font-bold">RELIABILITY GUARANTEE</span>
@@ -242,25 +242,25 @@ export const ServicesHarborDocks: React.FC = () => {
 
                 {/* Cloud Grid Tags */}
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3.5 rounded-xl bg-[#040810] border border-white/5 space-y-1">
+                  <div className="p-3.5 rounded-xl bg-[#2C3E50] border border-white/5 space-y-1">
                     <div className="text-[10px] text-[#38BDF8] font-bold">SECURITY &amp; SPEED</div>
                     <div className="text-white font-semibold text-xs">Global CDN &amp; Firewall</div>
                     <div className="text-[10px] text-slate-500">Blocks spam &bull; SSL encrypted</div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#040810] border border-white/5 space-y-1">
+                  <div className="p-3.5 rounded-xl bg-[#2C3E50] border border-white/5 space-y-1">
                     <div className="text-[10px] text-[#10B981] font-bold">AUTOMATIC SCALE</div>
                     <div className="text-white font-semibold text-xs">Smart Serverless Setup</div>
                     <div className="text-[10px] text-slate-500">Handles busy traffic easily</div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#040810] border border-white/5 space-y-1">
-                    <div className="text-[10px] text-[#FF6B00] font-bold">SAFE DATA STORAGE</div>
+                  <div className="p-3.5 rounded-xl bg-[#2C3E50] border border-white/5 space-y-1">
+                    <div className="text-[10px] text-[#ECF0F1] font-bold">SAFE DATA STORAGE</div>
                     <div className="text-white font-semibold text-xs">Organized Databases</div>
                     <div className="text-[10px] text-slate-500">Encrypted &bull; Never shared</div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#040810] border border-white/5 space-y-1">
+                  <div className="p-3.5 rounded-xl bg-[#2C3E50] border border-white/5 space-y-1">
                     <div className="text-[10px] text-[#A855F7] font-bold">PEACE OF MIND</div>
                     <div className="text-white font-semibold text-xs">Daily Auto Backups</div>
                     <div className="text-[10px] text-slate-500">Restore in minutes if needed</div>

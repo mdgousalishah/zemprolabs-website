@@ -168,7 +168,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
               onClick={() => setIsPaused(!isPaused)}
               className={`px-2.5 py-1 rounded-md text-[11px] font-mono border transition-all flex items-center gap-1.5 ${
                 isPaused 
-                  ? 'bg-[#FF6B00]/15 border-[#FF6B00]/40 text-[#FF6B00]' 
+                  ? 'bg-[#ECF0F1]/15 border-[#ECF0F1]/40 text-[#ECF0F1]' 
                   : 'bg-white/[0.03] border-white/[0.08] text-slate-400 hover:text-white'
               }`}
               title={isPaused ? "Resume auto-rotation" : "Pause auto-rotation"}
@@ -179,7 +179,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
 
             <button
               onClick={handlePrev}
-              className="p-1.5 rounded-md bg-[#080D18] border border-white/[0.1] text-slate-300 hover:text-white hover:border-white/30 transition-all cursor-pointer"
+              className="p-1.5 rounded-md bg-[#2C3E50] border border-white/[0.1] text-slate-300 hover:text-white hover:border-white/30 transition-all cursor-pointer"
               title="Previous Project"
               aria-label="Previous Project"
             >
@@ -187,7 +187,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
             </button>
             <button
               onClick={handleNext}
-              className="p-1.5 rounded-md bg-[#080D18] border border-white/[0.1] text-slate-300 hover:text-white hover:border-white/30 transition-all cursor-pointer"
+              className="p-1.5 rounded-md bg-[#2C3E50] border border-white/[0.1] text-slate-300 hover:text-white hover:border-white/30 transition-all cursor-pointer"
               title="Next Project"
               aria-label="Next Project"
             >
@@ -225,7 +225,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
                 }}
               >
                 {/* Browser Top Control Bar */}
-                <div className="h-9 sm:h-10 bg-[#0B0F17] border-b border-white/[0.08] px-3.5 flex items-center justify-between select-none">
+                <div className="h-9 sm:h-10 bg-[#34495E] border-b border-white/[0.08] px-3.5 flex items-center justify-between select-none">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#EF4444]/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]/80" />
@@ -275,7 +275,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
 
                   {/* Hover Prompt */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none backdrop-blur-[1px]">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF6B00] text-black text-xs font-semibold font-display shadow-lg transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ECF0F1] text-[#2C3E50] text-xs font-semibold font-display shadow-lg transform translate-y-1 group-hover:translate-y-0 transition-transform">
                       <Play className="w-3.5 h-3.5 fill-black" />
                       <span>Inspect Production Case Study</span>
                     </div>
@@ -342,7 +342,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
                 <div className="flex flex-wrap items-center gap-1.5">
                   {activeProject.pipeline.map((step, idx) => (
                     <React.Fragment key={idx}>
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[#0F172A] border border-white/10 text-xs font-mono text-slate-200">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[#2C3E50] border border-white/10 text-xs font-mono text-slate-200">
                         {step}
                       </span>
                       {idx < activeProject.pipeline!.length - 1 && (
@@ -374,7 +374,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 to={`/work/${activeProject.id}`}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_20px_rgba(255,107,0,0.35)] active:scale-95 cursor-pointer font-display"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-[0_0_20px_rgba(236,240,241,0.35)] active:scale-95 cursor-pointer font-display"
               >
                 <span>Explore Full Project</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -385,7 +385,7 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
                   href={activeProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium bg-[#0B0F17] text-slate-200 hover:text-white border border-white/10 hover:border-white/30 transition-all active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium bg-[#34495E] text-slate-200 hover:text-white border border-white/10 hover:border-white/30 transition-all active:scale-95"
                 >
                   <span>Visit Live Site</span>
                   <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
@@ -410,14 +410,14 @@ export const Project3DScrollTracker: React.FC<Project3DScrollTrackerProps> = ({
                   onClick={() => selectProject(idx)}
                   className={`group text-left p-3 rounded-xl transition-all border cursor-pointer relative overflow-hidden ${
                     isActive
-                      ? 'bg-[#0E1524] border-[#FF6B00]/60 shadow-[0_0_20px_rgba(255,107,0,0.15)]'
+                      ? 'bg-[#0E1524] border-[#ECF0F1]/60 shadow-[0_0_20px_rgba(236,240,241,0.15)]'
                       : 'bg-[#060A12] border-white/5 hover:border-white/20 hover:bg-[#0B101C]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span
                       className={`text-[10px] font-mono font-bold ${
-                        isActive ? 'text-[#FF6B00]' : 'text-slate-400 group-hover:text-slate-300'
+                        isActive ? 'text-[#ECF0F1]' : 'text-slate-400 group-hover:text-slate-300'
                       }`}
                     >
                       0{idx + 1} &bull; {proj.category}

@@ -67,7 +67,7 @@ export const Careers: React.FC = () => {
   const { scrollTo } = useLenis();
 
   return (
-    <div className="w-full bg-[#090A0D] text-white selection:bg-[#FF6B00] selection:text-black">
+    <div className="w-full bg-[#2C3E50] text-white selection:bg-[#ECF0F1] selection:text-[#2C3E50]">
       <SEO
         title="Careers & Engineering Roles | Zemprolabs Studio"
         description="Join Zemprolabs. We build custom web apps, Shopify Plus stores, enterprise ServiceNow systems, and cloud architectures for global clients. View open engineering positions."
@@ -90,7 +90,7 @@ export const Careers: React.FC = () => {
           <ScrollReveal preset="fade-up" duration={1.2} delay={0.2}>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight text-white leading-[1.08]">
               Build Real Software with{' '}
-              <span className="text-[#FF6B00]">Senior Engineers.</span>
+              <span className="text-[#ECF0F1]">Senior Engineers.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mt-4">
@@ -103,7 +103,7 @@ export const Careers: React.FC = () => {
               <button
                 type="button"
                 onClick={() => scrollTo('#open-roles', { duration: 1.1 })}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all cursor-pointer shadow-[0_0_20px_rgba(255,107,0,0.3)]"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all cursor-pointer shadow-[0_0_20px_rgba(236,240,241,0.3)]"
               >
                 <span>Explore Open Engineering Roles</span>
                 <ArrowRight className="w-4 h-4" />
@@ -116,20 +116,20 @@ export const Careers: React.FC = () => {
       {/* ========================================================================= */}
       {/* 2. OPEN ROLES DIRECTORY (Warm Textured Limestone Canvas)                  */}
       {/* ========================================================================= */}
-      <section id="open-roles" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#0F172A] border-b border-stone-300/80">
+      <section id="open-roles" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#2C3E50] border-b border-[#2C3E50]/15">
         <div className="max-w-7xl mx-auto space-y-14">
           <ScrollReveal preset="fade-up" className="max-w-3xl">
-            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#FF6B00]">
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#2C3E50]">
               ACTIVE OPENINGS // HYDERABAD &amp; REMOTE
             </span>
             <div className="mt-2">
               <TextReveal
                 text="Engineering Positions"
                 as="h2"
-                className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-slate-900"
+                className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-[#2C3E50]"
               />
             </div>
-            <p className="text-base sm:text-lg text-slate-700 mt-3 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#34495E] mt-3 leading-relaxed">
               We look for engineers who care about clean code architecture, type safety, and real business outcomes. Competitive compensation and transparent sprint cycles.
             </p>
           </ScrollReveal>
@@ -138,31 +138,31 @@ export const Careers: React.FC = () => {
             {OPEN_POSITIONS.map((role, idx) => (
               <StaggerItem key={idx}>
                 <AntigravityTiltCard tiltMax={4} className="rounded-2xl">
-                  <div className="p-8 sm:p-10 rounded-2xl bg-[#FAF9F5] border border-stone-300/70 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                  <div className="p-8 sm:p-10 rounded-2xl bg-[#ECF0F1] border border-[#2C3E50]/15 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                     <div className="space-y-4 max-w-2xl">
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-slate-900 text-white font-medium">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#2C3E50] text-white font-medium">
                           {role.department}
                         </span>
-                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-stone-200/80 text-slate-700">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#BDC3C7] text-[#34495E]">
                           {role.location}
                         </span>
-                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-stone-200/80 text-slate-700">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#BDC3C7] text-[#34495E]">
                           {role.experience}
                         </span>
                       </div>
 
-                      <h3 className="text-2xl font-bold font-display text-slate-900">
+                      <h3 className="text-2xl font-bold font-display text-[#2C3E50]">
                         {role.title}
                       </h3>
 
-                      <p className="text-sm text-slate-600 leading-relaxed">
+                      <p className="text-sm text-[#34495E] leading-relaxed">
                         {role.description}
                       </p>
 
                       <div className="flex flex-wrap gap-1.5 pt-2">
                         {role.skills.map((skill) => (
-                          <span key={skill} className="text-[11px] font-mono px-2 py-0.5 rounded bg-stone-200/70 text-slate-700">
+                          <span key={skill} className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#BDC3C7] text-[#34495E]">
                             {skill}
                           </span>
                         ))}
@@ -173,7 +173,7 @@ export const Careers: React.FC = () => {
                       <Magnetic strength={8}>
                         <a
                           href={`mailto:careers@zemprolabs.com?subject=Application:%20${encodeURIComponent(role.title)}`}
-                          className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-sm"
+                          className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-sm"
                         >
                           <span>Apply for this Role</span>
                           <ArrowRight className="w-4 h-4" />
@@ -191,10 +191,10 @@ export const Careers: React.FC = () => {
       {/* ========================================================================= */}
       {/* 3. TRANSPARENT 3-STAGE HIRING PROCESS (Architectural Dark)               */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-b border-white/10">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto space-y-14">
           <ScrollReveal preset="fade-up" className="max-w-3xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B00]">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#ECF0F1]">
               TRANSPARENT PROCESS // NO ENDLESS ROUNDS
             </span>
             <div className="mt-2">
@@ -214,7 +214,7 @@ export const Careers: React.FC = () => {
               <AntigravityTiltCard tiltMax={6} className="h-full rounded-2xl">
                 <div className="h-full p-8 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="text-xs font-mono text-[#FF6B00] font-bold">ROUND 01 // 30 MINS</div>
+                    <div className="text-xs font-mono text-[#ECF0F1] font-bold">ROUND 01 // 30 MINS</div>
                     <h4 className="text-xl font-bold font-display text-white">Introduction &amp; Experience</h4>
                     <p className="text-sm text-slate-300 leading-relaxed">
                       A casual 30-minute video conversation with an engineering lead to discuss your previous projects, technical preferences, and mutual fit.
@@ -228,7 +228,7 @@ export const Careers: React.FC = () => {
               <AntigravityTiltCard tiltMax={6} className="h-full rounded-2xl">
                 <div className="h-full p-8 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="text-xs font-mono text-[#FF6B00] font-bold">ROUND 02 // 60 MINS</div>
+                    <div className="text-xs font-mono text-[#ECF0F1] font-bold">ROUND 02 // 60 MINS</div>
                     <h4 className="text-xl font-bold font-display text-white">Code Review &amp; Architecture</h4>
                     <p className="text-sm text-slate-300 leading-relaxed">
                       Walk through a project you've written or solve a practical real-world architectural problem together. We look for clarity, type safety, and clean structure.
@@ -242,7 +242,7 @@ export const Careers: React.FC = () => {
               <AntigravityTiltCard tiltMax={6} className="h-full rounded-2xl">
                 <div className="h-full p-8 rounded-2xl bg-white/[0.03] border border-white/10 space-y-4 flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="text-xs font-mono text-[#FF6B00] font-bold">ROUND 03 // 30 MINS</div>
+                    <div className="text-xs font-mono text-[#ECF0F1] font-bold">ROUND 03 // 30 MINS</div>
                     <h4 className="text-xl font-bold font-display text-white">Founder Discussion &amp; Offer</h4>
                     <p className="text-sm text-slate-300 leading-relaxed">
                       Discuss compensation, career growth, studio culture, and project assignments. Fast, transparent offers delivered within 48 hours.
@@ -258,7 +258,7 @@ export const Careers: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4. GENERAL APPLICATION CTA                                                */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white relative overflow-hidden">
+      <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white relative overflow-hidden">
         <ScrollReveal preset="fade-up" className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white leading-tight">
             Don't see your exact role listed?
@@ -272,7 +272,7 @@ export const Careers: React.FC = () => {
             <Magnetic strength={12}>
               <a
                 href="mailto:careers@zemprolabs.com?subject=General%20Engineering%20Application"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_25px_rgba(255,107,0,0.3)] hover:shadow-[0_0_35px_rgba(255,107,0,0.5)]"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-[0_0_25px_rgba(236,240,241,0.3)] hover:shadow-[0_0_35px_rgba(236,240,241,0.5)]"
               >
                 <span>Send Us Your GitHub &bull; Resume</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />

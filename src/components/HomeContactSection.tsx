@@ -105,9 +105,9 @@ export const HomeContactSection: React.FC = () => {
   ];
 
   return (
-    <section id="contact-form" className="pt-14 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-t border-[rgba(148,163,184,0.08)] bg-[#04060A] relative overflow-hidden">
+    <section id="contact-form" className="pt-14 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-t border-[rgba(44,62,80,0.08)] bg-[#2C3E50] relative overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-80 bg-[#FF6B00]/[0.02] blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-80 bg-[#ECF0F1]/[0.02] blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
@@ -115,7 +115,7 @@ export const HomeContactSection: React.FC = () => {
           {/* Left Column: Context & Direct Channels (5 cols) */}
           <div className="lg:col-span-5 space-y-6 sm:space-y-8">
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-mono">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF0F1]/10 border border-[#ECF0F1]/25 text-[#ECF0F1] text-xs font-mono">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>START A PROJECT</span>
               </div>
@@ -124,14 +124,14 @@ export const HomeContactSection: React.FC = () => {
                 Let&apos;s build something great.
               </h2>
 
-              <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#BDC3C7] leading-relaxed">
                 Have a project in mind or need dedicated ongoing technical care? Drop us a quick note and our senior engineering lead will get back to you within 24 hours.
               </p>
             </div>
 
             {/* Direct Communication Channels */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#080D18]/95 border border-white/[0.08] space-y-4 shadow-xl">
-              <div className="text-xs font-mono text-[#FF6B00] uppercase tracking-wider font-semibold">
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#2C3E50]/95 border border-white/[0.08] space-y-4 shadow-xl">
+              <div className="text-xs font-mono text-[#ECF0F1] uppercase tracking-wider font-semibold">
                 // INSTANT DIRECT CHAT
               </div>
 
@@ -160,7 +160,7 @@ export const HomeContactSection: React.FC = () => {
                     href={company.emailHref}
                     className="flex items-center gap-2.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-slate-300 hover:text-white hover:border-white/20 transition-all text-xs font-mono"
                   >
-                    <Mail className="w-4 h-4 text-[#FF6B00] shrink-0" />
+                    <Mail className="w-4 h-4 text-[#ECF0F1] shrink-0" />
                     <span className="truncate">{company.email}</span>
                   </a>
 
@@ -190,9 +190,9 @@ export const HomeContactSection: React.FC = () => {
 
           {/* Right Column: Clean, Uncluttered Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl bg-[#080D18]/95 border border-white/[0.08] p-6 sm:p-8 shadow-2xl relative">
+            <div className="rounded-2xl bg-[#2C3E50]/95 border border-white/[0.08] p-6 sm:p-8 shadow-2xl relative">
               {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF6B00] to-transparent opacity-70" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ECF0F1] to-transparent opacity-70" />
 
               {status === 'success' ? (
                 <div className="py-12 text-center space-y-4">
@@ -202,7 +202,7 @@ export const HomeContactSection: React.FC = () => {
                   <h3 className="text-xl font-bold font-display text-white">
                     Message Received!
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#94A3B8] max-w-sm mx-auto leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#BDC3C7] max-w-sm mx-auto leading-relaxed">
                     Thank you! Our technical lead will review your message and reply to {formData.email || 'you'} within 24 hours.
                   </p>
                   <button
@@ -214,7 +214,7 @@ export const HomeContactSection: React.FC = () => {
                 </div>
               ) : status === 'dev_notice' ? (
                 <div className="space-y-5 py-4">
-                  <div className="p-4 rounded-xl bg-[#0B1528] border border-[#38BDF8]/40 space-y-2">
+                  <div className="p-4 rounded-xl bg-[#34495E] border border-[#38BDF8]/40 space-y-2">
                     <div className="flex items-center gap-2 text-xs font-mono text-[#38BDF8] font-semibold">
                       <CheckCircle2 className="w-4 h-4" />
                       <span>MESSAGE READY TO SEND</span>
@@ -227,7 +227,7 @@ export const HomeContactSection: React.FC = () => {
                   <div className="flex flex-col sm:flex-row gap-3">
                     <a
                       href={mailtoLink}
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_20px_rgba(255,107,0,0.35)] font-mono font-bold"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-[0_0_20px_rgba(236,240,241,0.35)] font-mono font-bold"
                     >
                       <Mail className="w-4 h-4" />
                       <span>Send via Email</span>
@@ -267,12 +267,12 @@ export const HomeContactSection: React.FC = () => {
                             onClick={() => setService(svc)}
                             className={`px-3 py-2.5 rounded-lg border text-xs font-medium text-left transition-all flex items-center justify-between ${
                               isSelected
-                                ? 'bg-[#FF6B00]/15 border-[#FF6B00] text-white'
-                                : 'bg-[#04060A] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20'
+                                ? 'bg-[#ECF0F1]/15 border-[#ECF0F1] text-white'
+                                : 'bg-[#2C3E50] border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20'
                             }`}
                           >
                             <span className="truncate">{svc}</span>
-                            {isSelected && <Check className="w-3.5 h-3.5 text-[#FF6B00] shrink-0 ml-1" />}
+                            {isSelected && <Check className="w-3.5 h-3.5 text-[#ECF0F1] shrink-0 ml-1" />}
                           </button>
                         );
                       })}
@@ -292,7 +292,7 @@ export const HomeContactSection: React.FC = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Alex Morgan"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#04060A] border border-white/[0.08] focus:border-[#FF6B00] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#2C3E50] border border-white/[0.08] focus:border-[#ECF0F1] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
                       />
                     </div>
 
@@ -307,7 +307,7 @@ export const HomeContactSection: React.FC = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="alex@company.com"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#04060A] border border-white/[0.08] focus:border-[#FF6B00] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#2C3E50] border border-white/[0.08] focus:border-[#ECF0F1] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
                       />
                     </div>
                   </div>
@@ -325,7 +325,7 @@ export const HomeContactSection: React.FC = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+1 (555) 019-2834"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#04060A] border border-white/[0.08] focus:border-[#FF6B00] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#2C3E50] border border-white/[0.08] focus:border-[#ECF0F1] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
                       />
                     </div>
 
@@ -339,7 +339,7 @@ export const HomeContactSection: React.FC = () => {
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Acme Inc / acme.com"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#04060A] border border-white/[0.08] focus:border-[#FF6B00] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#2C3E50] border border-white/[0.08] focus:border-[#ECF0F1] text-white text-xs placeholder:text-slate-600 outline-none transition-all"
                       />
                     </div>
                   </div>
@@ -356,7 +356,7 @@ export const HomeContactSection: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us a little about what you're looking to build, any specific goals, or your expected timeline..."
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#04060A] border border-white/[0.08] focus:border-[#FF6B00] text-white text-xs placeholder:text-slate-600 outline-none transition-all resize-none"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#2C3E50] border border-white/[0.08] focus:border-[#ECF0F1] text-white text-xs placeholder:text-slate-600 outline-none transition-all resize-none"
                     />
                   </div>
 
@@ -371,7 +371,7 @@ export const HomeContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg text-xs sm:text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-[0_0_20px_rgba(255,107,0,0.35)] active:scale-[0.99] disabled:opacity-50 font-mono font-bold cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg text-xs sm:text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-[0_0_20px_rgba(236,240,241,0.35)] active:scale-[0.99] disabled:opacity-50 font-mono font-bold cursor-pointer"
                   >
                     {status === 'submitting' ? (
                       <span>SENDING MESSAGE...</span>

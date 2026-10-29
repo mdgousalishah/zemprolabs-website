@@ -56,12 +56,12 @@ export const ProjectDetail: React.FC = () => {
 
   if (!project) {
     return (
-      <div className="pt-32 pb-24 px-4 max-w-2xl mx-auto text-center space-y-6 bg-[#090A0D] min-h-screen text-white">
+      <div className="pt-32 pb-24 px-4 max-w-2xl mx-auto text-center space-y-6 bg-[#2C3E50] min-h-screen text-white">
         <SEO
           title="Project Not Found | Zemprolabs"
           description="The requested project case study could not be found."
         />
-        <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-[#FF6B00]">
+        <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-[#ECF0F1]">
           <Layers className="w-8 h-8" />
         </div>
         <h1 className="text-3xl font-bold font-display text-white">Project Not Found</h1>
@@ -70,7 +70,7 @@ export const ProjectDetail: React.FC = () => {
         </p>
         <Link
           to="/work"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF6B00] text-black font-semibold text-xs"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#ECF0F1] text-[#2C3E50] font-semibold text-xs"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Case Studies</span>
@@ -83,7 +83,7 @@ export const ProjectDetail: React.FC = () => {
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <div className="w-full bg-[#090A0D] text-white">
+    <div className="w-full bg-[#2C3E50] text-white">
       <SEO
         title={`${project.title} | Case Study | Zemprolabs`}
         description={project.overview}
@@ -110,15 +110,15 @@ export const ProjectDetail: React.FC = () => {
       </div>
 
       {/* 1. Hero Summary Header (Architectural Glass Building Facade Hero) */}
-      <section className="relative px-4 sm:px-6 lg:px-8 pt-12 pb-16 overflow-hidden bg-[#090A0D] border-b border-white/10">
+      <section className="relative px-4 sm:px-6 lg:px-8 pt-12 pb-16 overflow-hidden bg-[#2C3E50] border-b border-white/10">
         {/* Full-bleed Architectural Glass Facade Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/hero-building-facade.jpg"
             alt="Modern architectural glass headquarters"
-            className="w-full h-full object-cover object-center opacity-30 sm:opacity-40 brightness-75 scale-[1.03]"
+            className="w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/80 to-[#090A0D]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50] via-[#2C3E50]/80 to-[#2C3E50]/55" />
         </div>
 
         {/* Ambient Floating Luminous Energy Particles */}
@@ -127,7 +127,7 @@ export const ProjectDetail: React.FC = () => {
         <div className="max-w-6xl mx-auto relative z-10">
           <ScrollReveal preset="fade-up" duration={1.2} delay={0.2} className="max-w-4xl space-y-6">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#FF6B00]/15 text-[#FF6B00] border border-[#FF6B00]/30 backdrop-blur-md">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#ECF0F1]/15 text-[#ECF0F1] border border-[#ECF0F1]/30 backdrop-blur-md">
                 {project.category}
               </span>
               <span className="text-xs text-slate-300">
@@ -154,7 +154,7 @@ export const ProjectDetail: React.FC = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all font-mono shadow-md"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all font-mono shadow-md"
                   >
                     <span>Visit Live Platform ({project.domain})</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -168,7 +168,7 @@ export const ProjectDetail: React.FC = () => {
               )}
               {project.domain && (
                 <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 font-mono backdrop-blur-md">
-                  <Globe className="w-3.5 h-3.5 text-[#FF6B00]" />
+                  <Globe className="w-3.5 h-3.5 text-[#ECF0F1]" />
                   <span>{project.domain}</span>
                 </div>
               )}
@@ -229,69 +229,69 @@ export const ProjectDetail: React.FC = () => {
       </section>
 
       {/* 3. Deep-Dive Story on Tactile Architectural Paper Canvas */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-textured-light text-slate-900 border-y border-stone-300/80">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-textured-light text-[#2C3E50] border-y border-[#2C3E50]/15">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Left Column: Challenge, Approach & Detailed Architecture (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
-            <div className="p-8 rounded-2xl bg-white border border-stone-300 space-y-3 shadow-md">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00] block">
+            <div className="p-8 rounded-2xl bg-white border border-[#2C3E50]/12 space-y-3 shadow-md">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#2C3E50] block">
                 The Operational Bottleneck
               </span>
-              <h2 className="text-2xl font-bold font-display text-slate-900">
+              <h2 className="text-2xl font-bold font-display text-[#2C3E50]">
                 The Client Challenge
               </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-[#34495E] leading-relaxed font-normal">
                 {project.challenge}
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-stone-300 space-y-3 shadow-md">
+            <div className="p-8 rounded-2xl bg-white border border-[#2C3E50]/12 space-y-3 shadow-md">
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 block">
                 Architectural Execution
               </span>
-              <h2 className="text-2xl font-bold font-display text-slate-900">
+              <h2 className="text-2xl font-bold font-display text-[#2C3E50]">
                 Our Engineering Approach
               </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-[#34495E] leading-relaxed font-normal">
                 {project.approach}
               </p>
             </div>
 
             {/* Deep-Dive Operational Breakdown */}
-            <div className="p-8 rounded-2xl bg-white border border-stone-300 space-y-4 shadow-md">
+            <div className="p-8 rounded-2xl bg-white border border-[#2C3E50]/12 space-y-4 shadow-md">
               <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 block">
                 Full-Lifecycle Stewardship
               </span>
-              <h3 className="text-xl font-bold font-display text-slate-900">
+              <h3 className="text-xl font-bold font-display text-[#2C3E50]">
                 End-to-End Operational &amp; Engineering Execution
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-[#34495E] leading-relaxed">
                 Rather than treating this engagement as a one-and-done software handover, Zemprolabs operates as the client&apos;s embedded engineering and digital operations core. We take full responsibility for technical stability, continuous performance optimization, system integrations, and multi-channel execution:
               </p>
               <div className="space-y-3 pt-2">
-                <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                <div className="p-4 rounded-xl bg-[#BDC3C7] border border-[#2C3E50]/12 space-y-1">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
                     Continuous Architecture &amp; Maintenance
                   </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-[#34495E] leading-relaxed">
                     Zero-downtime dependency patching, database integrity audits, API schema synchronizations, and 99.98% uptime monitoring without client operational overhead.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                <div className="p-4 rounded-xl bg-[#BDC3C7] border border-[#2C3E50]/12 space-y-1">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
                     Automated Workflows &amp; Commercial Pipelines
                   </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-[#34495E] leading-relaxed">
                     Custom pipelines connecting front-end interfaces directly to fulfillment engines, lead capture CRMs, secure payment gateways, and advertising analytics telemetry.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-1">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                <div className="p-4 rounded-xl bg-[#BDC3C7] border border-[#2C3E50]/12 space-y-1">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#2C3E50]">
                     Growth, Telemetry &amp; Campaign Management
                   </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-[#34495E] leading-relaxed">
                     Where applicable across our e-commerce and growth partnerships, we actively manage paid advertising campaigns, organic search optimization, and day-to-day catalog operations.
                   </p>
                 </div>
@@ -299,14 +299,14 @@ export const ProjectDetail: React.FC = () => {
             </div>
 
             {/* Confidentiality & Zero Lock-in Assurance */}
-            <div className="p-8 rounded-2xl bg-white border border-stone-300 space-y-3 shadow-md">
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 block">
+            <div className="p-8 rounded-2xl bg-white border border-[#2C3E50]/12 space-y-3 shadow-md">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#34495E] block">
                 Client Protection &amp; IP Security
               </span>
-              <h3 className="text-xl font-bold font-display text-slate-900">
+              <h3 className="text-xl font-bold font-display text-[#2C3E50]">
                 100% Code Ownership &amp; Bilateral NDA Safeguards
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-[#34495E] leading-relaxed">
                 All client proprietary business logic, cloud credentials, customer data, and commercial models remain strictly confidential under bilateral non-disclosure agreements. If the client ever chooses to bring development in-house or transition, 100% of all Git repositories, infrastructure accounts, API credentials, and technical documentation are fully owned and accessible with zero vendor lock-in.
               </p>
             </div>
@@ -314,14 +314,14 @@ export const ProjectDetail: React.FC = () => {
 
           {/* Right Column: Deliverables & Tech Stack (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-2xl bg-white border border-stone-300 space-y-4 shadow-md">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-stone-200 pb-3">
+            <div className="p-8 rounded-2xl bg-white border border-[#2C3E50]/12 space-y-4 shadow-md">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C3E50] border-b border-[#2C3E50]/12 pb-3">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>What We Delivered</span>
               </div>
               <ul className="space-y-3">
                 {project.built.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#34495E]">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                     <span className="leading-snug">{item}</span>
                   </li>
@@ -329,16 +329,16 @@ export const ProjectDetail: React.FC = () => {
               </ul>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-stone-300 space-y-4 shadow-md">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-stone-200 pb-3">
-                <Cpu className="w-4 h-4 text-[#FF6B00]" />
+            <div className="p-8 rounded-2xl bg-white border border-[#2C3E50]/12 space-y-4 shadow-md">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C3E50] border-b border-[#2C3E50]/12 pb-3">
+                <Cpu className="w-4 h-4 text-[#2C3E50]" />
                 <span>Production Tech Stack</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((t, idx) => (
                   <span
                     key={idx}
-                    className="text-xs px-3 py-1.5 rounded-lg bg-stone-200/80 text-slate-800 font-medium font-mono"
+                    className="text-xs px-3 py-1.5 rounded-lg bg-[#BDC3C7] text-[#2C3E50] font-medium font-mono"
                   >
                     {t}
                   </span>
@@ -346,12 +346,12 @@ export const ProjectDetail: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl bg-stone-900 text-white space-y-4 shadow-md">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#FF6B00] border-b border-white/10 pb-3">
+            <div className="p-8 rounded-2xl bg-[#2C3E50] text-white space-y-4 shadow-md">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#ECF0F1] border-b border-white/10 pb-3">
                 <ShieldCheck className="w-4 h-4 text-[#10B981]" />
                 <span>Engineering Standards</span>
               </div>
-              <ul className="space-y-3 text-xs text-slate-300 font-mono">
+              <ul className="space-y-3 text-xs text-[#BDC3C7] font-mono">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
                   <span>100% Client Code &amp; IP Ownership</span>
@@ -403,7 +403,7 @@ export const ProjectDetail: React.FC = () => {
 
       {/* 5. Closing CTA — Studio Obsidian */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-8">
-        <p className="text-sm font-medium tracking-wide text-[#FF6B00]">
+        <p className="text-sm font-medium tracking-wide text-[#ECF0F1]">
           Ready to Engineer a Similar Platform?
         </p>
 
@@ -418,7 +418,7 @@ export const ProjectDetail: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all shadow-lg"
           >
             <span>Submit Project Brief</span>
             <ArrowRight className="w-4 h-4" />

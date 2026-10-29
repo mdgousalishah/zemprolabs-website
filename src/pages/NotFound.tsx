@@ -6,7 +6,7 @@ import { SEO } from '../components/SEO';
 
 export const NotFound: React.FC = () => {
   return (
-    <div className="w-full bg-[#090A0D] min-h-[80vh] flex items-center justify-center px-4 py-32 text-center">
+    <div className="w-full bg-[#2C3E50] min-h-[80vh] flex items-center justify-center px-4 py-32 text-center">
       <SEO
         title="404 — Page Not Found | Zemprolabs"
         description="The requested page could not be located on the Zemprolabs engineering platform."
@@ -18,7 +18,7 @@ export const NotFound: React.FC = () => {
         </div>
 
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ECF0F1]/10 border border-[#ECF0F1]/25 text-[#ECF0F1] text-xs font-mono">
             <span>// ERROR 404: RESOURCE NOT LOCATED</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-bold font-display text-white">
@@ -32,7 +32,7 @@ export const NotFound: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all font-mono"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all font-mono"
           >
             <Home className="w-4 h-4" />
             <span>Return to Homepage</span>
@@ -48,7 +48,7 @@ export const NotFound: React.FC = () => {
 
         <div className="pt-4 border-t border-white/10 text-xs font-mono text-slate-400">
           Need immediate support? Contact our engineering desk at{' '}
-          <a href="mailto:info@zemprolabs.com" className="text-[#FF6B00] hover:underline">
+          <a href="mailto:info@zemprolabs.com" className="text-[#ECF0F1] hover:underline">
             info@zemprolabs.com
           </a>
         </div>

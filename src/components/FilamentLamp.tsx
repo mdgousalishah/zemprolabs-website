@@ -47,7 +47,7 @@ export const FilamentLamp: React.FC<FilamentLampProps> = ({
           top: `${wireLength + socketHeight - 120}px`,
           left: '50%',
           transform: 'translateX(-50%)',
-          background: 'radial-gradient(circle, rgba(255, 119, 0, 0.16) 0%, rgba(255, 85, 0, 0.08) 35%, rgba(255, 60, 0, 0.02) 60%, transparent 75%)',
+          background: 'radial-gradient(circle, rgba(236,240,241, 0.16) 0%, rgba(255, 85, 0, 0.08) 35%, rgba(255, 60, 0, 0.02) 60%, transparent 75%)',
           filter: 'blur(50px)',
           zIndex: 0
         }}

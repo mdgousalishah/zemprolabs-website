@@ -32,7 +32,7 @@ const ScrollToTop: React.FC = () => {
 const RouteSuspenseFallback: React.FC = () => (
   <div className="min-h-[70vh] flex items-center justify-center">
     <div className="flex flex-col items-center gap-3">
-      <div className="w-8 h-8 rounded-full border-2 border-[#FF6B00]/20 border-t-[#FF6B00] animate-spin" />
+      <div className="w-8 h-8 rounded-full border-2 border-[#ECF0F1]/20 border-t-[#ECF0F1] animate-spin" />
       <span className="text-[11px] font-mono text-slate-500 tracking-wider">LOADING ARCHITECTURE...</span>
     </div>
   </div>
@@ -44,7 +44,7 @@ export default function App() {
       <BrowserRouter>
         <SmoothScroll>
           <ScrollToTop />
-          <div className="min-h-screen bg-[#090A0D] text-[#F8FAFC] flex flex-col relative w-full max-w-full overflow-x-hidden selection:bg-[#FF6B00] selection:text-black">
+          <div className="min-h-screen bg-[#2C3E50] text-[#ECF0F1] flex flex-col relative w-full max-w-full overflow-x-hidden selection:bg-[#ECF0F1] selection:text-[#2C3E50]">
             {/* Ambient Animated Luminous Plasma Glow */}
             <AmbientMeshGlow />
 

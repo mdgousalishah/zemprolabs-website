@@ -117,15 +117,15 @@ export const ContactForm: React.FC = () => {
       {/* Dev / Direct Dispatch State */}
       {status === 'dev_notice' && (
         <div className="space-y-6">
-          <div className="p-6 rounded-xl bg-white/[0.02] border border-[#FF6B00]/40 space-y-4">
-            <div className="flex items-center gap-2 text-sm text-[#FF6B00] font-semibold">
+          <div className="p-6 rounded-xl bg-white/[0.02] border border-[#ECF0F1]/40 space-y-4">
+            <div className="flex items-center gap-2 text-sm text-[#ECF0F1] font-semibold">
               <CheckCircle2 className="w-5 h-5 text-emerald-400" />
               <span>Project brief compiled and ready for dispatch</span>
             </div>
             <p className="text-sm text-slate-300 leading-relaxed">
               Your technical requirements have been organized. Send your brief directly to our engineering team:
             </p>
-            <div className="p-4 rounded-lg bg-[#050608] border border-white/10 text-xs text-slate-300 space-y-1.5">
+            <div className="p-4 rounded-lg bg-[#2C3E50] border border-white/10 text-xs text-slate-300 space-y-1.5">
               <div><strong className="text-white">Client:</strong> {formData.name} ({formData.email})</div>
               {formData.phone && <div><strong className="text-white">Phone:</strong> {formData.phone}</div>}
               {formData.company && <div><strong className="text-white">Company:</strong> {formData.company}</div>}
@@ -144,7 +144,7 @@ export const ContactForm: React.FC = () => {
               </a>
               <a
                 href={mailtoLink}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all"
               >
                 <Mail className="w-4 h-4" />
                 <span>Send via Email</span>
@@ -225,7 +225,7 @@ export const ContactForm: React.FC = () => {
                     onClick={() => handleSelectService(srv)}
                     className={`px-3.5 py-2 rounded-lg text-xs transition-all text-left ${
                       isSelected
-                        ? 'bg-[#FF6B00] text-black font-semibold shadow-[0_0_15px_rgba(255,107,0,0.3)]'
+                        ? 'bg-[#ECF0F1] text-[#2C3E50] font-semibold shadow-[0_0_15px_rgba(236,240,241,0.3)]'
                         : 'bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:border-white/20'
                     }`}
                   >
@@ -251,7 +251,7 @@ export const ContactForm: React.FC = () => {
                     onClick={() => handleSelectTimeline(t)}
                     className={`px-3 py-2 rounded-lg text-xs transition-all text-center ${
                       isSelected
-                        ? 'bg-white text-black font-semibold'
+                        ? 'bg-white text-[#2C3E50] font-semibold'
                         : 'bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:border-white/20'
                     }`}
                   >
@@ -276,7 +276,7 @@ export const ContactForm: React.FC = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Jane Doe"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-colors placeholder:text-slate-600"
+                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#ECF0F1] focus:ring-1 focus:ring-[#ECF0F1] outline-none transition-colors placeholder:text-slate-600"
               />
             </div>
 
@@ -292,7 +292,7 @@ export const ContactForm: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="jane@company.com"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-colors placeholder:text-slate-600"
+                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#ECF0F1] focus:ring-1 focus:ring-[#ECF0F1] outline-none transition-colors placeholder:text-slate-600"
               />
             </div>
 
@@ -307,7 +307,7 @@ export const ContactForm: React.FC = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="+1 (555) 000-0000"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-colors placeholder:text-slate-600"
+                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#ECF0F1] focus:ring-1 focus:ring-[#ECF0F1] outline-none transition-colors placeholder:text-slate-600"
               />
             </div>
 
@@ -322,7 +322,7 @@ export const ContactForm: React.FC = () => {
                 value={formData.company}
                 onChange={handleChange}
                 placeholder="Acme Corp"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-colors placeholder:text-slate-600"
+                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#ECF0F1] focus:ring-1 focus:ring-[#ECF0F1] outline-none transition-colors placeholder:text-slate-600"
               />
             </div>
           </div>
@@ -340,7 +340,7 @@ export const ContactForm: React.FC = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder="Describe your goals, tech stack preferences (e.g. Next.js, Shopify, ServiceNow), integrations, or repository links..."
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-colors resize-y placeholder:text-slate-600 leading-relaxed"
+              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:border-[#ECF0F1] focus:ring-1 focus:ring-[#ECF0F1] outline-none transition-colors resize-y placeholder:text-slate-600 leading-relaxed"
             />
           </div>
 
@@ -349,11 +349,11 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all disabled:opacity-50 shadow-[0_0_25px_rgba(255,107,0,0.3)] hover:shadow-[0_0_35px_rgba(255,107,0,0.5)] cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all disabled:opacity-50 shadow-[0_0_25px_rgba(236,240,241,0.3)] hover:shadow-[0_0_35px_rgba(236,240,241,0.5)] cursor-pointer"
             >
               {status === 'submitting' ? (
                 <>
-                  <RefreshCw className="w-4 h-4 animate-spin text-black" />
+                  <RefreshCw className="w-4 h-4 animate-spin text-[#2C3E50]" />
                   <span>Submitting brief...</span>
                 </>
               ) : (

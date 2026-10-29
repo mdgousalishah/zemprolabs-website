@@ -7,7 +7,7 @@ export const QualifiedEngineersTrust: React.FC = () => {
       title: 'Engineering Mindset',
       desc: 'Solutions are designed with maintainability, scalability and real-world requirements in mind. We prioritize clean code architecture, type safety, and documented APIs.',
       icon: Cpu,
-      color: '#FF6B00'
+      color: '#ECF0F1'
     },
     {
       title: 'Business Understanding',
@@ -25,7 +25,7 @@ export const QualifiedEngineersTrust: React.FC = () => {
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="rounded-2xl bg-[#0B0F17] border border-[rgba(148,163,184,0.18)] p-8 sm:p-12 shadow-xl space-y-10">
+      <div className="rounded-2xl bg-[#34495E] border border-[rgba(148,163,184,0.18)] p-8 sm:p-12 shadow-xl space-y-10">
         <div className="max-w-3xl space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10B981]/10 border border-[#10B981]/25 text-[#10B981] text-xs font-mono">
             <ShieldCheck className="w-3.5 h-3.5" />
@@ -36,7 +36,7 @@ export const QualifiedEngineersTrust: React.FC = () => {
             Qualified Engineers. Trusted Technology.
           </h2>
 
-          <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#BDC3C7] leading-relaxed">
             Technology decisions have long-term consequences. Our engineering team focuses on building solutions that are practical, maintainable and aligned with the way your business actually operates.
           </p>
         </div>
@@ -47,7 +47,7 @@ export const QualifiedEngineersTrust: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-xl bg-[#05070D] border border-[rgba(148,163,184,0.1)] space-y-3 flex flex-col justify-between"
+                className="p-6 rounded-xl bg-[#2C3E50] border border-[rgba(148,163,184,0.1)] space-y-3 flex flex-col justify-between"
               >
                 <div className="space-y-3">
                   <div
@@ -59,7 +59,7 @@ export const QualifiedEngineersTrust: React.FC = () => {
                   <h3 className="text-lg font-bold font-display text-white">
                     {pillar.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#BDC3C7] leading-relaxed">
                     {pillar.desc}
                   </p>
                 </div>

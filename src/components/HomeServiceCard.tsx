@@ -9,15 +9,15 @@ interface HomeServiceCardProps {
 
 export const HomeServiceCard: React.FC<HomeServiceCardProps> = ({ service }) => {
   return (
-    <div className="rounded-xl bg-[#0B0F17] border border-[rgba(148,163,184,0.15)] hover:border-[rgba(255,107,0,0.4)] transition-all duration-300 p-6 flex flex-col justify-between group shadow-lg hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1">
+    <div className="rounded-xl bg-[#34495E] border border-[rgba(44,62,80,0.15)] hover:border-[rgba(236,240,241,0.4)] transition-all duration-300 p-6 flex flex-col justify-between group shadow-lg hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1">
       <div>
         {/* Number & Top Tag */}
         <div className="flex items-center justify-between mb-4">
-          <span className="text-sm font-mono text-[#FF6B00] font-semibold tracking-wider">
+          <span className="text-sm font-mono text-[#ECF0F1] font-semibold tracking-wider">
             {service.num} //
           </span>
           {service.id === 'development' && (
-            <span className="flex items-center gap-1 text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#FF6B00]/10 text-[#FF6B00] border border-[#FF6B00]/25">
+            <span className="flex items-center gap-1 text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#ECF0F1]/10 text-[#ECF0F1] border border-[#ECF0F1]/25">
               <Sparkles className="w-3 h-3" />
               <span>CORE</span>
             </span>
@@ -25,12 +25,12 @@ export const HomeServiceCard: React.FC<HomeServiceCardProps> = ({ service }) => 
         </div>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-bold font-display text-white mb-2.5 group-hover:text-[#FF6B00] transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold font-display text-white mb-2.5 group-hover:text-[#ECF0F1] transition-colors">
           {service.title}
         </h3>
 
         {/* 1 Short Description */}
-        <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-5">
+        <p className="text-xs sm:text-sm text-[#BDC3C7] leading-relaxed mb-5">
           {service.desc}
         </p>
 
@@ -39,7 +39,7 @@ export const HomeServiceCard: React.FC<HomeServiceCardProps> = ({ service }) => 
           {service.highlights.map((item, idx) => (
             <span
               key={idx}
-              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#05070D] text-[#F8FAFC] border border-[rgba(148,163,184,0.12)]"
+              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#2C3E50] text-[#ECF0F1] border border-[rgba(44,62,80,0.12)]"
             >
               {item}
             </span>
@@ -48,10 +48,10 @@ export const HomeServiceCard: React.FC<HomeServiceCardProps> = ({ service }) => 
       </div>
 
       {/* Direct Service CTA */}
-      <div className="pt-4 border-t border-[rgba(148,163,184,0.1)]">
+      <div className="pt-4 border-t border-[rgba(44,62,80,0.1)]">
         <Link
           to={service.link}
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#FF6B00] group-hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#ECF0F1] group-hover:text-white transition-colors"
         >
           <span>{service.cta}</span>
           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

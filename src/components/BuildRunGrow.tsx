@@ -9,7 +9,7 @@ export const BuildRunGrow: React.FC = () => {
       phase: 'PHASE 01 //',
       title: 'BUILD',
       description: 'Design and develop your digital product.',
-      accent: '#FF7700',
+      accent: '#ECF0F1',
     },
     {
       num: '02',
@@ -28,9 +28,9 @@ export const BuildRunGrow: React.FC = () => {
   ];
 
   return (
-    <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/[0.07] bg-[#07080A] relative select-none overflow-hidden">
+    <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/[0.07] bg-[#2C3E50] relative select-none overflow-hidden">
       {/* Subtle brand ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-24 bg-gradient-to-r from-[#FF7700]/[0.04] via-transparent to-[#10B981]/[0.03] blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-24 bg-gradient-to-r from-[#ECF0F1]/[0.04] via-transparent to-[#10B981]/[0.03] blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Continuous Horizontal Laser Pipeline Rail */}
@@ -74,7 +74,7 @@ export const BuildRunGrow: React.FC = () => {
                         }}
                       />
                       <div
-                        className="w-3.5 h-3.5 rounded-full border transition-all duration-300 flex items-center justify-center bg-[#05070D]"
+                        className="w-3.5 h-3.5 rounded-full border transition-all duration-300 flex items-center justify-center bg-[#2C3E50]"
                         style={{
                           borderColor: item.accent,
                           boxShadow: isHovered ? `0 0 12px ${item.accent}` : 'none',
@@ -105,7 +105,7 @@ export const BuildRunGrow: React.FC = () => {
                   </h3>
 
                   {/* Clean Description Underneath */}
-                  <p className="text-sm text-[#94A3B8] group-hover:text-[#F8FAFC] transition-colors duration-200 leading-relaxed max-w-sm">
+                  <p className="text-sm text-[#BDC3C7] group-hover:text-[#ECF0F1] transition-colors duration-200 leading-relaxed max-w-sm">
                     {item.description}
                   </p>
 

@@ -53,7 +53,7 @@ export const RightSideScrollHUD: React.FC = () => {
       {/* 1. Full-Height Right Viewport Laser Rail (Visible across all screens) */}
       <div className="fixed top-0 right-0 bottom-0 z-40 w-[2.5px] bg-white/[0.04] pointer-events-none">
         <motion.div
-          className="w-full bg-gradient-to-b from-[#FF6B00] via-[#FFA048] to-[#00F0FF] origin-top shadow-[0_0_14px_rgba(255,107,0,0.9),0_0_28px_rgba(0,240,255,0.4)]"
+          className="w-full bg-gradient-to-b from-[#ECF0F1] via-[#BDC3C7] to-[#7F8C8D] origin-top shadow-[0_0_14px_rgba(236,240,241,0.9),0_0_28px_rgba(127,140,141,0.4)]"
           style={{ scaleY: smoothProgress, height: '100%' }}
         />
       </div>
@@ -71,10 +71,10 @@ export const RightSideScrollHUD: React.FC = () => {
         className="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-2 select-none"
       >
         {/* Spatial Glass Container */}
-        <div className="relative p-2.5 rounded-full bg-[#0B0D13]/90 backdrop-blur-2xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.12)] flex flex-col items-center gap-2.5 transition-all duration-300 hover:border-[#FF6B00]/40 hover:shadow-[0_0_30px_rgba(255,107,0,0.25)]">
+        <div className="relative p-2.5 rounded-full bg-[#2C3E50]/90 backdrop-blur-2xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.12)] flex flex-col items-center gap-2.5 transition-all duration-300 hover:border-[#ECF0F1]/40 hover:shadow-[0_0_30px_rgba(236,240,241,0.25)]">
           {/* Top Status & Digital Percentage Readout */}
           <div className="flex flex-col items-center gap-1 w-9 text-center">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] shadow-[0_0_8px_#FF6B00]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ECF0F1] animate-pulse shadow-[0_0_8px_#ECF0F1]" />
             <span className="font-mono text-[10px] font-bold text-slate-200 tabular-nums tracking-tighter">
               {percent < 10 ? `0${percent}` : percent}%
             </span>
@@ -89,7 +89,7 @@ export const RightSideScrollHUD: React.FC = () => {
           >
             {/* Filled Progress Line */}
             <motion.div
-              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#FF6B00] via-[#FFA048] to-[#00F0FF] rounded-full origin-top"
+              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#ECF0F1] via-[#BDC3C7] to-[#7F8C8D] rounded-full origin-top"
               style={{ scaleY: smoothProgress, height: '100%' }}
             />
 
@@ -103,9 +103,10 @@ export const RightSideScrollHUD: React.FC = () => {
           <div className="absolute top-[48px] left-1/2 -translate-x-1/2 w-2 h-[180px] pointer-events-none">
             <motion.div
               style={{ y: beadY }}
-              className="relative w-4 h-4 -ml-1 -mt-1 rounded-full bg-[#FF6B00] border border-white/80 shadow-[0_0_14px_#FF6B00,0_0_24px_rgba(255,107,0,0.6)] flex items-center justify-center"
+              className="relative w-4 h-4 -ml-1 -mt-1 rounded-full bg-[#ECF0F1] border border-white/80 shadow-[0_0_14px_#ECF0F1,0_0_24px_rgba(236,240,241,0.6)] flex items-center justify-center"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_4px_#fff]" />
+              <div className="absolute inset-0 rounded-full bg-[#ECF0F1] animate-ping opacity-30" />
             </motion.div>
           </div>
 
@@ -114,7 +115,7 @@ export const RightSideScrollHUD: React.FC = () => {
             type="button"
             onClick={handleScrollToTop}
             aria-label="Glide to top of page"
-            className="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-[#FF6B00] text-slate-400 hover:text-black transition-all flex items-center justify-center focus:outline-none cursor-pointer group shadow-sm"
+            className="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-[#ECF0F1] text-slate-400 hover:text-[#2C3E50] transition-all flex items-center justify-center focus:outline-none cursor-pointer group shadow-sm"
           >
             <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
@@ -127,9 +128,9 @@ export const RightSideScrollHUD: React.FC = () => {
             x: isHovered ? -10 : 0,
           }}
           transition={{ duration: 0.2 }}
-          className="pointer-events-none absolute right-full top-1/2 -translate-y-1/2 mr-2 px-3 py-1.5 rounded-lg bg-[#090A0D]/95 border border-white/15 text-[10px] font-mono text-slate-200 uppercase tracking-widest whitespace-nowrap backdrop-blur-xl shadow-xl flex items-center gap-1.5"
+          className="pointer-events-none absolute right-full top-1/2 -translate-y-1/2 mr-2 px-3 py-1.5 rounded-lg bg-[#2C3E50]/95 border border-white/15 text-[10px] font-mono text-slate-200 uppercase tracking-widest whitespace-nowrap backdrop-blur-xl shadow-xl flex items-center gap-1.5"
         >
-          <Compass className="w-3 h-3 text-[#FF6B00]" />
+          <Compass className="w-3 h-3 text-[#ECF0F1]" />
           <span>{percent >= 98 ? 'FOOTER DOCKED' : percent === 0 ? 'PAGE TOP' : `TELEMETRY // ${percent}%`}</span>
         </motion.div>
       </motion.div>

@@ -22,28 +22,28 @@ export const ServiceComparisonTable: React.FC = () => {
     }
     if (val === '—') {
       return (
-        <span className="text-[#94A3B8] font-mono">
+        <span className="text-[#BDC3C7] font-mono">
           <Minus className="w-4 h-4 mx-auto opacity-40" />
         </span>
       );
     }
     return (
-      <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/5 text-[#94A3B8]">
+      <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/5 text-[#BDC3C7]">
         {val}
       </span>
     );
   };
 
   return (
-    <div className="rounded-2xl bg-[#0B0F17] border border-[rgba(148,163,184,0.18)] p-4 sm:p-6 md:p-8 shadow-xl space-y-6">
+    <div className="rounded-2xl bg-[#34495E] border border-[rgba(148,163,184,0.18)] p-4 sm:p-6 md:p-8 shadow-xl space-y-6">
       <div className="text-left space-y-2">
-        <div className="text-xs font-mono text-[#FF6B00] uppercase tracking-wider">
+        <div className="text-xs font-mono text-[#ECF0F1] uppercase tracking-wider">
           // SERVICE COVERAGE MATRIX
         </div>
         <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
           Compare Our Delivery Models
         </h3>
-        <p className="text-xs sm:text-sm text-[#94A3B8]">
+        <p className="text-xs sm:text-sm text-[#BDC3C7]">
           Choose whether you need a one-time build, routine technical care, or end-to-end managed storefront operations.
         </p>
       </div>
@@ -51,9 +51,9 @@ export const ServiceComparisonTable: React.FC = () => {
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse min-w-[580px]">
           <thead>
-            <tr className="border-b border-[rgba(148,163,184,0.15)] text-xs font-mono text-[#94A3B8]">
+            <tr className="border-b border-[rgba(148,163,184,0.15)] text-xs font-mono text-[#BDC3C7]">
               <th className="py-4 px-4 font-semibold text-white">Capability / Deliverable</th>
-              <th className="py-4 px-4 text-center text-[#FF6B00] font-bold">BUILD</th>
+              <th className="py-4 px-4 text-center text-[#ECF0F1] font-bold">BUILD</th>
               <th className="py-4 px-4 text-center text-[#004AAD] font-bold">MAINTAIN</th>
               <th className="py-4 px-4 text-center text-[#10B981] font-bold">MANAGE</th>
             </tr>

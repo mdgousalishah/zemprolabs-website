@@ -23,6 +23,7 @@ import {
   CinematicCurtainReveal,
   SpatialCardCascade,
 } from '../components/motion';
+import { GsapScrollTilt } from '../components/gsap';
 
 export const Work: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
@@ -104,7 +105,7 @@ export const Work: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-textured-light text-slate-900 min-h-screen">
+    <div className="w-full bg-textured-light text-[#2C3E50] min-h-screen">
       <SEO
         title="Client Work & Production Deployments | Zemprolabs"
         description="Explore real web applications, Shopify Plus stores, mobile platforms, and enterprise ServiceNow systems built, deployed, and maintained by Zemprolabs."
@@ -116,7 +117,7 @@ export const Work: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="work-title"
-        className="relative pt-36 sm:pt-44 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white border-b border-white/10 overflow-hidden"
+        className="relative pt-36 sm:pt-44 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white border-b border-white/10 overflow-hidden"
       >
         {/* Full-bleed Architectural Glass Facade Background Image */}
         <div className="absolute inset-0 z-0">
@@ -125,13 +126,13 @@ export const Work: React.FC = () => {
             alt="Modern architectural glass headquarters"
             className="w-full h-full object-cover object-center opacity-30 sm:opacity-40 brightness-75 scale-[1.03]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/80 to-[#090A0D]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50] via-[#2C3E50]/80 to-[#2C3E50]/55" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
           <FloatingElement distance={4} duration={5}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(255,107,0,0.15)]">
-              <span className="w-2 h-2 rounded-full bg-[#FF6B00]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(236,240,241,0.15)]">
+              <span className="w-2 h-2 rounded-full bg-[#ECF0F1]" />
               <span className="text-xs font-mono uppercase tracking-widest text-slate-300">
                 Case Studies &bull; Production Deployments
               </span>
@@ -145,7 +146,7 @@ export const Work: React.FC = () => {
                 className="text-4xl sm:text-6xl md:text-7xl font-bold font-display tracking-tight text-white leading-[1.05]"
               >
                 Real Software in{' '}
-                <span className="text-[#FF6B00]">Production.</span>
+                <span className="text-[#ECF0F1]">Production.</span>
               </h1>
             </PerspectiveLineReveal>
             <ScrollReveal preset="fade-up" duration={1.1} delay={0.35}>
@@ -162,7 +163,7 @@ export const Work: React.FC = () => {
               <div className="text-xs text-slate-400 mt-0.5">Live Production Systems</div>
             </div>
             <div className="py-2">
-              <CountUpNumber value={100} suffix="%" className="text-2xl sm:text-3xl font-bold font-display text-[#FF6B00] block" />
+              <CountUpNumber value={100} suffix="%" className="text-2xl sm:text-3xl font-bold font-display text-[#ECF0F1] block" />
               <div className="text-xs text-slate-400 mt-0.5">Direct Code &amp; IP Transfer</div>
             </div>
             <div className="py-2">
@@ -182,29 +183,29 @@ export const Work: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-label="Featured Platform Screening"
-        className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-stone-300/80"
+        className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#2C3E50]/15"
       >
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00]">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#2C3E50]">
                 Interactive Showcase
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold font-display tracking-tight text-slate-900 mt-1">
+              <h2 className="text-2xl sm:text-4xl font-bold font-display tracking-tight text-[#2C3E50] mt-1">
                 Featured Flagship Platforms
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-[#34495E]">
               Select any project to preview the live application video
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Left: High-Resolution Live Video Player (7 cols) */}
-            <div className="lg:col-span-7 flex flex-col">
-              <div className="bg-[#090A0D] rounded-2xl overflow-hidden border border-stone-300 shadow-xl flex-1 flex flex-col justify-between group">
+            <GsapScrollTilt tiltX={6} className="lg:col-span-7 flex flex-col">
+              <div className="bg-[#2C3E50] rounded-2xl overflow-hidden border border-[#34495E] shadow-xl flex-1 flex flex-col justify-between group">
                 {/* Header bar */}
-                <div className="h-10 bg-[#111318] border-b border-white/10 px-4 flex items-center justify-between text-xs text-slate-300">
+                <div className="h-10 bg-[#34495E] border-b border-white/10 px-4 flex items-center justify-between text-xs text-slate-300">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                     <span className="font-mono text-[11px] text-slate-300 truncate">
@@ -309,7 +310,7 @@ export const Work: React.FC = () => {
                           className="p-1.5 rounded-md bg-black/80 text-white hover:bg-black transition-colors"
                           aria-label={isMuted ? 'Unmute' : 'Mute'}
                         >
-                          {isMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-[#FF6B00]" />}
+                          {isMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-[#ECF0F1]" />}
                         </button>
                       </div>
 
@@ -318,7 +319,7 @@ export const Work: React.FC = () => {
                           href={featuredProject.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-black/80 text-xs text-white hover:text-[#FF6B00] transition-colors"
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-black/80 text-xs text-white hover:text-[#BDC3C7] transition-colors"
                         >
                           <span>Visit Live Platform</span>
                           <ExternalLink className="w-3.5 h-3.5" />
@@ -329,75 +330,105 @@ export const Work: React.FC = () => {
                 </div>
 
                 {/* Footer bar */}
-                <div className="px-4 py-3 bg-[#111318] border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-medium text-slate-300">{featuredProject.title}</span>
+                <div className="px-4 py-3 bg-[#34495E] border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+                  <span className="font-medium text-[#7F8C8D]">{featuredProject.title}</span>
                   <Link
                     to={`/work/${featuredProject.id}`}
-                    className="inline-flex items-center gap-1 text-[#FF6B00] hover:underline font-semibold"
+                    className="inline-flex items-center gap-1 text-[#2C3E50] hover:underline font-semibold"
                   >
                     <span>Read Full Case Study</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
-            </div>
+            </GsapScrollTilt>
 
-            {/* Right: Interactive Project Selector List (5 cols) */}
-            <div className="lg:col-span-5 flex flex-col justify-between space-y-3">
+            {/* Right: Interactive Project Selector Cards (5 cols) — thumbnail cards matching the portfolio grid below */}
+            <StaggerContainer className="lg:col-span-5 flex flex-col justify-between gap-3" staggerDelay={0.1}>
               {projects.slice(0, 4).map((project, idx) => {
                 const isSelected = featuredIndex === idx;
                 return (
-                  <button
-                    key={project.id}
-                    type="button"
-                    onClick={() => setFeaturedIndex(idx)}
-                    className={`w-full text-left p-4 sm:p-5 rounded-xl border transition-all ${
-                      isSelected
-                        ? 'bg-white border-stone-400 shadow-md ring-2 ring-[#FF6B00]/30'
-                        : 'bg-white/60 hover:bg-white border-stone-300/70 hover:border-stone-400'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2.5">
-                        <span
-                          className={`text-xs font-bold ${
-                            isSelected ? 'text-[#FF6B00]' : 'text-stone-400'
-                          }`}
-                        >
-                          0{idx + 1}
-                        </span>
-                        <h3 className="font-bold font-display text-base sm:text-lg text-slate-900">
-                          {project.title}
-                        </h3>
-                      </div>
-                      <span className="text-[11px] px-2 py-0.5 rounded bg-stone-100 text-stone-700 font-medium">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 line-clamp-2">
-                      {project.overview}
-                    </p>
-
-                    {isSelected && (
-                      <div className="mt-3 pt-3 border-t border-stone-200 flex items-center justify-between text-xs">
-                        <div className="flex flex-wrap gap-1.5">
-                          {project.tech.slice(0, 3).map((t) => (
-                            <span
-                              key={t}
-                              className="text-[11px] px-2 py-0.5 rounded bg-stone-100 text-slate-700"
-                            >
-                              {t}
-                            </span>
-                          ))}
+                  <StaggerItem key={project.id} preset="fade-up">
+                    <AntigravityTiltCard tiltMax={4} className="rounded-2xl">
+                      <button
+                        type="button"
+                        onClick={() => setFeaturedIndex(idx)}
+                        className={`w-full text-left flex items-stretch gap-4 p-3 sm:p-4 rounded-2xl border transition-all ${
+                          isSelected
+                            ? 'bg-white border-[#2C3E50]/25 shadow-lg ring-2 ring-[#2C3E50]/30'
+                            : 'bg-white/60 hover:bg-white border-[#2C3E50]/12 hover:border-[#2C3E50]/30 hover:shadow-md'
+                        }`}
+                      >
+                        {/* Thumbnail — same visual language as the case-study cards below */}
+                        <div className="relative w-20 sm:w-28 aspect-[16/10] flex-shrink-0 rounded-xl overflow-hidden bg-[#BDC3C7]">
+                          {project.video ? (
+                            <video
+                              src={`${project.video}#t=0.5`}
+                              preload="metadata"
+                              muted
+                              playsInline
+                              className="w-full h-full object-cover object-top"
+                            />
+                          ) : project.image ? (
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full h-full object-cover object-top"
+                            />
+                          ) : null}
+                          {isSelected && (
+                            <div className="absolute inset-0 ring-2 ring-inset ring-[#2C3E50] rounded-xl pointer-events-none" />
+                          )}
                         </div>
-                        <span className="text-[#FF6B00] font-semibold">Active in preview &rarr;</span>
-                      </div>
-                    )}
-                  </button>
+
+                        {/* Text */}
+                        <div className="flex-1 min-w-0 flex flex-col justify-center gap-1">
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex items-center gap-2 min-w-0">
+                              <span
+                                className={`text-xs font-bold flex-shrink-0 ${
+                                  isSelected ? 'text-[#2C3E50]' : 'text-[#7F8C8D]'
+                                }`}
+                              >
+                                0{idx + 1}
+                              </span>
+                              <h3 className="font-bold font-display text-sm sm:text-base text-[#2C3E50] truncate">
+                                {project.title}
+                              </h3>
+                            </div>
+                            <span className="text-[10px] px-2 py-0.5 rounded bg-[#BDC3C7] text-[#34495E] font-medium flex-shrink-0">
+                              {project.category}
+                            </span>
+                          </div>
+
+                          <p className="text-xs text-[#34495E] leading-relaxed line-clamp-2">
+                            {project.overview}
+                          </p>
+
+                          {isSelected && (
+                            <div className="flex items-center justify-between gap-2 pt-1">
+                              <div className="flex flex-wrap gap-1.5">
+                                {project.tech.slice(0, 2).map((t) => (
+                                  <span
+                                    key={t}
+                                    className="text-[10px] px-1.5 py-0.5 rounded bg-[#BDC3C7] text-[#34495E]"
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                              <span className="text-[11px] text-[#2C3E50] font-semibold flex-shrink-0">
+                                Active in preview &rarr;
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </button>
+                    </AntigravityTiltCard>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
@@ -407,18 +438,18 @@ export const Work: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="all-case-studies"
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b border-stone-300/80"
+        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b border-[#2C3E50]/15"
       >
         <div className="max-w-6xl mx-auto space-y-12">
           {/* Header & Filter Bar */}
-          <ScrollReveal preset="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-stone-300/80">
+          <ScrollReveal preset="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#2C3E50]/15">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00]">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#2C3E50]">
                 Case Studies Directory
               </span>
               <h2
                 id="all-case-studies"
-                className="text-3xl sm:text-4xl font-bold font-display tracking-tight text-slate-900 mt-1"
+                className="text-3xl sm:text-4xl font-bold font-display tracking-tight text-[#2C3E50] mt-1"
               >
                 All Production Case Studies
               </h2>
@@ -435,8 +466,8 @@ export const Work: React.FC = () => {
                     onClick={() => setActiveFilter(tab.id)}
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                       isActive
-                        ? 'bg-slate-900 text-white shadow-sm'
-                        : 'bg-white/70 text-slate-700 hover:bg-white border border-stone-300/70'
+                        ? 'bg-[#2C3E50] text-white shadow-sm'
+                        : 'bg-white/70 text-[#34495E] hover:bg-white border border-[#2C3E50]/15'
                     }`}
                   >
                     <span>{tab.label}</span>
@@ -452,9 +483,9 @@ export const Work: React.FC = () => {
             {filteredProjects.map((project, idx) => (
               <SpatialCardCascade key={project.id} index={idx % 4} className="h-full">
                 <AntigravityTiltCard tiltMax={5} className="h-full rounded-2xl">
-                  <article className="h-full bg-white rounded-2xl border border-stone-300 shadow-sm hover:shadow-xl transition-shadow flex flex-col justify-between overflow-hidden">
+                  <article className="h-full bg-white rounded-2xl border border-[#2C3E50]/12 shadow-sm hover:shadow-xl transition-shadow flex flex-col justify-between overflow-hidden">
                     {/* Visual Thumbnail with Cinematic Curtain Reveal */}
-                    <CinematicCurtainReveal direction="up" duration={1.1} className="relative aspect-[16/10] bg-slate-900 overflow-hidden">
+                    <CinematicCurtainReveal direction="up" duration={1.1} className="relative aspect-[16/10] bg-[#BDC3C7] overflow-hidden">
                       {project.video ? (
                         <video
                           src={project.video}
@@ -471,12 +502,12 @@ export const Work: React.FC = () => {
                           className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center p-6 text-center text-slate-400">
+                        <div className="w-full h-full flex items-center justify-center p-6 text-center text-[#7F8C8D]">
                           <div>
                             <div className="text-lg font-bold font-display text-white">
                               {project.title}
                             </div>
-                            <div className="text-xs text-slate-400 mt-1">{project.category}</div>
+                            <div className="text-xs text-[#7F8C8D] mt-1">{project.category}</div>
                           </div>
                         </div>
                       )}
@@ -490,7 +521,7 @@ export const Work: React.FC = () => {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="absolute top-3 right-3 p-1.5 rounded-md bg-black/75 text-white hover:text-[#FF6B00] transition-colors backdrop-blur-md"
+                          className="absolute top-3 right-3 p-1.5 rounded-md bg-black/75 text-white hover:text-[#BDC3C7] transition-colors backdrop-blur-md"
                           aria-label={`Visit ${project.title} live site`}
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
@@ -501,15 +532,15 @@ export const Work: React.FC = () => {
                     {/* Details */}
                     <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                       <div className="space-y-2.5">
-                        <div className="flex items-center justify-between text-xs text-slate-500">
-                          <span>Client: <strong className="text-slate-800">{project.client}</strong></span>
+                        <div className="flex items-center justify-between text-xs text-[#34495E]">
+                          <span>Client: <strong className="text-[#2C3E50]">{project.client}</strong></span>
                         </div>
 
-                        <h3 className="text-xl font-bold font-display text-slate-900">
+                        <h3 className="text-xl font-bold font-display text-[#2C3E50]">
                           {project.title}
                         </h3>
 
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                        <p className="text-xs sm:text-sm text-[#34495E] leading-relaxed line-clamp-3">
                           {project.overview}
                         </p>
 
@@ -519,10 +550,10 @@ export const Work: React.FC = () => {
                             {project.metrics.slice(0, 2).map((m, idx) => (
                               <div
                                 key={idx}
-                                className="p-2 rounded bg-stone-50 border border-stone-200"
+                                className="p-2 rounded bg-[#BDC3C7] border border-[#2C3E50]/12"
                               >
-                                <span className="text-[10px] text-slate-500 block">{m.label}</span>
-                                <span className="font-bold text-slate-900 block mt-0.5 truncate">
+                                <span className="text-[10px] text-[#34495E] block">{m.label}</span>
+                                <span className="font-bold text-[#2C3E50] block mt-0.5 truncate">
                                   {m.value}
                                 </span>
                               </div>
@@ -532,12 +563,12 @@ export const Work: React.FC = () => {
                       </div>
 
                       {/* Actions & Tech */}
-                      <div className="pt-4 border-t border-stone-200 space-y-3">
+                      <div className="pt-4 border-t border-[#2C3E50]/12 space-y-3">
                         <div className="flex flex-wrap gap-1.5">
                           {project.tech.slice(0, 3).map((t) => (
                             <span
                               key={t}
-                              className="text-[11px] px-2 py-0.5 rounded bg-stone-100 text-slate-700"
+                              className="text-[11px] px-2 py-0.5 rounded bg-[#BDC3C7] text-[#34495E]"
                             >
                               {t}
                             </span>
@@ -547,7 +578,7 @@ export const Work: React.FC = () => {
                         <div className="flex items-center justify-between pt-1 text-xs">
                           <Link
                             to={`/work/${project.id}`}
-                            className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-slate-900 hover:text-[#FF6B00] transition-colors"
+                            className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-[#2C3E50] hover:text-[#34495E] transition-colors"
                           >
                             <span>Case Study</span>
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -559,7 +590,7 @@ export const Work: React.FC = () => {
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-[#FF6B00] hover:underline font-semibold text-[11px]"
+                                className="text-[#2C3E50] hover:underline font-semibold text-[11px]"
                               >
                                 Live &rarr;
                               </a>
@@ -581,10 +612,10 @@ export const Work: React.FC = () => {
       {/* ========================================================================= */}
       <section
         aria-labelledby="work-cta-heading"
-        className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#090A0D] text-white relative overflow-hidden"
+        className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#2C3E50] text-white relative overflow-hidden"
       >
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#FF6B00]">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#ECF0F1]">
             Start a Project
           </span>
 
@@ -602,7 +633,7 @@ export const Work: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all active:scale-[0.98] shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold bg-[#ECF0F1] text-[#2C3E50] hover:bg-[#BDC3C7] transition-all active:scale-[0.98] shadow-lg"
             >
               <span>Submit Project Brief</span>
               <ArrowRight className="w-4 h-4" />

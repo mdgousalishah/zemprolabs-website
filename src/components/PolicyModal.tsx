@@ -93,13 +93,13 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
     >
       <div
         ref={dialogRef}
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#080D18] border border-white/[0.12] rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-300"
+        className="relative w-full max-w-4xl max-h-[90vh] bg-[#2C3E50] border border-white/[0.12] rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-300"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#05070D]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#2C3E50]">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/15 border border-[#FF6B00]/30 flex items-center justify-center text-[#FF6B00]">
+            <div className="w-8 h-8 rounded-lg bg-[#ECF0F1]/15 border border-[#ECF0F1]/30 flex items-center justify-center text-[#ECF0F1]">
               <Shield className="w-4 h-4" />
             </div>
             <div>
@@ -122,7 +122,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
         </div>
 
         {/* Policy Selector Tabs */}
-        <div className="relative border-b border-white/[0.06] bg-[#03060E]">
+        <div className="relative border-b border-white/[0.06] bg-[#2C3E50]">
           <div className="flex items-center gap-1.5 px-6 py-2.5 overflow-x-auto scrollbar-none">
           {policyNavItems.map((item) => {
             const Icon = item.icon;
@@ -133,7 +133,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
                 onClick={() => setActivePolicy(item.id)}
                 className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium whitespace-nowrap transition-all shrink-0 ${
                   isActive
-                    ? 'bg-[#FF6B00]/15 border border-[#FF6B00]/40 text-[#FF6B00]'
+                    ? 'bg-[#ECF0F1]/15 border border-[#ECF0F1]/40 text-[#ECF0F1]'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04] border border-transparent'
                 }`}
               >
@@ -144,7 +144,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
           })}
           </div>
           {/* Edge fade hinting that more tabs scroll into view on narrow screens */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#03060E] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#2C3E50] to-transparent" />
         </div>
 
         {/* Policy Content Body */}
@@ -186,7 +186,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
               <div className="space-y-3">
                 <h4 className="text-base font-semibold text-white">3. Global Compliance (GDPR, CCPA &amp; DPDP)</h4>
                 <p>
-                  Regardless of your jurisdiction, you have the right to request access to the data we hold regarding your organization, request rectification, or demand permanent deletion of non-accounting data upon contract termination. Contact our data compliance team directly at <a href={`mailto:${company.email}`} className="text-[#FF6B00] underline">{company.email}</a>.
+                  Regardless of your jurisdiction, you have the right to request access to the data we hold regarding your organization, request rectification, or demand permanent deletion of non-accounting data upon contract termination. Contact our data compliance team directly at <a href={`mailto:${company.email}`} className="text-[#ECF0F1] underline">{company.email}</a>.
                 </p>
               </div>
             </div>
@@ -353,7 +353,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
               <div className="space-y-3">
                 <h4 className="text-base font-semibold text-white">2. Vulnerability Reporting</h4>
                 <p>
-                  Security researchers and clients are encouraged to report any suspected vulnerability to our security desk at <a href={`mailto:${company.email}`} className="text-[#FF6B00] underline">{company.email}</a>. We operate a responsible disclosure policy with rapid acknowledgment within 24 hours.
+                  Security researchers and clients are encouraged to report any suspected vulnerability to our security desk at <a href={`mailto:${company.email}`} className="text-[#ECF0F1] underline">{company.email}</a>. We operate a responsible disclosure policy with rapid acknowledgment within 24 hours.
                 </p>
               </div>
             </div>
@@ -362,9 +362,9 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-4 border-t border-white/[0.08] bg-[#05070D] text-xs font-mono">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-4 border-t border-white/[0.08] bg-[#2C3E50] text-xs font-mono">
           <div className="text-slate-400">
-            Have questions about our legal terms? <a href={`mailto:${company.email}`} className="text-[#FF6B00] hover:underline">Contact Legal Desk &rarr;</a>
+            Have questions about our legal terms? <a href={`mailto:${company.email}`} className="text-[#ECF0F1] hover:underline">Contact Legal Desk &rarr;</a>
           </div>
           <button
             onClick={onClose}

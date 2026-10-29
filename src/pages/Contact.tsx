@@ -9,7 +9,7 @@ import {
 
 export const Contact: React.FC = () => {
   return (
-    <div className="w-full bg-[#090A0D] text-white min-h-screen selection:bg-[#FF6B00] selection:text-black relative overflow-hidden">
+    <div className="w-full bg-[#2C3E50] text-white min-h-screen selection:bg-[#ECF0F1] selection:text-[#2C3E50] relative overflow-hidden">
       <SEO
         title="Contact Us | Direct Engineering Access | Zemprolabs"
         description="Initiate your project brief with Zemprolabs. Talk directly with the engineering team leading your build. Sub-24h response SLA."
@@ -21,8 +21,8 @@ export const Contact: React.FC = () => {
 
       <section className="px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-20 sm:pb-28 max-w-3xl mx-auto relative z-10">
         <ScrollReveal preset="fade-up" className="mb-8 space-y-2 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#FF6B00]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#ECF0F1]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ECF0F1]" />
             <span>DIRECT LEAD ARCHITECT REVIEW &bull; 24-HOUR SLA</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white mt-3">
