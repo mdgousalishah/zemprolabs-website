@@ -1,29 +1,48 @@
 @import "tailwindcss";
 
+/*
+ * Zemprolabs Palette — Navy / Slate / Gray / Off-White
+ * Source swatches (do not introduce hues outside this set):
+ *   #2C3E50 navy       (darkest)
+ *   #34495E slate
+ *   #7F8C8D gray
+ *   #BDC3C7 light gray
+ *   #ECF0F1 off-white  (lightest)
+ */
 @theme {
-  --color-accent: #FF6B00;
-  --color-accent-strong: #E65A00;
+  --color-accent: #ECF0F1;
+  --color-accent-strong: #BDC3C7;
 }
 
 :root {
-  --bg-base: #090A0D;
-  --bg-surface: #111318;
-  --bg-elevated: #181B22;
-  
-  --primary: #FF6B00;
-  --primary-hover: #FF7B1A;
-  
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  
-  --border-light: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  
+  --navy: #2C3E50;
+  --slate: #34495E;
+  --gray: #7F8C8D;
+  --gray-light: #BDC3C7;
+  --off-white: #ECF0F1;
+
+  --bg-base: #2C3E50;
+  --bg-surface: #34495E;
+  --bg-elevated: color-mix(in srgb, #34495E 85%, white 15%);
+
+  --primary: #ECF0F1;
+  --primary-hover: #BDC3C7;
+
+  /* Dark-on-light accent pair, for the site's light/cream sections */
+  --accent-on-light: #2C3E50;
+  --accent-on-light-strong: #34495E;
+
+  --text-primary: #ECF0F1;
+  --text-secondary: #BDC3C7;
+  --text-muted: #7F8C8D;
+
+  --border-light: rgba(236, 240, 241, 0.08);
+  --border-strong: rgba(236, 240, 241, 0.16);
+
   --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
+
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -92,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Clean Architectural Light Canvas (Solid, untextured) */
 .bg-textured-light {
-  background-color: #F5F2EB;
+  background-color: #ECF0F1;
   position: relative;
 }
 
@@ -104,11 +123,11 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: var(--slate);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: var(--gray);
 }
 
 /* Focus styles */

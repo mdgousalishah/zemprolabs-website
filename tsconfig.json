@@ -23,6 +23,6 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["src/**/*", "vite.config.ts"],
+  "include": ["src/**/*", "vite.config.ts", "api/**/*"],
   "exclude": ["node_modules", "legacy_static_backup", "css", "js"]
 }

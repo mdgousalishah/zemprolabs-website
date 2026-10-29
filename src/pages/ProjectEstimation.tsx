@@ -264,6 +264,7 @@ export const ProjectEstimation: React.FC = () => {
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [sendOutcome, setSendOutcome] = useState<'sent' | 'manual' | null>(null);
 
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -296,13 +297,44 @@ export const ProjectEstimation: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 500);
+
+    const endpoint = (import.meta as any).env?.VITE_CONTACT_ENDPOINT;
+
+    if (endpoint && endpoint.trim() !== '') {
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            source: 'project-estimation',
+            name,
+            email,
+            phone,
+            company: companyName,
+            platform: selectedPlatformObj.name,
+            engagementModel: selectedEngagementObj.name,
+            timeline: selectedTimelineObj.name,
+            startingState: selectedStageObj.name,
+            selectedModules: selectedModules.join(', '),
+            notes
+          })
+        });
+        setSendOutcome(res.ok ? 'sent' : 'manual');
+      } catch {
+        setSendOutcome('manual');
+      }
+    } else {
+      setSendOutcome('manual');
+    }
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
   };
 
   const mailtoLink = `mailto:${company.email}?subject=${encodeURIComponent(
@@ -807,36 +839,49 @@ export const ProjectEstimation: React.FC = () => {
 
                   <div>
                     <h3 className="text-lg font-bold font-display text-white">
-                      Your Project Brief Is Ready
+                      {sendOutcome === 'sent' ? 'Project Brief Received' : 'Your Project Brief Is Ready'}
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed max-w-lg mx-auto">
-                      Thank you, <strong className="text-white">{name || 'there'}</strong>. Your project brief for <strong className="text-white">{selectedPlatformObj.name}</strong> is ready. Choose WhatsApp or Email below to send it to our team. Your request is not submitted until you send the message.
+                      {sendOutcome === 'sent' ? (
+                        <>
+                          Thank you, <strong className="text-white">{name || 'there'}</strong>. Your project brief for{' '}
+                          <strong className="text-white">{selectedPlatformObj.name}</strong> has been sent to our engineering team. We review every requirement personally and reply within 24 hours.
+                        </>
+                      ) : (
+                        <>
+                          Thank you, <strong className="text-white">{name || 'there'}</strong>. Your project brief for{' '}
+                          <strong className="text-white">{selectedPlatformObj.name}</strong> is ready. Choose WhatsApp or Email below to send it to our team. Your request is not submitted until you send the message.
+                        </>
+                      )}
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2 max-w-md mx-auto">
-                    <a
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all"
-                    >
-                      <MessageSquare className="w-4 h-4 text-emerald-400" />
-                      <span>Chat on WhatsApp</span>
-                    </a>
-                    <a
-                      href={mailtoLink}
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all"
-                    >
-                      <Mail className="w-4 h-4" />
-                      <span>Send via Email</span>
-                    </a>
-                  </div>
+                  {sendOutcome !== 'sent' && (
+                    <div className="flex flex-col sm:flex-row gap-3 pt-2 max-w-md mx-auto">
+                      <a
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all"
+                      >
+                        <MessageSquare className="w-4 h-4 text-emerald-400" />
+                        <span>Chat on WhatsApp</span>
+                      </a>
+                      <a
+                        href={mailtoLink}
+                        className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-semibold bg-[#FF6B00] text-black hover:bg-[#ff7b1a] transition-all"
+                      >
+                        <Mail className="w-4 h-4" />
+                        <span>Send via Email</span>
+                      </a>
+                    </div>
+                  )}
 
                   <button
                     type="button"
                     onClick={() => {
                       setIsSubmitted(false);
+                      setSendOutcome(null);
                       setCurrentStep(1);
                     }}
                     className="text-xs text-slate-400 hover:text-white pt-2 block mx-auto underline"
